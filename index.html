@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">SUNTECH - Expériences Numériques</title>
+    <meta name="description"
+        content="Portfolio of SUNTECH, specializing in scalable backend systems and dynamic frontend applications.">
+    <!-- Google Fonts: Outfit & Cairo for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Animated Gradients -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="img/logo-suntech.png" alt="Suntech Logo" class="logo-img">
+                SUNTECH<span class="dot">.</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link" data-i18n="nav_about">À propos</a>
+                <a href="#projects" class="nav-link" data-i18n="nav_work">Réalisations</a>
+                <a href="#contact" class="nav-link nav-btn" data-i18n="nav_contact">Contact</a>
+
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-btn" id="currentLang">FR</button>
+                    <div class="lang-dropdown">
+                        <a href="#" data-lang="fr">Français (FR)</a>
+                        <a href="#" data-lang="en">English (EN)</a>
+                        <a href="#" data-lang="ar">العربية (AR)</a>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">
+                    <span class="icon-moon">🌙</span>
+                    <span class="icon-sun">☀️</span>
+                </button>
+            </nav>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-content fade-in-up">
+                <h2 class="greeting" data-i18n="hero_greeting">Bienvenue chez SUNTECH 👋</h2>
+                <h1 class="hero-title">
+                    <span class="text-gradient" data-i18n="hero_title_1">Donner vie aux idées</span>
+                    <br><span data-i18n="hero_title_2">Grâce à des Solutions Numériques Intelligentes.</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">
+                    Chez SUNTECH, nous sommes spécialisés dans la création de solutions numériques sur mesure. Avec
+                    Samia Ghraieb à la barre, nous allions design, technologie et stratégie pour créer des expériences
+                    qui comptent.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary" data-i18n="btn_projects">Découvrez nos applications</a>
+                    <a href="SamiaGhraieb.pdf" target="_blank" class="btn btn-secondary" data-i18n="btn_cv">Télécharger
+                        le CV</a>
+                </div>
+            </div>
+
+            <div class="hero-visual fade-in-up delay-1">
+                <div class="glass-card hero-card">
+                    <div class="card-header">
+                        <div class="circles">
+                            <span class="red"></span>
+                            <span class="yellow"></span>
+                            <span class="green"></span>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code><span class="keyword">const</span> <span class="variable">agency</span> <span class="operator">=</span> {
+  <span class="property">name</span><span class="operator">:</span> <span class="string" data-i18n="code_name">'SUNTECH par Samia Ghraieb'</span>,
+  <span class="property">expertise</span><span class="operator">:</span> <span class="string" data-i18n="code_expertise">['Applications Web sur mesure', 'Plateformes de réservation']</span>,
+  <span class="property">mission</span><span class="operator">:</span> <span class="string" data-i18n="code_mission">'Transformer les idées en produits percutants'</span>
+};
+
+<span class="variable">agency</span>.<span class="method">empowerIdeas</span>();</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <div class="section-heading reveal">
+                <h2 class="section-title" data-i18n="projects_title">Nos Réalisations</h2>
+                <div class="heading-line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: Terres d'Islam -->
+                <div class="project-card glass-card reveal delay-1">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category" data-i18n="proj_cat_1">Application Full-Stack</span>
+                            <h3 class="project-title" data-i18n="proj_title_1">Plateforme Terres d'Islam</h3>
+                        </div>
+                        <p class="project-desc" data-i18n="proj_desc_1">
+                            Un système complet de gestion des voyages et des réservations s'étendant sur deux versions
+                            majeures. Le système gère une logique métier complexe, y compris la tarification variable
+                            par chambre et par saison, des paiements échelonnés flexibles et des modifications de
+                            réservation. Le backend robuste s'intègre parfaitement avec les multiples itérations de
+                            l'interface utilisateur.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag" data-i18n="tech_1">.NET Core</span>
+                            <span class="tech-tag" data-i18n="tech_2">C#</span>
+                            <span class="tech-tag" data-i18n="tech_3">Frontend V1 & V2</span>
+                            <span class="tech-tag" data-i18n="tech_4">API REST</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-role" data-i18n="role_1">Développeur Principal</span>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="visual-placeholder v-islam">
+                            <div class="ui-mockup">
+                                <div class="mockup-header"></div>
+                                <div class="mockup-body">
+                                    <div class="mockup-sidebar"></div>
+                                    <div class="mockup-content">
+                                        <div class="mockup-card"></div>
+                                        <div class="mockup-card"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Waste Removal -->
+                <div class="project-card glass-card project-reverse reveal delay-2">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category" data-i18n="proj_cat_2">Écosystème Full-Stack</span>
+                            <h3 class="project-title" data-i18n="proj_title_2">Gestion des Déchets Waste Removal
+                                Application</h3>
+                        </div>
+                        <p class="project-desc" data-i18n="proj_desc_2">
+                            Un système complet de collecte et d'enlèvement des déchets. Ce projet comprend une
+                            application backend dédiée gérant la logistique, l'acheminement et la gestion des
+                            utilisateurs, connectée à l'interface Waste Removal Application. Conçu pour une efficacité
+                            opérationnelle réelle et des rôles d'utilisateurs distincts.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag" data-i18n="tech_5">Architecture Backend</span>
+                            <span class="tech-tag" data-i18n="tech_6">Conception de Base de Données</span>
+                            <span class="tech-tag" data-i18n="tech_7">Frontend Waste Removal Application</span>
+                            <span class="tech-tag" data-i18n="tech_8">Intégration API</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-role" data-i18n="role_2">Ingénieur Full-Stack</span>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="visual-placeholder v-waste">
+                            <div class="ui-mockup mobile-mockup">
+                                <div class="mobile-screen">
+                                    <div class="mobile-header"></div>
+                                    <div class="mobile-list">
+                                        <div class="list-item"></div>
+                                        <div class="list-item"></div>
+                                        <div class="list-item"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="other-works reveal delay-1">
+                <p>
+                    <span data-i18n="other_works_1">Curieux d'en savoir plus ? Consultez le </span>
+                    <a href="SamiaGhraieb.pdf" target="_blank" class="highlight" data-i18n="other_works_2">CV de Samia
+                        Ghraieb</a>
+                    <span data-i18n="other_works_3"> pour un aperçu détaillé de notre expertise.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact reveal" id="contact">
+            <div class="contact-box glass-card">
+                <h2 class="section-title" data-i18n="contact_title">Construisons ensemble quelque chose de grand.</h2>
+                <p class="contact-text" data-i18n="contact_desc">
+                    Que vous ayez une question, un projet en tête ou que vous souhaitiez simplement nous saluer, notre
+                    boîte de réception est toujours ouverte. Créons la prochaine génération d'applications web.
+                </p>
+                <div class="contact-buttons">
+                    <a href="mailto:suntechnologies.grb@gmail.com" class="btn btn-primary btn-large"
+                        data-i18n="btn_hello">Dites
+                        Bonjour</a>
+                </div>
+                <!-- Social Links Placeholder -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/samia-el-ghraieb-59a647116/" target="_blank"
+                        class="social-link" title="LinkedIn">LinkedIn</a>
+                    <a href="https://github.com/suntechgrb" target="_blank" class="social-link"
+                        title="GitHub">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <span id="year"></span><span data-i18n="footer_text"> SUNTECH par Samia Ghraieb. Tous droits
+                    réservés.</span></p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
