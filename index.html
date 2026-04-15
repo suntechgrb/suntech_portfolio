@@ -4,80 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">SUNTECH - Expériences Numériques</title>
-    <meta name="description"
-        content="Portfolio of SUNTECH, specializing in scalable backend systems and dynamic frontend applications.">
-    <!-- Google Fonts: Outfit & Cairo for Arabic -->
+    <title data-i18n="page_title">SUNTECH - Web & Mobile Product Studio</title>
+    <meta name="description" data-i18n-content="meta_description"
+        content="SUNTECH builds custom web and mobile products for international startups and businesses.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;500;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Background Animated Gradients -->
     <div class="bg-shape bg-shape-1"></div>
     <div class="bg-shape bg-shape-2"></div>
 
-    <!-- Navigation -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="#top" class="logo">
                 <img src="img/logo-suntech.png" alt="Suntech Logo" class="logo-img">
                 SUNTECH<span class="dot">.</span>
             </a>
             <nav class="nav-links">
-                <a href="#about" class="nav-link" data-i18n="nav_about">À propos</a>
-                <a href="#projects" class="nav-link" data-i18n="nav_work">Réalisations</a>
+                <a href="#services" class="nav-link" data-i18n="nav_services">Services</a>
+                <a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a>
+                <a href="#trust" class="nav-link" data-i18n="nav_trust">Why Us</a>
                 <a href="#contact" class="nav-link nav-btn" data-i18n="nav_contact">Contact</a>
 
-                <!-- Language Switcher -->
                 <div class="lang-switcher">
                     <button class="lang-btn" id="currentLang">FR</button>
-                    <div class="lang-dropdown">
-                        <a href="#" data-lang="fr">Français (FR)</a>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <a href="#" data-lang="fr">Francais (FR)</a>
                         <a href="#" data-lang="en">English (EN)</a>
                         <a href="#" data-lang="ar">العربية (AR)</a>
                     </div>
                 </div>
 
-                <!-- Theme Toggle -->
-                <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">
+                <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
                     <span class="icon-moon">🌙</span>
                     <span class="icon-sun">☀️</span>
                 </button>
             </nav>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+            <button class="hamburger" id="menuToggle" aria-label="Open menu">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="about">
+    <main id="top">
+        <section class="hero">
             <div class="hero-content fade-in-up">
-                <h2 class="greeting" data-i18n="hero_greeting">Bienvenue chez SUNTECH 👋</h2>
+                <h2 class="greeting" data-i18n="hero_greeting">Welcome to SUNTECH</h2>
                 <h1 class="hero-title">
-                    <span class="text-gradient" data-i18n="hero_title_1">Donner vie aux idées</span>
-                    <br><span data-i18n="hero_title_2">Grâce à des Solutions Numériques Intelligentes.</span>
+                    <span class="text-gradient" data-i18n="hero_title_1">We build web and mobile products</span><br>
+                    <span data-i18n="hero_title_2">that drive measurable business growth.</span>
                 </h1>
                 <p class="hero-subtitle" data-i18n="hero_subtitle">
-                    Chez SUNTECH, nous sommes spécialisés dans la création de solutions numériques sur mesure. Avec
-                    Samia Ghraieb à la barre, nous allions design, technologie et stratégie pour créer des expériences
-                    qui comptent.
+                    From idea to launch, we design and deliver SaaS platforms, mobile apps and scalable APIs for
+                    international startups and businesses.
                 </p>
                 <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary" data-i18n="btn_projects">Découvrez nos applications</a>
-                    <a href="SamiaGhraieb.pdf" target="_blank" class="btn btn-secondary" data-i18n="btn_cv">Télécharger
-                        le CV</a>
+                    <a href="#contact" class="btn btn-primary" data-i18n="btn_audit">Request a free audit</a>
+                    <a href="#projects" class="btn btn-secondary" data-i18n="btn_projects">View projects</a>
+                </div>
+                <div class="proof-strip glass-card">
+                    <p><strong data-i18n="proof_1">40+ digital products delivered</strong></p>
+                    <p><strong data-i18n="proof_2">Web, Mobile, Backend expertise</strong></p>
+                    <p><strong data-i18n="proof_3">End-to-end product support</strong></p>
                 </div>
             </div>
-
             <div class="hero-visual fade-in-up delay-1">
                 <div class="glass-card hero-card">
                     <div class="card-header">
@@ -88,148 +84,197 @@
                         </div>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="keyword">const</span> <span class="variable">agency</span> <span class="operator">=</span> {
-  <span class="property">name</span><span class="operator">:</span> <span class="string" data-i18n="code_name">'SUNTECH par Samia Ghraieb'</span>,
-  <span class="property">expertise</span><span class="operator">:</span> <span class="string" data-i18n="code_expertise">['Applications Web sur mesure', 'Plateformes de réservation']</span>,
-  <span class="property">mission</span><span class="operator">:</span> <span class="string" data-i18n="code_mission">'Transformer les idées en produits percutants'</span>
+                        <pre><code>const agency = {
+  name: 'SUNTECH by Samia Ghraieb',
+  expertise: ['Custom Web Apps', 'Reservation Platforms'],
+  mission: 'Transform ideas into impactful products'
 };
 
-<span class="variable">agency</span>.<span class="method">empowerIdeas</span>();</code></pre>
+agency.empowerIdeas();</code></pre>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section class="projects" id="projects">
-            <div class="section-heading reveal">
-                <h2 class="section-title" data-i18n="projects_title">Nos Réalisations</h2>
+        <section class="segments reveal">
+            <div class="section-heading">
+                <h2 class="section-title" data-i18n="segments_title">Built for your business stage</h2>
                 <div class="heading-line"></div>
             </div>
-
-            <div class="projects-grid">
-                <!-- Project 1: Terres d'Islam -->
-                <div class="project-card glass-card reveal delay-1">
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-category" data-i18n="proj_cat_1">Application Full-Stack</span>
-                            <h3 class="project-title" data-i18n="proj_title_1">Plateforme Terres d'Islam</h3>
-                        </div>
-                        <p class="project-desc" data-i18n="proj_desc_1">
-                            Un système complet de gestion des voyages et des réservations s'étendant sur deux versions
-                            majeures. Le système gère une logique métier complexe, y compris la tarification variable
-                            par chambre et par saison, des paiements échelonnés flexibles et des modifications de
-                            réservation. Le backend robuste s'intègre parfaitement avec les multiples itérations de
-                            l'interface utilisateur.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag" data-i18n="tech_1">.NET Core</span>
-                            <span class="tech-tag" data-i18n="tech_2">C#</span>
-                            <span class="tech-tag" data-i18n="tech_3">Frontend V1 & V2</span>
-                            <span class="tech-tag" data-i18n="tech_4">API REST</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-role" data-i18n="role_1">Développeur Principal</span>
-                        </div>
-                    </div>
-                    <div class="project-visual">
-                        <div class="visual-placeholder v-islam">
-                            <div class="ui-mockup">
-                                <div class="mockup-header"></div>
-                                <div class="mockup-body">
-                                    <div class="mockup-sidebar"></div>
-                                    <div class="mockup-content">
-                                        <div class="mockup-card"></div>
-                                        <div class="mockup-card"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Waste Removal -->
-                <div class="project-card glass-card project-reverse reveal delay-2">
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-category" data-i18n="proj_cat_2">Écosystème Full-Stack</span>
-                            <h3 class="project-title" data-i18n="proj_title_2">Gestion des Déchets Waste Removal
-                                Application</h3>
-                        </div>
-                        <p class="project-desc" data-i18n="proj_desc_2">
-                            Un système complet de collecte et d'enlèvement des déchets. Ce projet comprend une
-                            application backend dédiée gérant la logistique, l'acheminement et la gestion des
-                            utilisateurs, connectée à l'interface Waste Removal Application. Conçu pour une efficacité
-                            opérationnelle réelle et des rôles d'utilisateurs distincts.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag" data-i18n="tech_5">Architecture Backend</span>
-                            <span class="tech-tag" data-i18n="tech_6">Conception de Base de Données</span>
-                            <span class="tech-tag" data-i18n="tech_7">Frontend Waste Removal Application</span>
-                            <span class="tech-tag" data-i18n="tech_8">Intégration API</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-role" data-i18n="role_2">Ingénieur Full-Stack</span>
-                        </div>
-                    </div>
-                    <div class="project-visual">
-                        <div class="visual-placeholder v-waste">
-                            <div class="ui-mockup mobile-mockup">
-                                <div class="mobile-screen">
-                                    <div class="mobile-header"></div>
-                                    <div class="mobile-list">
-                                        <div class="list-item"></div>
-                                        <div class="list-item"></div>
-                                        <div class="list-item"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="other-works reveal delay-1">
-                <p>
-                    <span data-i18n="other_works_1">Curieux d'en savoir plus ? Consultez le </span>
-                    <a href="SamiaGhraieb.pdf" target="_blank" class="highlight" data-i18n="other_works_2">CV de Samia
-                        Ghraieb</a>
-                    <span data-i18n="other_works_3"> pour un aperçu détaillé de notre expertise.</span>
-                </p>
+            <div class="segment-grid">
+                <article class="segment-card glass-card">
+                    <h3 data-i18n="segment_startups_title">Startups</h3>
+                    <p data-i18n="segment_startups_desc">Fast MVP delivery, product iteration and scalable foundations.</p>
+                </article>
+                <article class="segment-card glass-card">
+                    <h3 data-i18n="segment_sme_title">SMEs</h3>
+                    <p data-i18n="segment_sme_desc">Workflow automation, business dashboards and process digitization.</p>
+                </article>
+                <article class="segment-card glass-card">
+                    <h3 data-i18n="segment_enterprise_title">Enterprises</h3>
+                    <p data-i18n="segment_enterprise_desc">Platform modernization, migration and complex integrations.</p>
+                </article>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <section class="services reveal" id="services">
+            <div class="section-heading">
+                <h2 class="section-title" data-i18n="services_title">Core services</h2>
+                <div class="heading-line"></div>
+            </div>
+            <div class="services-grid">
+                <article class="service-card glass-card">
+                    <h3 data-i18n="service_1_title">Custom web applications</h3>
+                    <p data-i18n="service_1_desc">SaaS platforms, dashboards, portals and workflow systems.</p>
+                </article>
+                <article class="service-card glass-card">
+                    <h3 data-i18n="service_2_title">iOS & Android apps</h3>
+                    <p data-i18n="service_2_desc">High-performance mobile products connected to your backend.</p>
+                </article>
+                <article class="service-card glass-card">
+                    <h3 data-i18n="service_3_title">API and integrations</h3>
+                    <p data-i18n="service_3_desc">Payments, CRM/ERP integrations and business automation.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="projects reveal" id="projects">
+            <div class="section-heading">
+                <h2 class="section-title" data-i18n="projects_title">Case studies</h2>
+                <div class="heading-line"></div>
+            </div>
+            <div class="project-filter">
+                <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
+                <button class="filter-btn" data-filter="web" data-i18n="filter_web">Web App</button>
+                <button class="filter-btn" data-filter="mobile" data-i18n="filter_mobile">Mobile</button>
+                <button class="filter-btn" data-filter="saas" data-i18n="filter_saas">SaaS</button>
+                <button class="filter-btn" data-filter="api" data-i18n="filter_api">API</button>
+            </div>
+            <div class="projects-list">
+                <article class="case-card glass-card" data-category="web saas api">
+                    <div class="case-media case-media-carousel" data-slide-interval="2600">
+                        <img src="img/e026efbd-37ad-4929-8c79-df5c5e3257ce.jpeg" alt="Terres d'Islam booking dashboard screenshot">
+                        <img src="img/f12a6ebf-1827-4836-823a-0ae74f7866f4.jpeg" alt="Terres d'Islam reservation workflow screenshot">
+                        <img src="img/7f2e2b7f-5fc1-42e9-b3ae-793dd86c8975.jpeg" alt="Terres d'Islam package details screenshot">
+                        <img src="img/9048c089-f03e-445f-8f3f-a3a8353f5d56.jpeg" alt="Terres d'Islam booking form screenshot">
+                        <img src="img/dd62cc75-37be-4ea3-b744-c70947e23e28.jpeg" alt="Terres d'Islam back-office management screenshot">
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_1_sector">Travel Tech</span>
+                        <h3 data-i18n="case_1_title">Terres d'Islam booking platform</h3>
+                        <p data-i18n="case_1_challenge"><strong>Challenge:</strong> Complex booking and payment workflows.</p>
+                        <p data-i18n="case_1_solution"><strong>Solution:</strong> .NET Core backend + APIs + multi-version frontend.</p>
+                        <p data-i18n="case_1_result"><strong>Result:</strong> Smoother operations and scalable product base.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="web api">
+                    <div class="case-media">
+                        <img src="img/project-2.jpg" alt="Project screenshot 2">
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_2_sector">Operations</span>
+                        <h3 data-i18n="case_2_title">Waste Removal Application</h3>
+                        <p data-i18n="case_2_challenge"><strong>Challenge:</strong> Logistics coordination and user management.</p>
+                        <p data-i18n="case_2_solution"><strong>Solution:</strong> Backend architecture, data design and API integration.</p>
+                        <p data-i18n="case_2_result"><strong>Result:</strong> Better operational control and process efficiency.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="mobile web">
+                    <div class="case-media">
+                        <img src="img/project-3.jpg" alt="Project screenshot 3">
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_3_sector">Retail</span>
+                        <h3 data-i18n="case_3_title">Mobile e-commerce application</h3>
+                        <p data-i18n="case_3_challenge"><strong>Challenge:</strong> Low mobile conversion rates.</p>
+                        <p data-i18n="case_3_solution"><strong>Solution:</strong> Mobile app with push notifications and integrated payments.</p>
+                        <p data-i18n="case_3_result"><strong>Result:</strong> +38% mobile orders in 3 months.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="saas web api">
+                    <div class="case-media">
+                        <img src="img/project-4.jpg" alt="Project screenshot 4">
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_4_sector">B2B SaaS</span>
+                        <h3 data-i18n="case_4_title">Mini CRM and invoicing suite</h3>
+                        <p data-i18n="case_4_challenge"><strong>Challenge:</strong> Scattered customer data and manual follow-up.</p>
+                        <p data-i18n="case_4_solution"><strong>Solution:</strong> Centralized CRM, invoicing and automated reminders.</p>
+                        <p data-i18n="case_4_result"><strong>Result:</strong> 30% less repetitive manual tasks.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="trust reveal" id="trust">
+            <div class="section-heading">
+                <h2 class="section-title" data-i18n="trust_title">Why teams choose SUNTECH</h2>
+                <div class="heading-line"></div>
+            </div>
+            <div class="trust-grid">
+                <article class="trust-card glass-card">
+                    <h3 data-i18n="trust_1_title">Clear delivery process</h3>
+                    <p data-i18n="trust_1_desc">Discovery, MVP, iterative development, launch and continuous improvement.</p>
+                </article>
+                <article class="trust-card glass-card">
+                    <h3 data-i18n="trust_2_title">Modern technical stack</h3>
+                    <p data-i18n="trust_2_desc">.NET, C#, PostgreSQL, Redis, Docker, REST APIs, payment integrations.</p>
+                </article>
+                <article class="trust-card glass-card">
+                    <h3 data-i18n="trust_3_title">Outcome-focused execution</h3>
+                    <p data-i18n="trust_3_desc">Every release is built around measurable business impact.</p>
+                </article>
+            </div>
+        </section>
+
         <section class="contact reveal" id="contact">
             <div class="contact-box glass-card">
-                <h2 class="section-title" data-i18n="contact_title">Construisons ensemble quelque chose de grand.</h2>
+                <h2 class="section-title" data-i18n="contact_title">Let's discuss your project</h2>
                 <p class="contact-text" data-i18n="contact_desc">
-                    Que vous ayez une question, un projet en tête ou que vous souhaitiez simplement nous saluer, notre
-                    boîte de réception est toujours ouverte. Créons la prochaine génération d'applications web.
+                    Share your goals and timeline. We will send a clear proposal with scope, delivery plan and budget guidance.
                 </p>
                 <div class="contact-buttons">
-                    <a href="mailto:suntechnologies.grb@gmail.com" class="btn btn-primary btn-large"
-                        data-i18n="btn_hello">Dites
-                        Bonjour</a>
+                    <a href="mailto:suntechnologies.grb@gmail.com?subject=Project%20Inquiry" class="btn btn-primary btn-large"
+                        data-i18n="contact_email_btn">Email us</a>
+                    <a href="https://wa.me/21600000000?text=Hello%20Suntech%2C%20I%20want%20to%20discuss%20my%20project." target="_blank"
+                        class="btn btn-secondary btn-large" data-i18n="contact_whatsapp_btn">WhatsApp</a>
                 </div>
-                <!-- Social Links Placeholder -->
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/samia-el-ghraieb-59a647116/" target="_blank"
-                        class="social-link" title="LinkedIn">LinkedIn</a>
-                    <a href="https://github.com/suntechgrb" target="_blank" class="social-link"
-                        title="GitHub">GitHub</a>
+                    <a href="https://www.linkedin.com/in/samia-el-ghraieb-59a647116/" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/suntechgrb" target="_blank" class="social-link">GitHub</a>
                 </div>
             </div>
         </section>
     </main>
 
+    <div class="mobile-sticky-cta">
+        <a href="mailto:suntechnologies.grb@gmail.com" data-i18n="sticky_email">Email</a>
+        <a href="https://wa.me/21600000000?text=Hello%20Suntech%2C%20I%20want%20to%20discuss%20my%20project." target="_blank"
+            data-i18n="sticky_whatsapp">WhatsApp</a>
+        <a href="#contact" data-i18n="sticky_contact">Contact</a>
+    </div>
+
     <footer>
-        <div class="footer-content">
-            <p>&copy; <span id="year"></span><span data-i18n="footer_text"> SUNTECH par Samia Ghraieb. Tous droits
-                    réservés.</span></p>
-        </div>
+        <p>&copy; <span id="year"></span> <span data-i18n="footer_text">SUNTECH. All rights reserved.</span></p>
     </footer>
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "SUNTECH",
+            "url": "https://suntech-grb.com",
+            "description": "Web and mobile development studio for international startups and businesses.",
+            "areaServed": "International",
+            "sameAs": [
+                "https://www.linkedin.com/in/samia-el-ghraieb-59a647116/",
+                "https://github.com/suntechgrb"
+            ]
+        }
+    </script>
     <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
