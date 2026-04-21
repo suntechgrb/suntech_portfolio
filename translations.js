@@ -66,8 +66,10 @@ const translations = {
         contact_desc: "Partagez vos objectifs et votre timeline. Nous vous envoyons une proposition claire avec scope et plan de livraison.",
         contact_email_btn: "Nous ecrire",
         contact_whatsapp_btn: "WhatsApp",
+        contact_phone_btn: "Appeler: 0749443766",
         sticky_email: "Email",
         sticky_whatsapp: "WhatsApp",
+        sticky_phone: "Appel",
         sticky_contact: "Contact",
         footer_text: "SUNTECH. Tous droits reserves.",
         screenshot_fallback: "Capture projet a ajouter"
@@ -139,8 +141,10 @@ const translations = {
         contact_desc: "Share your goals and timeline. We will send a clear proposal with scope and delivery plan.",
         contact_email_btn: "Email us",
         contact_whatsapp_btn: "WhatsApp",
+        contact_phone_btn: "Call us: 0749443766",
         sticky_email: "Email",
         sticky_whatsapp: "WhatsApp",
+        sticky_phone: "Call",
         sticky_contact: "Contact",
         footer_text: "SUNTECH. All rights reserved.",
         screenshot_fallback: "Project screenshot coming soon"
@@ -212,8 +216,10 @@ const translations = {
         contact_desc: "شاركنا اهدافك والجدول الزمني، وسنرسل لك عرضا واضحا للنطاق وخطة التنفيذ.",
         contact_email_btn: "راسلنا",
         contact_whatsapp_btn: "واتساب",
+        contact_phone_btn: "اتصل بنا: 0749443766",
         sticky_email: "البريد",
         sticky_whatsapp: "واتساب",
+        sticky_phone: "اتصال",
         sticky_contact: "تواصل",
         footer_text: "SUNTECH. جميع الحقوق محفوظة.",
         screenshot_fallback: "سيتم اضافة صورة المشروع قريبا"
