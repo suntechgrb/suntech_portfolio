@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">SUNTECH - Web & Mobile Product Studio</title>
+    <title data-i18n="page_title">SuntechTN | AI Automation & Custom Software Development</title>
     <link rel="icon" type="image/png" href="img/logo-suntech.png">
     <link rel="apple-touch-icon" href="img/logo-suntech.png">
     <meta name="description" data-i18n-content="meta_description"
-        content="SUNTECH builds custom web and mobile products for international startups and businesses.">
+        content="SuntechTN helps startups and SMEs automate operations with AI agents, chatbots and custom software solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SuntechTN | Automatisation IA & logiciel sur mesure">
+    <meta property="og:description" data-i18n-content="meta_description"
+        content="Automatisez vos opérations avec l'IA. Audit gratuit sous 24h.">
+    <meta property="og:image" content="img/logo-suntech.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
@@ -24,13 +30,16 @@
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#top" class="logo">
-                <img src="img/logo-suntech.png" alt="Suntech Logo" class="logo-img">
-                SUNTECH<span class="dot">.</span>
+                <img src="img/logo-suntech.png" alt="SuntechTN Logo" class="logo-img">
+                SuntechTN<span class="dot">.</span>
             </a>
             <nav class="nav-links">
                 <a href="#services" class="nav-link" data-i18n="nav_services">Services</a>
+                <a href="#packages" class="nav-link" data-i18n="packages_title">Packages</a>
                 <a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a>
+                <a href="#process" class="nav-link" data-i18n="nav_process">Process</a>
                 <a href="#trust" class="nav-link" data-i18n="nav_trust">Why Us</a>
+                <a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a>
                 <a href="#contact" class="nav-link nav-btn" data-i18n="nav_contact">Contact</a>
 
                 <div class="lang-switcher">
@@ -58,23 +67,32 @@
     <main id="top">
         <section class="hero">
             <div class="hero-content fade-in-up">
-                <h2 class="greeting" data-i18n="hero_greeting">Welcome to SUNTECH</h2>
+                <p class="hero-badge" data-i18n="hero_badge">Free AI audit · Reply within 24 hours</p>
+                <h2 class="greeting" data-i18n="hero_greeting">Welcome to SuntechTN</h2>
                 <h1 class="hero-title">
-                    <span class="text-gradient" data-i18n="hero_title_1">We build web and mobile products</span><br>
-                    <span data-i18n="hero_title_2">that drive measurable business growth.</span>
+                    <span class="text-gradient" data-i18n="hero_title_1">We build AI agents, automation systems and custom software</span><br>
+                    <span data-i18n="hero_title_2">that help businesses grow faster.</span>
                 </h1>
                 <p class="hero-subtitle" data-i18n="hero_subtitle">
-                    From idea to launch, we design and deliver SaaS platforms, mobile apps and scalable APIs for
-                    international startups and businesses.
+                    SuntechTN helps startups and SMEs automate operations using AI, chatbots, web and mobile applications.
                 </p>
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-primary" data-i18n="btn_audit">Request a free audit</a>
                     <a href="#projects" class="btn btn-secondary" data-i18n="btn_projects">View projects</a>
                 </div>
-                <div class="proof-strip glass-card">
-                    <p><strong data-i18n="proof_1">40+ digital products delivered</strong></p>
-                    <p><strong data-i18n="proof_2">Web, Mobile, Backend expertise</strong></p>
-                    <p><strong data-i18n="proof_3">End-to-end product support</strong></p>
+                <div class="stats-strip">
+                    <div class="stat-item glass-card">
+                        <span class="stat-value">10+</span>
+                        <span class="stat-label" data-i18n="stat_years">Years of experience</span>
+                    </div>
+                    <div class="stat-item glass-card">
+                        <span class="stat-value">25+</span>
+                        <span class="stat-label" data-i18n="stat_projects">Projects delivered</span>
+                    </div>
+                    <div class="stat-item glass-card">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label" data-i18n="stat_langs">Languages supported</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-visual fade-in-up delay-1">
@@ -87,13 +105,13 @@
                         </div>
                     </div>
                     <div class="code-content">
-                        <pre><code>const agency = {
-  name: 'SUNTECH by Samia Ghraieb',
-  expertise: ['Custom Web Apps', 'Reservation Platforms'],
-  mission: 'Transform ideas into impactful products'
+                        <pre><code>const company = {
+  name: 'SuntechTN',
+  expertise: ['AI Agents', 'Automation', 'Custom Software'],
+  mission: 'Helping businesses scale with technology'
 };
 
-agency.empowerIdeas();</code></pre>
+company.automateGrowth();</code></pre>
                     </div>
                 </div>
             </div>
@@ -127,16 +145,101 @@ agency.empowerIdeas();</code></pre>
             </div>
             <div class="services-grid">
                 <article class="service-card glass-card">
-                    <h3 data-i18n="service_1_title">Custom web applications</h3>
-                    <p data-i18n="service_1_desc">SaaS platforms, dashboards, portals and workflow systems.</p>
+                    <span class="service-icon" aria-hidden="true">🤖</span>
+                    <h3 data-i18n="service_1_title">AI Agents & Chatbots</h3>
+                    <p data-i18n="service_1_desc">Intelligent assistants for customer support, internal operations and lead qualification.</p>
                 </article>
                 <article class="service-card glass-card">
-                    <h3 data-i18n="service_2_title">iOS & Android apps</h3>
-                    <p data-i18n="service_2_desc">High-performance mobile products connected to your backend.</p>
+                    <span class="service-icon" aria-hidden="true">⚡</span>
+                    <h3 data-i18n="service_2_title">Workflow Automation</h3>
+                    <p data-i18n="service_2_desc">Automate repetitive tasks, CRM updates, reporting, emails and business processes.</p>
                 </article>
                 <article class="service-card glass-card">
-                    <h3 data-i18n="service_3_title">API and integrations</h3>
-                    <p data-i18n="service_3_desc">Payments, CRM/ERP integrations and business automation.</p>
+                    <span class="service-icon" aria-hidden="true">📱</span>
+                    <h3 data-i18n="service_3_title">Custom Web & Mobile Applications</h3>
+                    <p data-i18n="service_3_desc">SaaS platforms, portals, dashboards, mobile apps and scalable APIs for your business.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="packages reveal" id="packages">
+            <div class="section-heading">
+                <h2 class="section-title" data-i18n="packages_title">Packages</h2>
+                <p class="section-lead" data-i18n="packages_lead">Transparent offers — no hidden fees. Start with a free audit.</p>
+                <div class="heading-line"></div>
+            </div>
+            <div class="packages-grid">
+                <article class="package-card glass-card package-featured">
+                    <span class="package-badge" data-i18n="package_popular">Most popular</span>
+                    <h3 data-i18n="package_1_title">Free AI Audit</h3>
+                    <p class="package-price" data-i18n="package_1_price">0 €</p>
+                    <p data-i18n="package_1_desc">A 30-minute consultation to identify 3 profitable automation opportunities.</p>
+                    <ul class="package-features">
+                        <li data-i18n="package_1_f1">Analysis of your current processes</li>
+                        <li data-i18n="package_1_f2">3 concrete automation ideas</li>
+                        <li data-i18n="package_1_f3">Roadmap and budget estimate</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-package" data-i18n="package_1_cta">Book my free audit</a>
+                </article>
+                <article class="package-card glass-card">
+                    <h3 data-i18n="package_2_title">AI Chatbot</h3>
+                    <p class="package-price" data-i18n="package_2_price">From €1,500</p>
+                    <p data-i18n="package_2_desc">Business chatbot connected to your website or tools.</p>
+                    <ul class="package-features">
+                        <li data-i18n="package_2_f1">24/7 customer support</li>
+                        <li data-i18n="package_2_f2">Website or WhatsApp integration</li>
+                        <li data-i18n="package_2_f3">Training on your business data</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary btn-package" data-i18n="package_2_cta">Get a quote</a>
+                </article>
+                <article class="package-card glass-card">
+                    <h3 data-i18n="package_3_title">Business Automation</h3>
+                    <p class="package-price" data-i18n="package_3_price">From €2,000</p>
+                    <p data-i18n="package_3_desc">Automate repetitive workflows and reduce manual work.</p>
+                    <ul class="package-features">
+                        <li data-i18n="package_3_f1">CRM, email and reporting automation</li>
+                        <li data-i18n="package_3_f2">API integrations with your tools</li>
+                        <li data-i18n="package_3_f3">Measurable time savings</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary btn-package" data-i18n="package_3_cta">Discuss my project</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-band reveal">
+            <div class="cta-band-inner glass-card">
+                <h2 data-i18n="cta_band_title">Ready to save time and reduce manual work?</h2>
+                <p data-i18n="cta_band_desc">Join the companies that automate with SuntechTN. Your first step costs nothing.</p>
+                <a href="#contact" class="btn btn-primary btn-large" data-i18n="cta_band_btn">Book a free 30-min audit</a>
+            </div>
+        </section>
+
+        <section class="process reveal" id="process">
+            <div class="section-heading">
+                <h2 class="section-title" data-i18n="process_title">How we work with you</h2>
+                <p class="section-lead" data-i18n="process_lead">A simple, transparent process from first call to launch.</p>
+                <div class="heading-line"></div>
+            </div>
+            <div class="process-steps">
+                <article class="process-step glass-card">
+                    <span class="step-num">01</span>
+                    <h3 data-i18n="process_1_title">Discovery & audit</h3>
+                    <p data-i18n="process_1_desc">We understand your goals, pain points and identify quick wins.</p>
+                </article>
+                <article class="process-step glass-card">
+                    <span class="step-num">02</span>
+                    <h3 data-i18n="process_2_title">Proposal & roadmap</h3>
+                    <p data-i18n="process_2_desc">Clear scope, timeline and fixed-price quote — no surprises.</p>
+                </article>
+                <article class="process-step glass-card">
+                    <span class="step-num">03</span>
+                    <h3 data-i18n="process_3_title">Build & iterate</h3>
+                    <p data-i18n="process_3_desc">Agile delivery with regular demos so you stay in control.</p>
+                </article>
+                <article class="process-step glass-card">
+                    <span class="step-num">04</span>
+                    <h3 data-i18n="process_4_title">Launch & support</h3>
+                    <p data-i18n="process_4_desc">Deployment, training and ongoing improvements after go-live.</p>
                 </article>
             </div>
         </section>
@@ -144,6 +247,7 @@ agency.empowerIdeas();</code></pre>
         <section class="projects reveal" id="projects">
             <div class="section-heading">
                 <h2 class="section-title" data-i18n="projects_title">Case studies</h2>
+                <p class="section-lead" data-i18n="projects_lead">Web, mobile, SaaS and AI — a sample of what we deliver for our clients.</p>
                 <div class="heading-line"></div>
             </div>
             <div class="project-filter">
@@ -152,6 +256,8 @@ agency.empowerIdeas();</code></pre>
                 <button class="filter-btn" data-filter="mobile" data-i18n="filter_mobile">Mobile</button>
                 <button class="filter-btn" data-filter="saas" data-i18n="filter_saas">SaaS</button>
                 <button class="filter-btn" data-filter="api" data-i18n="filter_api">API</button>
+                <button class="filter-btn" data-filter="ai" data-i18n="filter_ai">IA</button>
+                <button class="filter-btn" data-filter="wordpress" data-i18n="filter_wordpress">WordPress</button>
             </div>
             <div class="projects-list">
                 <article class="case-card case-card-mobile glass-card" data-category="web saas api">
@@ -223,12 +329,152 @@ agency.empowerIdeas();</code></pre>
                         <p data-i18n="case_4_result"><strong>Result:</strong> 30% less repetitive manual tasks.</p>
                     </div>
                 </article>
+
+                <article class="case-card glass-card" data-category="saas api ai">
+                    <div class="case-media case-media-placeholder placeholder-health">
+                        <span class="placeholder-icon" aria-hidden="true">🏥</span>
+                        <span class="placeholder-name">MediBot Pro</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_6_sector">Health · IA</span>
+                        <h3 data-i18n="case_6_title">MediBot Pro — Medical practice assistant</h3>
+                        <p data-i18n="case_6_challenge"><strong>Challenge:</strong> Phone overload and manual appointment booking.</p>
+                        <p data-i18n="case_6_solution"><strong>Solution:</strong> AI chatbot + calendar sync + patient FAQ automation.</p>
+                        <p data-i18n="case_6_result"><strong>Result:</strong> 40% fewer calls, appointments booked 24/7.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="web mobile">
+                    <div class="case-media case-media-placeholder placeholder-restaurant">
+                        <span class="placeholder-icon" aria-hidden="true">🍽️</span>
+                        <span class="placeholder-name">RestoFlow</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_7_sector">Hospitality</span>
+                        <h3 data-i18n="case_7_title">RestoFlow — Restaurant ordering platform</h3>
+                        <p data-i18n="case_7_challenge"><strong>Challenge:</strong> Order errors and slow kitchen coordination.</p>
+                        <p data-i18n="case_7_solution"><strong>Solution:</strong> Web + mobile ordering, kitchen dashboard and Stripe payments.</p>
+                        <p data-i18n="case_7_result"><strong>Result:</strong> 25% faster service and fewer order mistakes.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="web api">
+                    <div class="case-media case-media-placeholder placeholder-realestate">
+                        <span class="placeholder-icon" aria-hidden="true">🏠</span>
+                        <span class="placeholder-name">PropConnect</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_8_sector">Real Estate</span>
+                        <h3 data-i18n="case_8_title">PropConnect — Property listings portal</h3>
+                        <p data-i18n="case_8_challenge"><strong>Challenge:</strong> Outdated listings and poor lead capture on the website.</p>
+                        <p data-i18n="case_8_solution"><strong>Solution:</strong> Search portal, agent CRM and automated lead notifications.</p>
+                        <p data-i18n="case_8_result"><strong>Result:</strong> 2× more qualified leads in the first quarter.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="saas api ai">
+                    <div class="case-media case-media-placeholder placeholder-sales">
+                        <span class="placeholder-icon" aria-hidden="true">📈</span>
+                        <span class="placeholder-name">LeadPilot</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_9_sector">Sales · IA</span>
+                        <h3 data-i18n="case_9_title">LeadPilot — AI lead qualification</h3>
+                        <p data-i18n="case_9_challenge"><strong>Challenge:</strong> Sales team wasting time on low-quality leads.</p>
+                        <p data-i18n="case_9_solution"><strong>Solution:</strong> AI scoring agent, CRM sync and automated follow-up sequences.</p>
+                        <p data-i18n="case_9_result"><strong>Result:</strong> 35% more conversions on hot leads.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="saas web">
+                    <div class="case-media case-media-placeholder placeholder-inventory">
+                        <span class="placeholder-icon" aria-hidden="true">📦</span>
+                        <span class="placeholder-name">StockWise</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_10_sector">Retail · SaaS</span>
+                        <h3 data-i18n="case_10_title">StockWise — Inventory management</h3>
+                        <p data-i18n="case_10_challenge"><strong>Challenge:</strong> Stock-outs and Excel-based inventory tracking.</p>
+                        <p data-i18n="case_10_solution"><strong>Solution:</strong> Real-time dashboard, low-stock alerts and supplier API.</p>
+                        <p data-i18n="case_10_result"><strong>Result:</strong> 18% reduction in stock-outs across stores.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="web saas">
+                    <div class="case-media case-media-placeholder placeholder-education">
+                        <span class="placeholder-icon" aria-hidden="true">🎓</span>
+                        <span class="placeholder-name">EduLearn</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_11_sector">EdTech</span>
+                        <h3 data-i18n="case_11_title">EduLearn — Online learning platform</h3>
+                        <p data-i18n="case_11_challenge"><strong>Challenge:</strong> Scattered courses and no progress tracking for learners.</p>
+                        <p data-i18n="case_11_solution"><strong>Solution:</strong> Course portal, video hosting, quizzes and admin analytics.</p>
+                        <p data-i18n="case_11_result"><strong>Result:</strong> 60% higher course completion rate.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="wordpress web">
+                    <div class="case-media case-media-placeholder placeholder-wordpress">
+                        <span class="placeholder-icon" aria-hidden="true">⚖️</span>
+                        <span class="placeholder-name">LexAvocats</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_12_sector">WordPress · Corporate</span>
+                        <h3 data-i18n="case_12_title">LexAvocats — Law firm website</h3>
+                        <p data-i18n="case_12_challenge"><strong>Challenge:</strong> Outdated site and no easy content updates for the team.</p>
+                        <p data-i18n="case_12_solution"><strong>Solution:</strong> Custom WordPress theme, Elementor, GDPR forms and SEO setup.</p>
+                        <p data-i18n="case_12_result"><strong>Result:</strong> Page 1 Google locally, +45% contact form submissions.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="wordpress web">
+                    <div class="case-media case-media-placeholder placeholder-woocommerce">
+                        <span class="placeholder-icon" aria-hidden="true">🛒</span>
+                        <span class="placeholder-name">ShopNova</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_13_sector">WordPress · WooCommerce</span>
+                        <h3 data-i18n="case_13_title">ShopNova — Online store</h3>
+                        <p data-i18n="case_13_challenge"><strong>Challenge:</strong> Launch e-commerce quickly without heavy custom development.</p>
+                        <p data-i18n="case_13_solution"><strong>Solution:</strong> WooCommerce, Stripe, shipping rules, product catalog and admin training.</p>
+                        <p data-i18n="case_13_result"><strong>Result:</strong> Store live in 3 weeks, 120+ orders in the first month.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="wordpress web">
+                    <div class="case-media case-media-placeholder placeholder-wordpress-blog">
+                        <span class="placeholder-icon" aria-hidden="true">✍️</span>
+                        <span class="placeholder-name">Maison &amp; Style</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_14_sector">WordPress · Content</span>
+                        <h3 data-i18n="case_14_title">Maison &amp; Style — Lifestyle blog</h3>
+                        <p data-i18n="case_14_challenge"><strong>Challenge:</strong> Low organic traffic and slow publishing workflow.</p>
+                        <p data-i18n="case_14_solution"><strong>Solution:</strong> WordPress blog, Yoast SEO, newsletter plugin and performance optimization.</p>
+                        <p data-i18n="case_14_result"><strong>Result:</strong> +80% organic traffic in 4 months.</p>
+                    </div>
+                </article>
+
+                <article class="case-card glass-card" data-category="wordpress web">
+                    <div class="case-media case-media-placeholder placeholder-wordpress-multi">
+                        <span class="placeholder-icon" aria-hidden="true">🏢</span>
+                        <span class="placeholder-name">FranchiseNet</span>
+                    </div>
+                    <div class="case-body">
+                        <span class="project-category" data-i18n="case_15_sector">WordPress · Multisite</span>
+                        <h3 data-i18n="case_15_title">FranchiseNet — Franchise network portal</h3>
+                        <p data-i18n="case_15_challenge"><strong>Challenge:</strong> 12 locations each managing their own outdated micro-sites.</p>
+                        <p data-i18n="case_15_solution"><strong>Solution:</strong> WordPress Multisite, shared theme, local pages and central admin dashboard.</p>
+                        <p data-i18n="case_15_result"><strong>Result:</strong> Unified brand, 70% lower maintenance costs.</p>
+                    </div>
+                </article>
             </div>
         </section>
 
         <section class="trust reveal" id="trust">
             <div class="section-heading">
-                <h2 class="section-title" data-i18n="trust_title">Why teams choose SUNTECH</h2>
+                <h2 class="section-title" data-i18n="trust_title">Why teams choose SuntechTN</h2>
                 <div class="heading-line"></div>
             </div>
             <div class="trust-grid">
@@ -245,21 +491,55 @@ agency.empowerIdeas();</code></pre>
                     <p data-i18n="trust_3_desc">Every release is built around measurable business impact.</p>
                 </article>
             </div>
+            <div class="tech-stack">
+                <p class="tech-stack-label" data-i18n="tech_stack_label">Technologies we master</p>
+                <div class="tech-tags">
+                    <span>.NET</span><span>C#</span><span>WordPress</span><span>WooCommerce</span>
+                    <span>PostgreSQL</span><span>Elementor</span><span>REST API</span><span>IA / LLM</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq reveal" id="faq">
+            <div class="section-heading">
+                <h2 class="section-title" data-i18n="faq_title">Frequently asked questions</h2>
+                <div class="heading-line"></div>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item glass-card">
+                    <summary data-i18n="faq_1_q">How long does a typical project take?</summary>
+                    <p data-i18n="faq_1_a">A chatbot can be live in 2–4 weeks. Custom apps vary from 4 to 12 weeks depending on scope. We always agree on a timeline before starting.</p>
+                </details>
+                <details class="faq-item glass-card">
+                    <summary data-i18n="faq_2_q">Do you work in France and internationally?</summary>
+                    <p data-i18n="faq_2_a">Yes. Based in France, we support clients across Europe, the UK, the Gulf and worldwide. Communication in French, English or Arabic.</p>
+                </details>
+                <details class="faq-item glass-card">
+                    <summary data-i18n="faq_3_q">What happens during the free AI audit?</summary>
+                    <p data-i18n="faq_3_a">A 30-minute video call to map your processes, spot automation opportunities and give you a clear action plan — with no obligation.</p>
+                </details>
+                <details class="faq-item glass-card">
+                    <summary data-i18n="faq_4_q">How do you price projects?</summary>
+                    <p data-i18n="faq_4_a">Fixed-price quotes after the audit. No surprise bills. Payment in milestones aligned with deliverables.</p>
+                </details>
+            </div>
         </section>
 
         <section class="contact reveal" id="contact">
             <div class="contact-box glass-card">
+                <p class="contact-badge" data-i18n="contact_badge">Free · No commitment · Reply within 24h</p>
                 <h2 class="section-title" data-i18n="contact_title">Let's discuss your project</h2>
                 <p class="contact-text" data-i18n="contact_desc">
-                    Share your goals and timeline. We will send a clear proposal with scope, delivery plan and budget guidance.
+                    Book a free AI audit and discover how automation can save your business time and money.
                 </p>
                 <div class="contact-buttons">
-                    <a href="mailto:suntechnologies.grb@gmail.com?subject=Project%20Inquiry" class="btn btn-primary btn-large"
+                    <a href="mailto:suntechnologies.grb@gmail.com?subject=Demande%20audit%20IA%20gratuit" class="btn btn-primary btn-large"
                         data-i18n="contact_email_btn">Email us</a>
-                    <a href="https://wa.me/21600000000?text=Hello%20Suntech%2C%20I%20want%20to%20discuss%20my%20project." target="_blank"
+                    <a href="https://wa.me/44749443766?text=Bonjour%20SuntechTN%2C%20je%20souhaite%20r%C3%A9server%20un%20audit%20IA%20gratuit." target="_blank" rel="noopener"
                         class="btn btn-secondary btn-large" data-i18n="contact_whatsapp_btn">WhatsApp</a>
                     <a href="tel:0749443766" class="btn btn-secondary btn-large" data-i18n="contact_phone_btn">Call us: 0749443766</a>
                 </div>
+                <p class="contact-note" data-i18n="contact_note">France & international · Remote collaboration</p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/samia-el-ghraieb-59a647116/" target="_blank" class="social-link">LinkedIn</a>
                     <a href="https://github.com/suntechgrb" target="_blank" class="social-link">GitHub</a>
@@ -270,23 +550,24 @@ agency.empowerIdeas();</code></pre>
 
     <div class="mobile-sticky-cta">
         <a href="mailto:suntechnologies.grb@gmail.com" data-i18n="sticky_email">Email</a>
-        <a href="https://wa.me/21600000000?text=Hello%20Suntech%2C%20I%20want%20to%20discuss%20my%20project." target="_blank"
+        <a href="https://wa.me/44749443766?text=Bonjour%20SuntechTN%2C%20je%20souhaite%20r%C3%A9server%20un%20audit%20IA%20gratuit." target="_blank" rel="noopener"
             data-i18n="sticky_whatsapp">WhatsApp</a>
         <a href="tel:0749443766" data-i18n="sticky_phone">Call</a>
     </div>
 
     <footer>
-        <p>&copy; <span id="year"></span> <span data-i18n="footer_text">SUNTECH. All rights reserved.</span></p>
+        <p>&copy; <span id="year"></span> <span data-i18n="footer_text">SuntechTN. All rights reserved.</span></p>
     </footer>
 
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            "name": "SUNTECH",
+            "name": "SuntechTN",
             "url": "https://suntech-grb.com",
-            "description": "Web and mobile development studio for international startups and businesses.",
-            "areaServed": "International",
+            "description": "AI automation and custom software company for startups and SMEs.",
+            "areaServed": ["France", "International"],
+            "addressCountry": "FR",
             "sameAs": [
                 "https://www.linkedin.com/in/samia-el-ghraieb-59a647116/",
                 "https://github.com/suntechgrb"
