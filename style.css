@@ -138,6 +138,15 @@ a {
     margin-right: 0;
 }
 
+.logo-brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.logo-tn {
+    color: var(--accent-1);
+}
+
 .dot {
     color: var(--accent-1);
 }
@@ -640,6 +649,72 @@ html[dir="rtl"] .faq-item summary::after {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.sectors-grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.sector-card {
+    padding: 1.1rem;
+    text-align: center;
+}
+
+.sector-icon {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.sector-card h3 {
+    font-size: 0.95rem;
+}
+
+.services-grid-wide {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.service-features {
+    list-style: none;
+    margin-top: 0.65rem;
+}
+
+.service-features li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+.service-features li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-1);
+}
+
+html[dir="rtl"] .service-features li {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+html[dir="rtl"] .service-features li::before {
+    left: auto;
+    right: 0;
+}
+
+.packages-grid-wide {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.hero-slogan {
+    margin: 0.5rem 0 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent-3);
+}
+
 .segment-card,
 .service-card,
 .trust-card,
@@ -942,7 +1017,8 @@ html[dir="rtl"] .lang-dropdown {
     .services-grid,
     .trust-grid,
     .projects-list,
-    .packages-grid {
+    .packages-grid,
+    .sectors-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -987,7 +1063,8 @@ html[dir="rtl"] .lang-dropdown {
     .projects-list,
     .packages-grid,
     .process-steps,
-    .stats-strip {
+    .stats-strip,
+    .sectors-grid {
         grid-template-columns: 1fr;
     }
 
