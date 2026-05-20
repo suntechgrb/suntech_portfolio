@@ -1,3 +1,87 @@
+const COOKIE_CONSENT_KEY = 'cookieConsent';
+const GOOGLE_FONTS_URL = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap';
+
+const loadGoogleFonts = () => {
+    if (document.getElementById('google-fonts-link')) return;
+
+    const preconnect1 = document.createElement('link');
+    preconnect1.rel = 'preconnect';
+    preconnect1.href = 'https://fonts.googleapis.com';
+    document.head.appendChild(preconnect1);
+
+    const preconnect2 = document.createElement('link');
+    preconnect2.rel = 'preconnect';
+    preconnect2.href = 'https://fonts.gstatic.com';
+    preconnect2.crossOrigin = 'anonymous';
+    document.head.appendChild(preconnect2);
+
+    const fontsLink = document.createElement('link');
+    fontsLink.id = 'google-fonts-link';
+    fontsLink.rel = 'stylesheet';
+    fontsLink.href = GOOGLE_FONTS_URL;
+    document.head.appendChild(fontsLink);
+};
+
+const getCookieConsent = () => localStorage.getItem(COOKIE_CONSENT_KEY);
+
+const setCookieConsent = (value) => {
+    localStorage.setItem(COOKIE_CONSENT_KEY, value);
+    if (value === 'accepted') {
+        loadGoogleFonts();
+    }
+};
+
+const showCookieBanner = () => {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    banner.classList.add('visible');
+    banner.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('cookie-banner-open');
+};
+
+const hideCookieBanner = () => {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    banner.classList.remove('visible');
+    banner.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('cookie-banner-open');
+};
+
+const initCookieConsent = () => {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    const rejectBtn = document.getElementById('cookieReject');
+    const settingsBtn = document.getElementById('cookieSettingsBtn');
+
+    if (!banner || !acceptBtn || !rejectBtn) return;
+
+    const savedConsent = getCookieConsent();
+    if (savedConsent === 'accepted') {
+        loadGoogleFonts();
+        hideCookieBanner();
+    } else if (savedConsent === 'rejected') {
+        hideCookieBanner();
+    } else {
+        showCookieBanner();
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        setCookieConsent('accepted');
+        hideCookieBanner();
+    });
+
+    rejectBtn.addEventListener('click', () => {
+        setCookieConsent('rejected');
+        hideCookieBanner();
+    });
+
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', () => {
+            showCookieBanner();
+        });
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const yearSpan = document.getElementById('year');
     const navbar = document.getElementById('navbar');
@@ -96,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const savedLang = localStorage.getItem('preferredLang') || 'fr';
     applyLanguage(savedLang);
+    initCookieConsent();
 
     document.querySelectorAll('.case-media img').forEach((image) => {
         image.addEventListener('error', () => {

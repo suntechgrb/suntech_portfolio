@@ -178,7 +178,7 @@ const translations = {
         case_3_solution: "Solution : Application mobile avec notifications et paiement intégré.",
         case_3_result: "Résultat : Amélioration de l’expérience et du parcours d’achat mobile.",
         case_4_sector: "B2B SaaS",
-        case_4_title: "Mini CRM et facturation",
+        case_4_title: "BillFlow — Mini CRM et facturation",
         case_4_challenge: "Défi : Données clients dispersées et suivi manuel.",
         case_4_solution: "Solution : CRM centralisé, facturation et relances automatiques.",
         case_4_result: "Résultat : Réduction des tâches répétitives et meilleur suivi commercial.",
@@ -256,6 +256,11 @@ const translations = {
         sticky_phone: "Appel",
         sticky_contact: "Contact",
         footer_text: "SuntechTN. Tous droits réservés.",
+        cookie_title: "Cookies et confidentialité",
+        cookie_text: "Ce site utilise des cookies pour mémoriser vos préférences (langue, affichage). Vous pouvez modifier votre choix à tout moment.",
+        cookie_accept: "Tout accepter",
+        cookie_reject: "Refuser le non essentiel",
+        cookie_settings_btn: "Paramètres cookies",
         screenshot_fallback: "Capture projet à ajouter"
     },
     en: {
@@ -437,7 +442,7 @@ const translations = {
         case_3_solution: "Solution: Mobile app with push notifications and integrated payments.",
         case_3_result: "Result: Improved mobile user experience and buying journey.",
         case_4_sector: "B2B SaaS",
-        case_4_title: "Mini CRM and invoicing suite",
+        case_4_title: "BillFlow — Mini CRM and invoicing suite",
         case_4_challenge: "Challenge: Scattered customer data and manual follow-up.",
         case_4_solution: "Solution: Centralized CRM, invoicing and automatic reminders.",
         case_4_result: "Result: Less repetitive work and better sales follow-up.",
@@ -515,6 +520,11 @@ const translations = {
         sticky_phone: "Call",
         sticky_contact: "Contact",
         footer_text: "SuntechTN. All rights reserved.",
+        cookie_title: "Cookies & privacy",
+        cookie_text: "This site uses cookies to remember your preferences (language, display). You can update your choice anytime.",
+        cookie_accept: "Accept all",
+        cookie_reject: "Reject non-essential",
+        cookie_settings_btn: "Cookie settings",
         screenshot_fallback: "Project screenshot coming soon"
     },
     ar: {
@@ -696,7 +706,7 @@ const translations = {
         case_3_solution: "الحل: تطبيق موبايل مع إشعارات ودفع مدمج.",
         case_3_result: "النتيجة: تجربة مستخدم ومسار شراء أفضل على الموبايل.",
         case_4_sector: "SaaS للشركات",
-        case_4_title: "نظام CRM وفوترة مصغر",
+        case_4_title: "BillFlow — نظام CRM وفوترة مصغر",
         case_4_challenge: "التحدي: تشتت بيانات العملاء والمتابعة اليدوية.",
         case_4_solution: "الحل: CRM مركزي، فوترة وتذكيرات تلقائية.",
         case_4_result: "النتيجة: تقليل العمل المتكرر وتحسين المتابعة التجارية.",
@@ -774,6 +784,11 @@ const translations = {
         sticky_phone: "اتصال",
         sticky_contact: "تواصل",
         footer_text: "SuntechTN. جميع الحقوق محفوظة.",
+        cookie_title: "ملفات تعريف الارتباط والخصوصية",
+        cookie_text: "يستخدم هذا الموقع ملفات تعريف الارتباط لتذكر تفضيلاتك (اللغة، العرض). يمكنك تغيير اختيارك في أي وقت.",
+        cookie_accept: "قبول الكل",
+        cookie_reject: "رفض غير الضروري",
+        cookie_settings_btn: "إعدادات ملفات الارتباط",
         screenshot_fallback: "سيتم إضافة صورة المشروع قريبا"
     }
 };

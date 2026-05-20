@@ -27,6 +27,9 @@ jobs:
         with:
           submodules: 'recursive'
 
+      - name: Stamp asset version for cache busting
+        run: bash scripts/stamp-build-version.sh "$(git rev-parse --short HEAD)"
+
 # Please do not touch the following action
       - name: Store deployment content
         uses: ionos-deploy-now/artifact-action@v1

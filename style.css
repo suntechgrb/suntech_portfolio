@@ -971,6 +971,76 @@ footer {
     padding: 1.3rem 5% 5rem;
 }
 
+.footer-cookies {
+    margin-top: 0.5rem;
+}
+
+.footer-cookie-link {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer-cookie-link:hover {
+    color: var(--text-primary);
+}
+
+.cookie-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1002;
+    padding: 1rem 5% 1.25rem;
+    display: none;
+    pointer-events: none;
+}
+
+.cookie-banner.visible {
+    display: block;
+    pointer-events: auto;
+}
+
+.cookie-banner-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 1.1rem 1.25rem;
+}
+
+.cookie-banner-title {
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.cookie-banner-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.9rem;
+}
+
+.cookie-banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.btn-small {
+    padding: 0.55rem 1rem;
+    font-size: 0.9rem;
+}
+
+body.cookie-banner-open {
+    padding-bottom: 7rem;
+}
+
+body.cookie-banner-open .mobile-sticky-cta {
+    bottom: 6.5rem;
+}
+
 .fade-in-up {
     opacity: 0;
     transform: translateY(24px);
@@ -1080,5 +1150,13 @@ html[dir="rtl"] .lang-dropdown {
 
     .mobile-sticky-cta {
         display: flex;
+    }
+
+    body.cookie-banner-open {
+        padding-bottom: 10rem;
+    }
+
+    body.cookie-banner-open .mobile-sticky-cta {
+        bottom: 8.5rem;
     }
 }
