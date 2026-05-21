@@ -130,12 +130,11 @@ a {
 }
 
 .logo-img {
-    height: 64px;
-    width: 64px;
-    object-fit: cover;
-    object-position: center;
-    clip-path: inset(12%);
-    margin-right: 0;
+    height: 68px;
+    width: 68px;
+    object-fit: contain;
+    border-radius: 14px;
+    display: block;
 }
 
 .logo-brand {
