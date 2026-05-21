@@ -19,6 +19,7 @@ const loadGoogleFonts = () => {
     fontsLink.id = 'google-fonts-link';
     fontsLink.rel = 'stylesheet';
     fontsLink.href = GOOGLE_FONTS_URL;
+    fontsLink.crossOrigin = 'anonymous';
     document.head.appendChild(fontsLink);
 };
 
@@ -83,6 +84,13 @@ const initCookieConsent = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+        const rel = link.getAttribute('rel') || '';
+        if (!rel.includes('noopener')) {
+            link.setAttribute('rel', rel ? `${rel} noopener noreferrer` : 'noopener noreferrer');
+        }
+    });
+
     const yearSpan = document.getElementById('year');
     const navbar = document.getElementById('navbar');
     const menuToggle = document.getElementById('menuToggle');
