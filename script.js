@@ -1,5 +1,5 @@
 const COOKIE_CONSENT_KEY = 'cookieConsent';
-const GOOGLE_FONTS_URL = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap';
+const GOOGLE_FONTS_URL = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=Cairo:wght@400;500;600&display=swap';
 
 const loadGoogleFonts = () => {
     if (document.getElementById('google-fonts-link')) return;
@@ -153,6 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            if (dict[key]) {
+                element.setAttribute('placeholder', dict[key]);
+            }
+        });
+
         if (dict.page_title) {
             document.title = dict.page_title;
         }
@@ -245,8 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const savedTheme = localStorage.getItem('theme');
-    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
+    if (savedTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
         document.documentElement.setAttribute('data-theme', 'light');
     }
 
@@ -263,6 +271,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const revealSelectors = '.pain-card, .service-card-link, .case-card, .process-step, .testimonial-card, .stat-item, .client-logo';
+
+    const projectTypeSelect = document.getElementById('projectType');
+    const formSubmitNext = document.getElementById('formSubmitNext');
+    const leadForm = document.getElementById('leadForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    if (formSubmitNext) {
+        const returnUrl = new URL(window.location.href.split('#')[0]);
+        returnUrl.searchParams.set('sent', '1');
+        returnUrl.hash = 'contact';
+        formSubmitNext.value = returnUrl.toString();
+    }
+
+    const showFormSuccess = () => {
+        if (leadForm) leadForm.hidden = true;
+        if (formSuccess) formSuccess.hidden = false;
+    };
+
+    if (new URLSearchParams(window.location.search).get('sent') === '1') {
+        showFormSuccess();
+    }
+
+    document.querySelectorAll('.pain-card[data-project-type]').forEach((card) => {
+        card.addEventListener('click', () => {
+            const type = card.getAttribute('data-project-type');
+            if (projectTypeSelect && type) {
+                projectTypeSelect.value = type;
+            }
+        });
+    });
+
+    document.querySelectorAll('.reveal').forEach((section) => {
+        section.querySelectorAll(revealSelectors).forEach((item, index) => {
+            item.classList.add('reveal-item');
+            item.style.setProperty('--reveal-delay', `${Math.min(index * 0.06, 0.45)}s`);
+        });
+    });
+
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -271,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15,
+        threshold: 0.08,
         rootMargin: '0px 0px -40px 0px'
     });
 
