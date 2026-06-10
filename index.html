@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -708,6 +708,58 @@
                     </div>
                 </article>
             </div>
+
+            <div class="review-form-wrap glass-card" id="give-review">
+                <div class="review-form-header">
+                    <h3 class="review-form-title" data-i18n="review_form_title">Share your experience</h3>
+                    <p class="review-form-lead" data-i18n="review_form_lead">Worked with SuntechTN? Your feedback helps other businesses trust us. Published after validation.</p>
+                </div>
+                <div class="form-success review-success" id="reviewSuccess" hidden>
+                    <p class="form-success-title" data-i18n="review_success_title">Thank you for your review!</p>
+                    <p class="form-success-desc" data-i18n="review_success_desc">We received your feedback and will publish it after a quick check.</p>
+                </div>
+                <form class="lead-form review-form" id="reviewForm" action="https://formsubmit.co/suntechnologies.grb@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nouvel avis client — SuntechTN">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    <input type="hidden" name="_next" id="reviewSubmitNext" value="">
+                    <div class="form-row">
+                        <label class="form-field">
+                            <span data-i18n="review_form_name">Your name</span>
+                            <input type="text" name="name" required data-i18n-placeholder="review_form_name" placeholder="Your name">
+                        </label>
+                        <label class="form-field">
+                            <span data-i18n="review_form_company">Company / role</span>
+                            <input type="text" name="company" data-i18n-placeholder="review_form_company" placeholder="Company / role">
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-field">
+                            <span data-i18n="review_form_email">Email (optional)</span>
+                            <input type="email" name="email" data-i18n-placeholder="review_form_email" placeholder="Email (optional)">
+                        </label>
+                        <label class="form-field">
+                            <span data-i18n="review_form_rating">Rating</span>
+                            <select name="rating" required>
+                                <option value="" data-i18n="review_form_rating_default">Select a rating</option>
+                                <option value="5" data-i18n="review_form_rating_5">★★★★★ Excellent</option>
+                                <option value="4" data-i18n="review_form_rating_4">★★★★☆ Very good</option>
+                                <option value="3" data-i18n="review_form_rating_3">★★★☆☆ Good</option>
+                                <option value="2" data-i18n="review_form_rating_2">★★☆☆☆ Fair</option>
+                                <option value="1" data-i18n="review_form_rating_1">★☆☆☆☆ Poor</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="form-field">
+                        <span data-i18n="review_form_message">Your review</span>
+                        <textarea name="review" rows="4" required data-i18n-placeholder="review_form_message" placeholder="What did we build together? What results did you see?"></textarea>
+                    </label>
+                    <button type="submit" class="btn btn-primary form-submit" data-i18n="review_form_submit">Submit my review</button>
+                    <p class="form-privacy" data-i18n="review_form_privacy">Your review may be published on this site after validation. No spam — we only use your email if we need to verify your feedback.</p>
+                </form>
+            </div>
+
             <div class="results-strip">
                 <div class="result-item glass-card">
                     <strong>25+</strong>
@@ -820,7 +872,7 @@
                             </span>
                         </a>
                         <div class="social-links contact-social">
-                            <a href="https://www.linkedin.com/in/samia-el-ghraieb-59a647116/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                            <a href="https://www.linkedin.com/company/suntechtn/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
                             <a href="https://github.com/suntechgrb" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
                         </div>
                     </aside>
@@ -872,7 +924,7 @@
             "areaServed": ["France", "International"],
             "addressCountry": "FR",
             "sameAs": [
-                "https://www.linkedin.com/in/samia-el-ghraieb-59a647116/",
+                "https://www.linkedin.com/company/suntechtn/",
                 "https://github.com/suntechgrb"
             ]
         }

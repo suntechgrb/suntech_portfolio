@@ -103,10 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    window.addEventListener('scroll', () => {
+    const heroSection = document.querySelector('.hero');
+
+    const updateNavbarState = () => {
         if (!navbar) return;
-        navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
+        const scrollY = window.scrollY;
+        navbar.classList.toggle('scrolled', scrollY > 40);
+
+        if (document.body.classList.contains('page-home') && heroSection) {
+            const pastHero = scrollY > heroSection.offsetHeight - 72;
+            navbar.classList.toggle('show-logo', pastHero);
+        } else {
+            navbar.classList.add('show-logo');
+        }
+    };
+
+    updateNavbarState();
+    window.addEventListener('scroll', updateNavbarState, { passive: true });
+    window.addEventListener('resize', updateNavbarState);
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
@@ -275,8 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const projectTypeSelect = document.getElementById('projectType');
     const formSubmitNext = document.getElementById('formSubmitNext');
+    const reviewSubmitNext = document.getElementById('reviewSubmitNext');
     const leadForm = document.getElementById('leadForm');
     const formSuccess = document.getElementById('formSuccess');
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewSuccess = document.getElementById('reviewSuccess');
 
     if (formSubmitNext) {
         const returnUrl = new URL(window.location.href.split('#')[0]);
@@ -290,8 +307,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (formSuccess) formSuccess.hidden = false;
     };
 
+    if (reviewSubmitNext) {
+        const reviewReturnUrl = new URL(window.location.href.split('#')[0]);
+        reviewReturnUrl.searchParams.set('review_sent', '1');
+        reviewReturnUrl.hash = 'give-review';
+        reviewSubmitNext.value = reviewReturnUrl.toString();
+    }
+
+    const showReviewSuccess = () => {
+        if (reviewForm) reviewForm.hidden = true;
+        if (reviewSuccess) reviewSuccess.hidden = false;
+    };
+
     if (new URLSearchParams(window.location.search).get('sent') === '1') {
         showFormSuccess();
+    }
+
+    if (new URLSearchParams(window.location.search).get('review_sent') === '1') {
+        showReviewSuccess();
+        const giveReview = document.getElementById('give-review');
+        if (giveReview) {
+            giveReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 
     document.querySelectorAll('.pain-card[data-project-type]').forEach((card) => {
