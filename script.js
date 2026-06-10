@@ -108,12 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateNavbarState = () => {
         if (!navbar) return;
         const scrollY = window.scrollY;
-        navbar.classList.toggle('scrolled', scrollY > 40);
+        const isHome = document.body.classList.contains('page-home');
 
-        if (document.body.classList.contains('page-home') && heroSection) {
-            const pastHero = scrollY > heroSection.offsetHeight - 72;
+        if (isHome && heroSection) {
+            const pastHero = heroSection.getBoundingClientRect().bottom <= 0;
             navbar.classList.toggle('show-logo', pastHero);
+            navbar.classList.toggle('scrolled', pastHero);
         } else {
+            navbar.classList.toggle('scrolled', scrollY > 40);
             navbar.classList.add('show-logo');
         }
     };
@@ -285,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const revealSelectors = '.pain-card, .service-card-link, .case-card, .process-step, .testimonial-card, .stat-item, .client-logo';
+    const revealSelectors = '.pain-card, .service-card-link, .case-card, .process-step, .testimonial-card, .review-form-wrap, .stat-item, .client-logo';
 
     const projectTypeSelect = document.getElementById('projectType');
     const formSubmitNext = document.getElementById('formSubmitNext');
@@ -319,6 +321,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reviewSuccess) reviewSuccess.hidden = false;
     };
 
+    const openAccordionForTarget = (target) => {
+        if (!target) return;
+
+        const sectionAccordion = target.classList.contains('section-accordion')
+            ? target
+            : target.closest('.section-shell')?.querySelector('.section-accordion');
+
+        if (sectionAccordion) {
+            sectionAccordion.open = true;
+        }
+
+        if (target.tagName === 'DETAILS' && !target.classList.contains('section-accordion')) {
+            target.open = true;
+        }
+    };
+
     if (new URLSearchParams(window.location.search).get('sent') === '1') {
         showFormSuccess();
     }
@@ -327,6 +345,10 @@ document.addEventListener('DOMContentLoaded', () => {
         showReviewSuccess();
         const giveReview = document.getElementById('give-review');
         if (giveReview) {
+            openAccordionForTarget(giveReview);
+            if (giveReview.tagName === 'DETAILS') {
+                giveReview.open = true;
+            }
             giveReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }
@@ -360,6 +382,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const hash = link.getAttribute('href');
+            if (!hash || hash.length < 2) return;
+            const target = document.querySelector(hash);
+            if (target) {
+                openAccordionForTarget(target);
+            }
+        });
+    });
+
+    if (window.location.hash) {
+        const hashTarget = document.querySelector(window.location.hash);
+        if (hashTarget) {
+            openAccordionForTarget(hashTarget);
+        }
+    }
 
     document.querySelectorAll('.filter-btn').forEach((button) => {
         button.addEventListener('click', () => {
