@@ -19,6 +19,7 @@
         content="SuntechTN — Applications web et mobile, boutiques en ligne et solutions sur mesure. Devis gratuit sous 24h.">
     <meta property="og:image" content="img/banner-site.png">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://suntech-grb.com/">
     <link rel="stylesheet" href="style.css?v=__BUILD_HASH__">
 </head>
 
@@ -73,7 +74,7 @@
             <a href="#top" class="logo" aria-label="SuntechTN">
                 <img src="img/logo2.png" alt="SuntechTN — Smart Solutions. Real Impact." class="logo-img" width="260" height="72">
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" role="navigation" aria-label="Main menu">
                 <a href="#services" class="nav-link" data-i18n="nav_services">Services</a>
                 <a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a>
                 <a href="#process" class="nav-link" data-i18n="nav_process">Process</a>
@@ -81,7 +82,7 @@
                 <a href="#contact" class="nav-link nav-btn" data-i18n="nav_contact">Free consultation</a>
 
                 <div class="lang-switcher">
-                    <button class="lang-btn" id="currentLang">FR</button>
+                    <button class="lang-btn" id="currentLang" aria-label="Choose language">FR</button>
                     <div class="lang-dropdown" id="langDropdown">
                         <a href="#" data-lang="fr">Francais (FR)</a>
                         <a href="#" data-lang="en">English (EN)</a>
@@ -180,11 +181,11 @@
             </div>
             <div class="trusted-stats">
                 <div class="stat-item glass-card">
-                    <span class="stat-value">10+</span>
+                    <span class="stat-value" data-counter data-target="10" data-suffix="+">10+</span>
                     <span class="stat-label" data-i18n="stat_years">Years of experience</span>
                 </div>
                 <div class="stat-item glass-card">
-                    <span class="stat-value">25+</span>
+                    <span class="stat-value" data-counter data-target="25" data-suffix="+">25+</span>
                     <span class="stat-label" data-i18n="stat_projects">Projects delivered</span>
                 </div>
                 <div class="stat-item glass-card">
@@ -381,14 +382,14 @@
             <div class="projects-list">
                 <article class="case-card glass-card" data-category="web saas api">
                     <div class="case-media case-media-carousel" data-slide-interval="2600">
-                        <img src="img/lands-01.png" alt="Lands of Islam booking platform">
-                        <img src="img/lands-02.png" alt="Lands of Islam discovery screen">
-                        <img src="img/lands-03.png" alt="Lands of Islam login screen">
-                        <img src="img/lands-04.png" alt="Lands of Islam service details">
-                        <img src="img/lands-05.png" alt="Lands of Islam signup screen">
-                        <img src="img/lands-06.png" alt="Lands of Islam arabic details">
-                        <img src="img/lands-07.png" alt="Lands of Islam destination details">
-                        <img src="img/lands-08.png" alt="Lands of Islam date selection">
+                        <img src="img/lands-01.png" alt="Lands of Islam — booking interface with calendar and date selection">
+                        <img src="img/lands-02.png" alt="Lands of Islam — discovery screen with destinations list">
+                        <img src="img/lands-03.png" alt="Lands of Islam — user login screen">
+                        <img src="img/lands-04.png" alt="Lands of Islam — service details page for a trip package">
+                        <img src="img/lands-05.png" alt="Lands of Islam — account creation (sign up) form">
+                        <img src="img/lands-06.png" alt="Lands of Islam — Arabic UI view of trip details">
+                        <img src="img/lands-07.png" alt="Lands of Islam — destination details page with itinerary info">
+                        <img src="img/lands-08.png" alt="Lands of Islam — date picker for booking availability">
                     </div>
                     <div class="case-body">
                         <span class="project-category" data-i18n="case_1_sector">Travel Tech · SaaS</span>
@@ -409,12 +410,12 @@
 
                 <article class="case-card glass-card" data-category="saas web api mobile">
                     <div class="case-media case-media-carousel" data-slide-interval="2600">
-                        <img src="img/BillFlow1.png" alt="BillFlow invoice dashboard">
-                        <img src="img/BillFlow2.png" alt="BillFlow clients screen">
-                        <img src="img/BillFlow3.png" alt="BillFlow items catalog">
-                        <img src="img/BillFlow4.png" alt="BillFlow invoices list">
-                        <img src="img/BillFlow5.png" alt="BillFlow payment reminders">
-                        <img src="img/BillFlow6.png" alt="BillFlow sales reports">
+                        <img src="img/BillFlow1.png" alt="BillFlow — invoicing dashboard with KPIs and recent invoices">
+                        <img src="img/BillFlow2.png" alt="BillFlow — client management screen (CRM list)">
+                        <img src="img/BillFlow3.png" alt="BillFlow — products and services catalog management">
+                        <img src="img/BillFlow4.png" alt="BillFlow — invoices list with status and totals">
+                        <img src="img/BillFlow5.png" alt="BillFlow — automated payment reminders and follow-up workflow">
+                        <img src="img/BillFlow6.png" alt="BillFlow — sales report charts and revenue analytics">
                     </div>
                     <div class="case-body">
                         <span class="project-category" data-i18n="case_4_sector">B2B SaaS</span>
@@ -435,13 +436,13 @@
 
                 <article class="case-card glass-card" data-category="web mobile">
                     <div class="case-media case-media-carousel" data-slide-interval="2600">
-                        <img src="img/zencars-01.png" alt="ZenCars login screen">
-                        <img src="img/zencars-02.png" alt="ZenCars destinations">
-                        <img src="img/zencars-03.png" alt="ZenCars booking search">
-                        <img src="img/zencars-04.png" alt="ZenCars signup">
-                        <img src="img/zencars-05.png" alt="ZenCars offers">
-                        <img src="img/zencars-06.png" alt="ZenCars catalog">
-                        <img src="img/zencars-07.png" alt="ZenCars car details">
+                        <img src="img/zencars-01.png" alt="ZenCars — customer login screen for car rental">
+                        <img src="img/zencars-02.png" alt="ZenCars — destinations and pickup locations browsing">
+                        <img src="img/zencars-03.png" alt="ZenCars — booking search form with dates and location filters">
+                        <img src="img/zencars-04.png" alt="ZenCars — account registration (sign up) screen">
+                        <img src="img/zencars-05.png" alt="ZenCars — special offers and promotions list">
+                        <img src="img/zencars-06.png" alt="ZenCars — car catalog with filters and availability">
+                        <img src="img/zencars-07.png" alt="ZenCars — car details page with specs and booking CTA">
                     </div>
                     <div class="case-body">
                         <span class="project-category" data-i18n="case_5_sector">Mobility</span>
@@ -461,12 +462,12 @@
 
                 <article class="case-card glass-card" data-category="web api mobile">
                     <div class="case-media case-media-carousel" data-slide-interval="2600">
-                        <img src="img/waste-01.png" alt="Waste Removal signup">
-                        <img src="img/waste-02.png" alt="Waste Removal truck rental">
-                        <img src="img/waste-03.png" alt="Waste Removal service selection">
-                        <img src="img/waste-04.png" alt="Waste Removal login">
-                        <img src="img/waste-05.png" alt="Waste Removal quantity selection">
-                        <img src="img/waste-06.png" alt="Waste Removal booking form">
+                        <img src="img/waste-01.png" alt="Waste Removal — user sign up for service booking">
+                        <img src="img/waste-02.png" alt="Waste Removal — truck rental booking screen">
+                        <img src="img/waste-03.png" alt="Waste Removal — service selection (pickup, disposal, rental)">
+                        <img src="img/waste-04.png" alt="Waste Removal — user login screen">
+                        <img src="img/waste-05.png" alt="Waste Removal — quantity selection and pricing options">
+                        <img src="img/waste-06.png" alt="Waste Removal — booking form with contact and schedule details">
                     </div>
                     <div class="case-body">
                         <span class="project-category" data-i18n="case_2_sector">Operations</span>
@@ -951,17 +952,17 @@
                             <div class="form-row">
                                 <label class="form-field">
                                     <span data-i18n="form_name">Full name</span>
-                                    <input type="text" name="name" required data-i18n-placeholder="form_name" placeholder="Full name">
+                                    <input type="text" name="name" required autocomplete="name" data-i18n-placeholder="form_name" placeholder="Full name">
                                 </label>
                                 <label class="form-field">
                                     <span data-i18n="form_email">Work email</span>
-                                    <input type="email" name="email" required data-i18n-placeholder="form_email" placeholder="Work email">
+                                    <input type="email" name="email" required autocomplete="email" data-i18n-placeholder="form_email" placeholder="Work email">
                                 </label>
                             </div>
                             <div class="form-row">
                                 <label class="form-field">
                                     <span data-i18n="form_phone">Phone (WhatsApp)</span>
-                                    <input type="tel" name="phone" data-i18n-placeholder="form_phone" placeholder="Phone (WhatsApp)">
+                                    <input type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="form_phone" placeholder="Phone (WhatsApp)">
                                 </label>
                                 <label class="form-field">
                                     <span data-i18n="form_type">Project type</span>
@@ -1036,6 +1037,10 @@
         <a href="tel:+33749443766" data-i18n="sticky_phone">Call</a>
     </div>
 
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" hidden>
+        <span aria-hidden="true">↑</span>
+    </button>
+
     <footer>
         <p>&copy; <span id="year"></span> <span data-i18n="footer_text">SuntechTN. All rights reserved.</span></p>
         <p class="footer-cookies">
@@ -1061,19 +1066,26 @@
             "name": "SuntechTN",
             "url": "https://suntech-grb.com",
             "description": "SuntechTN builds web and mobile apps, online stores, custom SaaS and AI solutions for startups and SMEs.",
+            "logo": "https://suntech-grb.com/img/logo2.png",
             "email": "suntechnologies.grb@gmail.com",
             "telephone": "+33749443766",
             "priceRange": "€€",
             "areaServed": ["France", "International"],
             "addressCountry": "FR",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+33749443766",
+                "contactType": "customer service",
+                "availableLanguage": ["French", "English", "Arabic"]
+            },
             "sameAs": [
                 "https://www.linkedin.com/company/suntechtn/",
                 "https://github.com/suntechgrb"
             ]
         }
     </script>
-    <script src="translations.js?v=__BUILD_HASH__"></script>
-    <script src="script.js?v=__BUILD_HASH__"></script>
+    <script src="translations.js?v=__BUILD_HASH__" defer></script>
+    <script src="script.js?v=__BUILD_HASH__" defer></script>
 </body>
 
 </html>

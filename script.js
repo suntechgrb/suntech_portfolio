@@ -104,6 +104,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const heroSection = document.querySelector('.hero');
+    const backToTop = document.getElementById('backToTop');
+
+    const applyImagePerfHints = () => {
+        document.querySelectorAll('img').forEach((img) => {
+            const isHero = Boolean(img.closest('.hero-media'));
+            const isLogo = Boolean(img.classList.contains('logo-img'));
+            const hasHighPriority = img.getAttribute('fetchpriority') === 'high';
+
+            if (!isHero && !isLogo && !hasHighPriority) {
+                if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+                if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+            }
+
+            if (!img.hasAttribute('width')) img.setAttribute('width', '1200');
+            if (!img.hasAttribute('height')) img.setAttribute('height', '750');
+        });
+    };
 
     const updateNavbarState = () => {
         if (!navbar) return;
@@ -212,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang') || 'fr';
     applyLanguage(savedLang);
     initCookieConsent();
+    applyImagePerfHints();
 
     document.querySelectorAll('.case-media img').forEach((image) => {
         image.addEventListener('error', () => {
@@ -308,6 +326,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (leadForm) leadForm.hidden = true;
         if (formSuccess) formSuccess.hidden = false;
     };
+
+    const showFormError = (message) => {
+        if (!leadForm) return;
+        let errorEl = document.getElementById('formError');
+        if (!errorEl) {
+            errorEl = document.createElement('div');
+            errorEl.id = 'formError';
+            errorEl.className = 'form-error';
+            leadForm.prepend(errorEl);
+        }
+        errorEl.textContent = message;
+        errorEl.removeAttribute('hidden');
+    };
+
+    if (leadForm) {
+        leadForm.addEventListener('submit', (event) => {
+            const name = leadForm.querySelector('input[name="name"]');
+            const email = leadForm.querySelector('input[name="email"]');
+            const projectType = leadForm.querySelector('select[name="project_type"]');
+            const message = leadForm.querySelector('textarea[name="message"]');
+
+            const emailOk = email && email.value && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+            const nameOk = name && name.value && name.value.trim().length >= 2;
+            const typeOk = projectType && projectType.value;
+            const msgOk = message && message.value && message.value.trim().length >= 10;
+
+            if (!nameOk || !emailOk || !typeOk || !msgOk) {
+                event.preventDefault();
+                showFormError('Please fill in your name, a valid email, project type, and a short description.');
+                const firstInvalid = [nameOk ? null : name, emailOk ? null : email, typeOk ? null : projectType, msgOk ? null : message].find(Boolean);
+                if (firstInvalid && typeof firstInvalid.focus === 'function') firstInvalid.focus();
+            }
+        });
+    }
 
     if (reviewSubmitNext) {
         const reviewReturnUrl = new URL(window.location.href.split('#')[0]);
@@ -412,6 +464,64 @@ document.addEventListener('DOMContentLoaded', () => {
                 const visible = filter === 'all' || categories.includes(filter);
                 card.style.display = visible ? 'flex' : 'none';
             });
+
+            const url = new URL(window.location.href);
+            if (filter === 'all') {
+                url.searchParams.delete('filter');
+            } else {
+                url.searchParams.set('filter', filter);
+            }
+            window.history.replaceState({}, '', url.toString());
         });
     });
+
+    const applyFilterFromUrl = () => {
+        const filter = new URLSearchParams(window.location.search).get('filter') || 'all';
+        const button = document.querySelector(`.filter-btn[data-filter="${filter}"]`) || document.querySelector('.filter-btn[data-filter="all"]');
+        if (button) button.click();
+    };
+    applyFilterFromUrl();
+
+    if (backToTop) {
+        const updateBackToTop = () => {
+            const visible = window.scrollY > 400;
+            backToTop.hidden = !visible;
+        };
+
+        updateBackToTop();
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    const animateCounter = (el, target, suffix = '') => {
+        const duration = 1300;
+        const start = performance.now();
+        const from = 0;
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+        const tick = (now) => {
+            const progress = Math.min(1, (now - start) / duration);
+            const value = Math.round(from + (target - from) * easeOutCubic(progress));
+            el.textContent = `${value}${suffix}`;
+            if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+    };
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = Number(el.getAttribute('data-target')) || 0;
+            const suffix = el.getAttribute('data-suffix') || '';
+            animateCounter(el, target, suffix);
+            observer.unobserve(el);
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -30% 0px' });
+
+    document.querySelectorAll('[data-counter][data-target]').forEach((el) => counterObserver.observe(el));
 });
