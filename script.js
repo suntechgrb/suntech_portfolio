@@ -425,8 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initChaptersNav = () => {
         const chaptersNav = document.getElementById('chaptersNav');
         const chaptersProgress = document.getElementById('chaptersProgress');
-        const heroIntro = document.querySelector('.hero-intro');
-        if (!chaptersNav || !heroIntro) return;
+        if (!chaptersNav) return;
 
         const chapterLinks = Array.from(chaptersNav.querySelectorAll('.chapter-link'));
         const sections = [
@@ -450,9 +449,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const updateVisibility = () => {
-            const show = window.scrollY > 160 || heroIntro.getBoundingClientRect().bottom <= 100;
-            chaptersNav.classList.toggle('is-visible', show);
-            document.body.classList.toggle('chapters-visible', show);
+            const pastBanner = heroSection
+                ? heroSection.getBoundingClientRect().bottom <= 0
+                : false;
+            chaptersNav.classList.toggle('is-visible', pastBanner);
+            document.body.classList.toggle('chapters-visible', pastBanner);
             syncNavMetrics();
         };
 
