@@ -1933,6 +1933,19 @@ html[dir="rtl"] .chapters-nav-inner {
     background: linear-gradient(180deg, rgba(249, 115, 22, 0.07) 0%, transparent 100%);
 }
 
+.section-tone-products::before {
+    background:
+        linear-gradient(125deg, rgba(249, 115, 22, 0.06) 0%, transparent 55%),
+        var(--bg-main);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+[data-theme="light"] .section-tone-products::before {
+    background:
+        linear-gradient(125deg, rgba(249, 115, 22, 0.05) 0%, transparent 55%),
+        var(--bg-main);
+}
+
 .section-tone-projects::before {
     background: #101014;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1970,6 +1983,158 @@ html[dir="rtl"] .chapters-nav-inner {
 
 .section-tone-contact {
     padding-top: 2rem;
+}
+
+/* Products */
+.products-grid {
+    display: grid;
+    gap: 1.35rem;
+}
+
+.product-card {
+    display: grid;
+    grid-template-columns: minmax(200px, 0.9fr) 1.4fr;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    position: relative;
+    transition: border-color var(--transition-med), transform var(--transition-med), box-shadow var(--transition-med);
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+
+.product-card-archinovax {
+    border: 1px solid var(--glass-border);
+}
+
+.product-card-archinovax:hover {
+    border-color: rgba(249, 115, 22, 0.28);
+    box-shadow: 0 20px 48px rgba(249, 115, 22, 0.1);
+}
+
+.product-card-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    background: var(--bg-subtle);
+    border-right: 1px solid var(--glass-border);
+}
+
+html[dir="rtl"] .product-card-visual {
+    border-right: none;
+    border-left: 1px solid var(--glass-border);
+}
+
+.product-logo {
+    width: min(100%, 280px);
+    height: auto;
+    object-fit: contain;
+}
+
+.product-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.55rem 1.65rem;
+}
+
+.product-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--brand-gradient);
+    box-shadow: 0 6px 18px rgba(249, 115, 22, 0.4);
+    pointer-events: none;
+}
+
+html[dir="rtl"] .product-badge {
+    right: auto;
+    left: 1rem;
+}
+
+.product-name {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #60a5fa;
+}
+
+.product-tagline {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.product-desc {
+    margin: 0.15rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.product-features {
+    margin: 0.35rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.product-features li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+}
+
+.product-features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #3b82f6;
+}
+
+html[dir="rtl"] .product-features li {
+    padding-left: 0;
+    padding-right: 1.1rem;
+}
+
+html[dir="rtl"] .product-features li::before {
+    left: auto;
+    right: 0;
+}
+
+.product-card-cta {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #60a5fa;
+    transition: color var(--transition-fast);
+}
+
+.product-card:hover .product-card-cta {
+    color: #93c5fd;
 }
 
 /* Services bento grid */
@@ -2122,6 +2287,7 @@ html[dir="rtl"] .services-grid-bento > .service-card-link:nth-child(6) .service-
 .section-content > .project-filter,
 .section-content > .pain-grid,
 .section-content > .services-grid,
+.section-content > .products-grid,
 .section-content > .projects-list,
 .section-content > .process-steps,
 .section-content > .testimonials-grid {
@@ -4225,6 +4391,25 @@ html[dir="rtl"] .lang-dropdown {
     .services-grid-bento > .service-card-link:nth-child(6) .service-card-cta {
         margin-left: 0;
         margin-right: 0;
+    }
+
+    .product-card {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card-visual {
+        padding: 1.5rem 1.25rem;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    html[dir="rtl"] .product-card-visual {
+        border-left: none;
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .product-logo {
+        width: min(100%, 240px);
     }
 
     .chapters-nav-shell {

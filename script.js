@@ -431,6 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sections = [
             'needs',
             'services',
+            'products',
             'projects',
             'process',
             'testimonials',
