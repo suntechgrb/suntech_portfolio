@@ -109,13 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const heroSection = document.querySelector('.hero');
     const backToTop = document.getElementById('backToTop');
-    const projectModal = document.getElementById('projectModal');
-    const projectModalTitle = document.getElementById('projectModalTitle');
-    const projectModalSector = document.getElementById('projectModalSector');
-    const projectModalImage = document.getElementById('projectModalImage');
-    const projectModalMetrics = document.getElementById('projectModalMetrics');
-    const projectModalStack = document.getElementById('projectModalStack');
-    const projectModalDesc = document.getElementById('projectModalDesc');
 
     const applyImagePerfHints = () => {
         document.querySelectorAll('img').forEach((img) => {
@@ -177,20 +170,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.nav-link').forEach((link) => {
         link.addEventListener('click', () => {
+            if (link.classList.contains('nav-dropdown-toggle')) return;
             if (navLinks) {
                 navLinks.classList.remove('active');
             }
         });
     });
 
+    const closeNavDropdowns = (except = null) => {
+        document.querySelectorAll('[data-nav-dropdown]').forEach((dropdown) => {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            const isExcept = dropdown === except;
+            dropdown.classList.toggle('is-open', isExcept);
+            if (toggle) toggle.setAttribute('aria-expanded', isExcept ? 'true' : 'false');
+        });
+    };
+
+    document.querySelectorAll('[data-nav-dropdown]').forEach((dropdown) => {
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        if (!toggle) return;
+
+        toggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            const willOpen = !dropdown.classList.contains('is-open');
+            closeNavDropdowns(willOpen ? dropdown : null);
+        });
+    });
+
+    document.querySelectorAll('.nav-dropdown-item').forEach((item) => {
+        item.addEventListener('click', () => {
+            closeNavDropdowns();
+            if (navLinks) navLinks.classList.remove('active');
+        });
+    });
+
     if (langBtn && langDropdown) {
         langBtn.addEventListener('click', (event) => {
             event.preventDefault();
+            closeNavDropdowns();
             langDropdown.classList.toggle('show');
         });
     }
 
     window.addEventListener('click', (event) => {
+        if (!event.target.closest('[data-nav-dropdown]') && !event.target.matches('.lang-btn')) {
+            closeNavDropdowns();
+        }
         if (!event.target.matches('.lang-btn') && langDropdown) {
             langDropdown.classList.remove('show');
         }
@@ -568,6 +594,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openAccordionForTarget = scrollToSection;
 
+    document.querySelectorAll('[data-project-filter]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const filter = link.getAttribute('data-project-filter') || 'all';
+            const projectsSection = document.getElementById('projects');
+            if (!projectsSection) return;
+
+            event.preventDefault();
+            const filterBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`)
+                || document.querySelector('.filter-btn[data-filter="all"]');
+            if (filterBtn) filterBtn.click();
+            openAccordionForTarget(projectsSection);
+            closeNavDropdowns();
+            if (navLinks) navLinks.classList.remove('active');
+        });
+    });
+
     if (new URLSearchParams(window.location.search).get('sent') === '1') {
         showFormSuccess();
     }
@@ -718,14 +760,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', updateCarouselUi);
 
         let isDragging = false;
-        let dragMoved = false;
         let startX = 0;
         let startScroll = 0;
 
         track.addEventListener('pointerdown', (event) => {
             if (event.pointerType === 'touch') return;
             isDragging = true;
-            dragMoved = false;
             startX = event.clientX;
             startScroll = track.scrollLeft;
             track.classList.add('is-dragging');
@@ -734,7 +774,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         track.addEventListener('pointermove', (event) => {
             if (!isDragging) return;
-            if (Math.abs(event.clientX - startX) > 6) dragMoved = true;
             track.scrollLeft = startScroll - (event.clientX - startX) * 1.15;
         });
 
@@ -742,12 +781,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isDragging) return;
             isDragging = false;
             track.classList.remove('is-dragging');
-            if (dragMoved) {
-                track.dataset.suppressClick = '1';
-                window.setTimeout(() => {
-                    delete track.dataset.suppressClick;
-                }, 0);
-            }
             if (event.pointerId !== undefined) {
                 try { track.releasePointerCapture(event.pointerId); } catch (_) { /* noop */ }
             }
@@ -763,159 +796,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initProjectsCarousel();
-
-    const initProjectModal = () => {
-        if (!projectModal || !projectModalImage || !projectModalTitle) return;
-
-        let currentImages = [];
-        let currentIndex = 0;
-        let lastFocused = null;
-
-        const updateModalImage = () => {
-            if (!projectModalImage || currentImages.length === 0) return;
-            const img = currentImages[currentIndex];
-            projectModalImage.src = img.src;
-            projectModalImage.alt = img.alt || '';
-        };
-
-        const openModal = (card) => {
-            if (!card) return;
-
-            lastFocused = document.activeElement;
-
-            const titleEl = card.querySelector('h3');
-            const sectorEl = card.querySelector('.project-category');
-            const descEl = card.querySelector('.case-desc');
-            const metricEls = Array.from(card.querySelectorAll('.case-metric'));
-            const stackEls = Array.from(card.querySelectorAll('.case-stack span'));
-
-            if (projectModalTitle) projectModalTitle.textContent = titleEl?.textContent || '';
-            if (projectModalSector) projectModalSector.textContent = sectorEl?.textContent || '';
-            if (projectModalDesc) projectModalDesc.textContent = descEl?.textContent || '';
-
-            if (projectModalMetrics) {
-                projectModalMetrics.innerHTML = '';
-                metricEls.forEach((m) => {
-                    const span = document.createElement('span');
-                    span.className = 'case-metric';
-                    span.textContent = m.textContent || '';
-                    projectModalMetrics.appendChild(span);
-                });
-            }
-
-            if (projectModalStack) {
-                projectModalStack.innerHTML = '';
-                stackEls.forEach((s) => {
-                    const span = document.createElement('span');
-                    span.textContent = s.textContent || '';
-                    projectModalStack.appendChild(span);
-                });
-            }
-
-            const stackWrap = projectModal.querySelector('.project-modal-stack-wrap');
-            if (stackWrap) stackWrap.hidden = stackEls.length === 0;
-
-            if (projectModalMetrics) {
-                projectModalMetrics.hidden = metricEls.length === 0;
-            }
-
-            if (projectModalDesc) {
-                projectModalDesc.hidden = !(descEl?.textContent || '').trim();
-            }
-
-            const carouselImages = Array.from(card.querySelectorAll('.case-media-carousel img'));
-            const singleImage = card.querySelector('.case-media img');
-            currentImages = carouselImages.length ? carouselImages : (singleImage ? [singleImage] : []);
-            currentIndex = Math.max(0, currentImages.findIndex((img) => img.classList.contains('active')));
-            if (currentIndex < 0) currentIndex = 0;
-            updateModalImage();
-
-            projectModal.classList.add('is-open');
-            projectModal.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('modal-open');
-
-            const dialog = projectModal.querySelector('.project-modal-dialog');
-            if (dialog && typeof dialog.focus === 'function') {
-                dialog.focus();
-            }
-        };
-
-        const closeModal = () => {
-            projectModal.classList.remove('is-open');
-            projectModal.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('modal-open');
-            if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-        };
-
-        const next = () => {
-            if (currentImages.length <= 1) return;
-            currentIndex = (currentIndex + 1) % currentImages.length;
-            updateModalImage();
-        };
-
-        const prev = () => {
-            if (currentImages.length <= 1) return;
-            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-            updateModalImage();
-        };
-
-        projectModal.querySelectorAll('[data-modal-close]').forEach((el) => {
-            el.addEventListener('click', closeModal);
-        });
-
-        const prevBtn = projectModal.querySelector('.project-modal-prev');
-        const nextBtn = projectModal.querySelector('.project-modal-next');
-        if (prevBtn) prevBtn.addEventListener('click', prev);
-        if (nextBtn) nextBtn.addEventListener('click', next);
-
-        window.addEventListener('keydown', (event) => {
-            if (!projectModal.classList.contains('is-open')) return;
-            if (event.key === 'Escape') closeModal();
-            if (event.key === 'ArrowRight') next();
-            if (event.key === 'ArrowLeft') prev();
-        });
-
-        const projectsTrack = document.getElementById('projectsTrack');
-
-        document.querySelectorAll('.case-card').forEach((card) => {
-            const caseBody = card.querySelector('.case-body');
-            if (caseBody && !caseBody.querySelector('.case-open-btn')) {
-                const openBtn = document.createElement('button');
-                openBtn.type = 'button';
-                openBtn.className = 'case-open-btn';
-                openBtn.setAttribute('data-i18n', 'case_details_toggle');
-                openBtn.textContent = 'Détails du projet';
-                caseBody.appendChild(openBtn);
-                openBtn.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    openModal(card);
-                });
-            }
-
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', card.querySelector('h3')?.textContent || 'Project');
-
-            card.addEventListener('click', (event) => {
-                const interactive = event.target.closest('a, button');
-                if (interactive) return;
-                if (projectsTrack?.dataset.suppressClick === '1') return;
-                openModal(card);
-            });
-
-            card.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    const interactive = event.target.closest('a, button');
-                    if (interactive) return;
-                    event.preventDefault();
-                    openModal(card);
-                }
-            });
-        });
-    };
-
-    initProjectModal();
-    applyLanguage(savedLang);
 
     if (backToTop) {
         const updateBackToTop = () => {
