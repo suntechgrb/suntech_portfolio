@@ -111,8 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTop = document.getElementById('backToTop');
 
     const syncNavMetrics = () => {
-        if (!navbar) return;
-        document.documentElement.style.setProperty('--nav-height', `${navbar.offsetHeight}px`);
+        const siteHeader = document.querySelector('.site-header');
+        const heightSource = siteHeader || navbar;
+        if (!heightSource) return;
+        document.documentElement.style.setProperty('--nav-height', `${heightSource.offsetHeight}px`);
         const chaptersNav = document.getElementById('chaptersNav');
         if (chaptersNav) {
             const height = chaptersNav.classList.contains('is-visible') ? chaptersNav.offsetHeight : 0;
@@ -190,9 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const setNavOpen = (open) => {
         if (!navLinks) return;
-        if (open) syncNavMetrics();
         navLinks.classList.toggle('active', open);
         document.body.classList.toggle('nav-open', open);
+        if (open) {
+            requestAnimationFrame(syncNavMetrics);
+        }
         if (navOverlay) {
             navOverlay.hidden = !open;
             navOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
@@ -489,8 +493,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!el) return;
 
         const navbarEl = document.getElementById('navbar');
+        const siteHeader = document.querySelector('.site-header');
+        const headerEl = siteHeader || navbarEl;
         const chaptersEl = document.getElementById('chaptersNav');
-        let offset = navbarEl ? navbarEl.offsetHeight : 64;
+        let offset = headerEl ? headerEl.offsetHeight : 64;
         if (chaptersEl && chaptersEl.classList.contains('is-visible')) {
             offset += chaptersEl.offsetHeight;
         }
@@ -571,7 +577,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!chaptersNav.classList.contains('is-visible')) return;
 
             const navbarEl = document.getElementById('navbar');
-            let offset = navbarEl ? navbarEl.offsetHeight : 64;
+            const siteHeader = document.querySelector('.site-header');
+            const headerEl = siteHeader || navbarEl;
+            let offset = headerEl ? headerEl.offsetHeight : 64;
             offset += chaptersNav.offsetHeight + 24;
 
             let currentId = sections[0]?.id;

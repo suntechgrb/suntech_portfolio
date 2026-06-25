@@ -29,7 +29,7 @@
     <meta property="og:image" content="img/banner-site.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://suntech-grb.com/">
-    <link rel="stylesheet" href="style.css?v=20260616-mobile-expand">
+    <link rel="stylesheet" href="style.css?v=20260616-nav-fix">
 </head>
 
 <body class="page-home">
@@ -78,12 +78,20 @@
     <div class="bg-shape bg-shape-2"></div>
     <div class="bg-shape bg-shape-3"></div>
 
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#top" class="logo" aria-label="SuntechTN">
-                <img src="img/logo2.png" alt="SuntechTN — Smart Solutions. Real Impact." class="logo-img" width="260" height="72">
-            </a>
-            <nav class="nav-links" id="mainNav" role="navigation" aria-label="Main menu">
+    <div class="site-header">
+        <header class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="#top" class="logo" aria-label="SuntechTN">
+                    <img src="img/logo2.png" alt="SuntechTN — Smart Solutions. Real Impact." class="logo-img" width="260" height="72">
+                </a>
+                <button class="hamburger" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </button>
+            </div>
+        </header>
+        <nav class="nav-links" id="mainNav" role="navigation" aria-label="Main menu">
                 <div class="nav-dropdown" data-nav-dropdown>
                     <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav_services">Services</button>
                     <div class="nav-dropdown-menu" role="menu">
@@ -134,14 +142,8 @@
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
                 </button>
-            </nav>
-            <button class="hamburger" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </button>
-        </div>
-    </header>
+        </nav>
+    </div>
 
     <div class="nav-overlay" id="navOverlay" hidden aria-hidden="true"></div>
 
@@ -1098,8 +1100,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260616-mobile-expand" defer></script>
-    <script src="script.js?v=20260616-mobile-expand" defer></script>
+    <script src="translations.js?v=20260616-nav-fix" defer></script>
+    <script src="script.js?v=20260616-nav-fix" defer></script>
 </body>
 
 </html>
