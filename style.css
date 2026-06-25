@@ -2067,6 +2067,7 @@ html[dir="rtl"] .chapters-nav-inner {
     padding: 2rem 1.5rem;
     background: var(--bg-subtle);
     border-right: 1px solid var(--glass-border);
+    position: relative;
 }
 
 html[dir="rtl"] .product-card-visual {
@@ -2107,6 +2108,21 @@ html[dir="rtl"] .product-card-visual {
 html[dir="rtl"] .product-badge {
     right: auto;
     left: 1rem;
+}
+
+.product-badge-afuxiora {
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 5;
+    font-size: 0.72rem;
+    padding: 0.36rem 0.75rem;
+    letter-spacing: 0.1em;
+    box-shadow: 0 8px 22px rgba(249, 115, 22, 0.45);
+}
+
+html[dir="rtl"] .product-badge-afuxiora {
+    right: auto;
+    left: 0.75rem;
 }
 
 .product-name {
