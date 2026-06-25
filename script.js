@@ -112,9 +112,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const syncNavMetrics = () => {
         const siteHeader = document.querySelector('.site-header');
+        const hamburger = document.getElementById('menuToggle');
         const heightSource = siteHeader || navbar;
-        if (!heightSource) return;
-        document.documentElement.style.setProperty('--nav-height', `${heightSource.offsetHeight}px`);
+        const isHome = document.body.classList.contains('page-home');
+        const pastBanner = document.body.classList.contains('past-banner');
+        const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+        const navOpen = document.body.classList.contains('nav-open');
+
+        let height = heightSource ? heightSource.offsetHeight : 64;
+
+        if (isHome && !pastBanner) {
+            if (isMobile) {
+                if (navOpen && heightSource && heightSource.offsetHeight > 0) {
+                    height = heightSource.offsetHeight;
+                } else if (hamburger) {
+                    height = Math.ceil(hamburger.getBoundingClientRect().bottom + 8);
+                }
+            } else {
+                height = 0;
+            }
+        }
+
+        document.documentElement.style.setProperty('--nav-height', `${Math.max(height, 0)}px`);
         const chaptersNav = document.getElementById('chaptersNav');
         if (chaptersNav) {
             const height = chaptersNav.classList.contains('is-visible') ? chaptersNav.offsetHeight : 0;
@@ -173,7 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateNavbarState();
     syncNavMetrics();
-    window.addEventListener('scroll', updateNavbarState, { passive: true });
+    window.addEventListener('scroll', () => {
+        updateNavbarState();
+    }, { passive: true });
     window.addEventListener('resize', () => {
         updateNavbarState();
         syncNavMetrics();
