@@ -1,18 +1,21 @@
-# IONOS Deploy Now — deployment configuration
+# IONOS Deploy Now — deployment configuration (schema v1.0)
 # https://docs.ionos.space/docs/deployment-configuration/
 
-bootstrap:
-  excludes:
-    - .git
-    - .github
-    - .idea
-    - .DS_Store
-    - scripts
+version: 1.0
 
-recurring:
-  excludes:
-    - .git
-    - .github
-    - .idea
-    - .DS_Store
-    - scripts
+deploy:
+  bootstrap:
+    excludes:
+      - .git
+      - .github
+      - .idea
+      - .DS_Store
+      - scripts
+
+  recurring:
+    excludes:
+      - .git
+      - .github
+      - .idea
+      - .DS_Store
+      - scripts
