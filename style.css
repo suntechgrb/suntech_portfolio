@@ -105,15 +105,27 @@ body.page-home:not(.past-banner) main {
 }
 
 body.page-home:not(.past-banner) .hero {
-    margin-top: 0;
-    padding-top: 0;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    background: transparent;
 }
 
-body.page-home:not(.past-banner) .hero-media-scrim {
-    background: linear-gradient(0deg, var(--bg-main) 0%, transparent 28%);
+body.page-home:not(.past-banner) .hero-media-scrim,
+body.page-home:not(.past-banner) .hero-media-shine {
+    display: none !important;
+}
+
+body.page-home:not(.past-banner) .hero-media {
+    background: transparent !important;
+}
+
+body.page-home:not(.past-banner) .hero-media-img {
+    object-fit: cover !important;
+    object-position: center top !important;
 }
 
 body.page-home:not(.past-banner) .site-header {
+    position: absolute;
     height: 0 !important;
     min-height: 0 !important;
     padding: 0 !important;
@@ -144,6 +156,7 @@ body.page-home:not(.past-banner) .site-header .hamburger {
 }
 
 body.page-home.past-banner .site-header {
+    position: fixed;
     height: auto !important;
     min-height: 0;
     pointer-events: auto;
@@ -870,9 +883,12 @@ main section.hero {
 }
 
 .page-home .hero {
-    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
-    padding-top: env(safe-area-inset-top, 0px);
     background: #0B1628;
+}
+
+body.page-home.past-banner .hero {
+    margin-top: 0;
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 .hero {
@@ -907,6 +923,10 @@ main section.hero {
         linear-gradient(180deg, rgba(11, 22, 40, 0.42) 0%, transparent 28%),
         linear-gradient(0deg, var(--bg-main) 0%, transparent 22%);
     pointer-events: none;
+}
+
+body.page-home:not(.past-banner) .hero-media-scrim {
+    display: none !important;
 }
 
 .hero-media-shine {
@@ -2434,13 +2454,31 @@ html[dir="rtl"] .chapters-nav-inner {
         -webkit-backdrop-filter: none;
     }
 
-    body.page-home:not(.past-banner) .hero-media-img {
-        object-fit: cover;
-        object-position: center top;
+    body.page-home:not(.past-banner) .hero-media {
+        position: relative;
+        margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+        padding-top: env(safe-area-inset-top, 0px);
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: transparent !important;
+        overflow: hidden;
     }
 
-    body.page-home:not(.past-banner) .hero-media {
-        background: #0B1628;
+    body.page-home:not(.past-banner) .hero-media-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover !important;
+        object-position: center top !important;
+        transform: none;
+    }
+
+    body.page-home.past-banner .hero-media-img,
+    .hero-media-img {
+        object-fit: contain;
+        object-position: center center;
+        transform: none;
     }
 
     [data-theme="light"] body.page-home:not(.past-banner):not(.nav-open) .hamburger {
@@ -2543,16 +2581,16 @@ html[dir="rtl"] .chapters-nav-inner {
         aspect-ratio: 16 / 9;
         flex-shrink: 0;
         background: #0B1628;
+        overflow: hidden;
+    }
+
+    body.page-home:not(.past-banner) .hero-media {
+        background: transparent !important;
     }
 
     .hero-media-img {
-        object-fit: contain;
-        object-position: center center;
-        transform: none;
-    }
-
-    .hero-media-scrim {
-        background: linear-gradient(0deg, var(--bg-main) 0%, transparent 28%);
+        width: 100%;
+        height: 100%;
     }
 
     .hero-promo {
