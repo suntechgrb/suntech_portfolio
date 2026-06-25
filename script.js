@@ -182,6 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.toggle('show-logo', pastHero);
             navbar.classList.toggle('scrolled', pastHero);
             document.body.classList.toggle('past-banner', pastHero);
+            const siteHeader = document.querySelector('.site-header');
+            if (siteHeader) {
+                siteHeader.classList.toggle('is-visible', pastHero);
+            }
         } else {
             document.body.classList.remove('past-banner');
             navbar.classList.toggle('scrolled', scrollY > 40);
