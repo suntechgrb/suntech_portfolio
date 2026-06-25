@@ -110,6 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.querySelector('.hero');
     const backToTop = document.getElementById('backToTop');
 
+    const syncNavMetrics = () => {
+        if (!navbar) return;
+        document.documentElement.style.setProperty('--nav-height', `${navbar.offsetHeight}px`);
+        const chaptersNav = document.getElementById('chaptersNav');
+        if (chaptersNav) {
+            const height = chaptersNav.classList.contains('is-visible') ? chaptersNav.offsetHeight : 0;
+            document.documentElement.style.setProperty('--chapters-height', `${height}px`);
+        }
+    };
+
     const applyImagePerfHints = () => {
         document.querySelectorAll('img').forEach((img) => {
             const isHero = Boolean(img.closest('.hero-media'));
@@ -156,11 +166,16 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.toggle('scrolled', scrollY > 40);
             navbar.classList.add('show-logo');
         }
+        syncNavMetrics();
     };
 
     updateNavbarState();
+    syncNavMetrics();
     window.addEventListener('scroll', updateNavbarState, { passive: true });
-    window.addEventListener('resize', updateNavbarState);
+    window.addEventListener('resize', () => {
+        updateNavbarState();
+        syncNavMetrics();
+    });
 
     const navOverlay = document.getElementById('navOverlay');
 
@@ -175,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const setNavOpen = (open) => {
         if (!navLinks) return;
+        if (open) syncNavMetrics();
         navLinks.classList.toggle('active', open);
         document.body.classList.toggle('nav-open', open);
         if (navOverlay) {
@@ -518,15 +534,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .map((id) => document.getElementById(id))
             .filter(Boolean);
 
-        const syncNavMetrics = () => {
-            const navbarEl = document.getElementById('navbar');
-            if (navbarEl) {
-                document.documentElement.style.setProperty('--nav-height', `${navbarEl.offsetHeight}px`);
-            }
-            const height = chaptersNav.classList.contains('is-visible') ? chaptersNav.offsetHeight : 0;
-            document.documentElement.style.setProperty('--chapters-height', `${height}px`);
-        };
-
         const updateVisibility = () => {
             const pastBanner = heroSection
                 ? heroSection.getBoundingClientRect().bottom <= 0
@@ -828,6 +835,86 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initProjectsCarousel();
+
+    const initMobileExpandGrids = () => {
+        const mobileMq = window.matchMedia('(max-width: 768px)');
+        const gridConfigs = [
+            { selector: '.pain-grid', visible: 2 },
+            { selector: '.services-grid-bento', visible: 2 },
+            { selector: '.products-grid', visible: 1 },
+            { selector: '.process-steps', visible: 2 },
+            { selector: '.testimonials-grid', visible: 1 }
+        ];
+
+        const getDict = () => {
+            const lang = localStorage.getItem('preferredLang') || 'fr';
+            return (window.translations && window.translations[lang]) || {};
+        };
+
+        gridConfigs.forEach(({ selector, visible }) => {
+            const grid = document.querySelector(selector);
+            if (!grid) return;
+
+            const getItems = () => Array.from(grid.children).filter((child) => child.nodeType === 1);
+            if (getItems().length <= visible) return;
+
+            grid.classList.add('mobile-expand-grid');
+
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'mobile-expand-btn';
+            btn.dataset.i18n = 'expand_show_more';
+            btn.setAttribute('aria-expanded', 'false');
+
+            const updateItems = () => {
+                const expanded = !mobileMq.matches || grid.classList.contains('is-expanded');
+                getItems().forEach((item, index) => {
+                    const hidden = !expanded && index >= visible;
+                    item.classList.toggle('mobile-expand-hidden', hidden);
+                    if (hidden) {
+                        item.setAttribute('aria-hidden', 'true');
+                    } else {
+                        item.removeAttribute('aria-hidden');
+                    }
+                });
+            };
+
+            const updateButton = () => {
+                const dict = getDict();
+                const expanded = grid.classList.contains('is-expanded');
+                const key = expanded ? 'expand_show_less' : 'expand_show_more';
+                btn.dataset.i18n = key;
+                btn.textContent = dict[key] || (expanded ? 'Voir moins' : 'Voir plus');
+                btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                btn.hidden = !mobileMq.matches;
+            };
+
+            const syncGrid = () => {
+                if (!mobileMq.matches) {
+                    grid.classList.add('is-expanded');
+                }
+                updateItems();
+                updateButton();
+            };
+
+            btn.addEventListener('click', () => {
+                const willExpand = !grid.classList.contains('is-expanded');
+                grid.classList.toggle('is-expanded', willExpand);
+                updateItems();
+                updateButton();
+                if (!willExpand) {
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+
+            grid.insertAdjacentElement('afterend', btn);
+            mobileMq.addEventListener('change', syncGrid);
+            window.addEventListener('resize', syncGrid);
+            syncGrid();
+        });
+    };
+
+    initMobileExpandGrids();
 
     if (backToTop) {
         const updateBackToTop = () => {
