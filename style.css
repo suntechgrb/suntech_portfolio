@@ -133,23 +133,23 @@ body.page-home:not(.past-banner) .hero-media {
     margin: calc(-1 * env(safe-area-inset-top, 0px)) 0 0;
     padding: 0;
     width: 100%;
-    aspect-ratio: 16 / 8.25;
     height: auto;
+    aspect-ratio: unset;
     background: transparent;
     overflow: hidden;
     line-height: 0;
 }
 
 body.page-home:not(.past-banner) .hero-media-img {
-    position: absolute;
-    inset: 0;
+    position: static;
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     max-height: none;
-    object-fit: cover;
-    object-position: 50% 24%;
+    object-fit: unset;
+    object-position: unset;
     transform: none;
+    vertical-align: top;
 }
 
 body.page-home:not(.past-banner) .site-header {
@@ -445,18 +445,18 @@ a {
         position: relative;
         inset: auto;
         margin-top: calc(-1 * env(safe-area-inset-top, 0px));
-        aspect-ratio: 16 / 8.25;
         height: auto;
+        aspect-ratio: unset;
         background: transparent;
     }
 
     body.page-home:not(.past-banner) .hero-media-img {
-        position: absolute;
-        inset: 0;
+        position: static;
+        display: block;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 24%;
+        height: auto;
+        object-fit: unset;
+        object-position: unset;
         transform: none;
     }
 
@@ -2527,20 +2527,19 @@ html[dir="rtl"] .chapters-nav-inner {
         margin: calc(-1 * env(safe-area-inset-top, 0px)) 0 0;
         padding: 0;
         width: 100%;
-        aspect-ratio: 16 / 8.25;
+        aspect-ratio: unset;
         height: auto;
         background: transparent;
         overflow: hidden;
     }
 
     body.page-home:not(.past-banner) .hero-media-img {
-        position: absolute;
-        inset: 0;
+        position: static;
         display: block;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 24%;
+        height: auto;
+        object-fit: unset;
+        object-position: unset;
         transform: none;
     }
 
@@ -2553,12 +2552,6 @@ html[dir="rtl"] .chapters-nav-inner {
         object-fit: contain;
         object-position: center center;
         transform: none;
-    }
-
-    body.page-home:not(.past-banner) .hero-media-img {
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: 50% 24% !important;
     }
 
     [data-theme="light"] body.page-home:not(.past-banner):not(.nav-open) .hamburger {
@@ -2658,7 +2651,7 @@ html[dir="rtl"] .chapters-nav-inner {
     }
 
     body.page-home:not(.past-banner) .hero-media {
-        aspect-ratio: 16 / 8.25;
+        aspect-ratio: unset;
         height: auto;
         background: transparent;
     }
@@ -2667,15 +2660,6 @@ html[dir="rtl"] .chapters-nav-inner {
         display: block;
         width: 100%;
         height: auto;
-    }
-
-    body.page-home:not(.past-banner) .hero-media-img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 24%;
     }
 
     body.page-home.past-banner .hero-media {
