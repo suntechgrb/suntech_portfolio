@@ -108,7 +108,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const heroSection = document.querySelector('.hero');
+    const bannerSection = document.querySelector('.hero-media');
     const backToTop = document.getElementById('backToTop');
+
+    const isPastBanner = () => {
+        if (!bannerSection) return false;
+        const rect = bannerSection.getBoundingClientRect();
+        const height = bannerSection.offsetHeight;
+        return height > 48 && rect.bottom <= 1;
+    };
 
     const syncNavMetrics = () => {
         const siteHeader = document.querySelector('.site-header');
@@ -178,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isHome = document.body.classList.contains('page-home');
 
         if (isHome && heroSection) {
-            const pastHero = heroSection.getBoundingClientRect().bottom <= 0;
+            const pastHero = isPastBanner();
             navbar.classList.toggle('show-logo', pastHero);
             navbar.classList.toggle('scrolled', pastHero);
             document.body.classList.toggle('past-banner', pastHero);
@@ -194,15 +202,37 @@ document.addEventListener('DOMContentLoaded', () => {
         syncNavMetrics();
     };
 
-    updateNavbarState();
+    const scheduleNavbarStateUpdate = () => {
+        updateNavbarState();
+        requestAnimationFrame(updateNavbarState);
+    };
+
+    scheduleNavbarStateUpdate();
     syncNavMetrics();
+    window.addEventListener('load', scheduleNavbarStateUpdate);
     window.addEventListener('scroll', () => {
         updateNavbarState();
     }, { passive: true });
     window.addEventListener('resize', () => {
-        updateNavbarState();
+        scheduleNavbarStateUpdate();
         syncNavMetrics();
     });
+
+    const heroImage = document.querySelector('.hero-media-img');
+    if (heroImage) {
+        if (heroImage.complete) {
+            scheduleNavbarStateUpdate();
+        } else {
+            heroImage.addEventListener('load', scheduleNavbarStateUpdate, { once: true });
+        }
+    }
+
+    if (heroSection && 'ResizeObserver' in window) {
+        const heroResizeObserver = new ResizeObserver(() => {
+            updateNavbarState();
+        });
+        heroResizeObserver.observe(heroSection);
+    }
 
     const navOverlay = document.getElementById('navOverlay');
 
@@ -566,9 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter(Boolean);
 
         const updateVisibility = () => {
-            const pastBanner = heroSection
-                ? heroSection.getBoundingClientRect().bottom <= 0
-                : false;
+            const pastBanner = isPastBanner();
             chaptersNav.classList.toggle('is-visible', pastBanner);
             document.body.classList.toggle('chapters-visible', pastBanner);
             syncNavMetrics();

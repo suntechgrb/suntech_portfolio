@@ -12,6 +12,10 @@
                 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
                 window.scrollTo(0, 0);
             }
+            document.addEventListener('DOMContentLoaded', function () {
+                document.body.classList.remove('past-banner');
+                window.scrollTo(0, 0);
+            });
         })();
     </script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -29,7 +33,7 @@
     <meta property="og:image" content="img/banner-site.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://suntech-grb.com/">
-    <link rel="stylesheet" href="style.css?v=20260616-mobile-hero">
+    <link rel="stylesheet" href="style.css?v=20260616-nav-past">
 </head>
 
 <body class="page-home">
@@ -1101,7 +1105,7 @@
         }
     </script>
     <script src="translations.js?v=20260616-banner-natural" defer></script>
-    <script src="script.js?v=20260616-banner-natural" defer></script>
+    <script src="script.js?v=20260616-nav-past" defer></script>
 </body>
 
 </html>
