@@ -35,7 +35,7 @@
     <link rel="canonical" href="https://suntech-grb.com/">
     <style id="hero-critical">
         html,
-        body.page-home:not(.past-banner) {
+        body.page-home {
             margin: 0 !important;
             padding: 0 !important;
             background: transparent !important;
@@ -60,8 +60,13 @@
             pointer-events: none;
         }
 
-        body.page-home:not(.past-banner) .hero,
         body.page-home:not(.past-banner) main {
+            margin-top: calc(-1 * env(safe-area-inset-top, 0px)) !important;
+            padding-top: env(safe-area-inset-top, 0px) !important;
+            background: transparent !important;
+        }
+
+        body.page-home:not(.past-banner) .hero {
             margin-top: 0 !important;
             padding-top: 0 !important;
             background: transparent !important;
@@ -71,7 +76,7 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: min(38vh, 360px);
+            height: calc(min(38vh, 360px) + env(safe-area-inset-top, 0px));
             background: transparent;
             overflow: hidden;
             line-height: 0;
@@ -87,11 +92,11 @@
 
         @media (max-width: 1024px) {
             body.page-home .hero-media {
-                height: min(32vh, 220px);
+                height: calc(min(32vh, 220px) + env(safe-area-inset-top, 0px));
             }
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260616-banner-flush">
+    <link rel="stylesheet" href="style.css?v=20260616-no-blue-band">
 </head>
 
 <body class="page-home">
@@ -1163,7 +1168,7 @@
         }
     </script>
     <script src="translations.js?v=20260616-banner-natural" defer></script>
-    <script src="script.js?v=20260616-banner-flush" defer></script>
+    <script src="script.js?v=20260616-no-blue-band" defer></script>
 </body>
 
 </html>
