@@ -33,7 +33,77 @@
     <meta property="og:image" content="img/banner-site.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://suntech-grb.com/">
-    <link rel="stylesheet" href="style.css?v=20260616-nav-past">
+    <style id="hero-critical">
+        html,
+        body.page-home:not(.past-banner) {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: var(--bg-main, #f8f9fb) !important;
+        }
+
+        body.page-home:not(.past-banner) .navbar,
+        body.page-home:not(.past-banner) .site-header .nav-links {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            position: absolute !important;
+            top: -100vh !important;
+            left: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        body.page-home:not(.past-banner) .site-header {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 0 !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            overflow: visible;
+            pointer-events: none;
+        }
+
+        body.page-home:not(.past-banner) .hero,
+        body.page-home:not(.past-banner) main {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            min-height: 0 !important;
+            background: transparent !important;
+        }
+
+        body.page-home:not(.past-banner) .hero-media {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-height: min(28vh, 260px);
+            aspect-ratio: 16 / 5.5;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        @media (max-width: 1024px) {
+            body.page-home:not(.past-banner) .hero-media {
+                max-height: min(32vh, 210px);
+                aspect-ratio: 16 / 8.4;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css?v=20260616-banner-compact">
 </head>
 
 <body class="page-home">
@@ -1105,7 +1175,7 @@
         }
     </script>
     <script src="translations.js?v=20260616-banner-natural" defer></script>
-    <script src="script.js?v=20260616-nav-past" defer></script>
+    <script src="script.js?v=20260616-banner-compact" defer></script>
 </body>
 
 </html>

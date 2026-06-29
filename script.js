@@ -232,6 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
             updateNavbarState();
         });
         heroResizeObserver.observe(heroSection);
+        if (bannerSection) {
+            heroResizeObserver.observe(bannerSection);
+        }
     }
 
     const navOverlay = document.getElementById('navOverlay');
