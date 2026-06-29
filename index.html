@@ -39,6 +39,7 @@
             margin: 0 !important;
             padding: 0 !important;
             background: transparent !important;
+            background-image: none !important;
         }
 
         body.page-home:not(.past-banner) .navbar,
@@ -60,23 +61,22 @@
             pointer-events: none;
         }
 
-        body.page-home:not(.past-banner) main {
-            margin-top: calc(-1 * env(safe-area-inset-top, 0px)) !important;
-            padding-top: env(safe-area-inset-top, 0px) !important;
+        body.page-home .hero {
+            display: block !important;
+            min-height: 0 !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
             background: transparent !important;
-        }
-
-        body.page-home:not(.past-banner) .hero {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-            background: transparent !important;
+            line-height: 0;
         }
 
         body.page-home .hero-media {
+            display: block;
             margin: 0;
             padding: 0;
             width: 100%;
-            height: calc(min(38vh, 360px) + env(safe-area-inset-top, 0px));
+            height: min(38vh, 360px);
             background: transparent;
             overflow: hidden;
             line-height: 0;
@@ -92,11 +92,11 @@
 
         @media (max-width: 1024px) {
             body.page-home .hero-media {
-                height: calc(min(32vh, 220px) + env(safe-area-inset-top, 0px));
+                height: min(32vh, 220px);
             }
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260616-no-blue-band">
+    <link rel="stylesheet" href="style.css?v=20260616-hero-top">
 </head>
 
 <body class="page-home">
@@ -145,36 +145,36 @@
     <div class="bg-shape bg-shape-2"></div>
     <div class="bg-shape bg-shape-3"></div>
 
-    <main>
-        <section class="hero" id="top">
-            <div class="hero-media">
-                <img
-                    src="img/banner-site.png"
-                    alt="SuntechTN — Smart Solutions. Real Impact."
-                    class="hero-media-img"
-                    width="1920"
-                    height="1080"
-                    fetchpriority="high"
-                    decoding="async"
-                >
-                <div class="hero-media-scrim" aria-hidden="true"></div>
-                <div class="hero-media-shine" aria-hidden="true"></div>
+    <section class="hero" id="top">
+        <div class="hero-media">
+            <img
+                src="img/banner-site.png"
+                alt="SuntechTN — Smart Solutions. Real Impact."
+                class="hero-media-img"
+                width="1920"
+                height="1080"
+                fetchpriority="high"
+                decoding="async"
+            >
+            <div class="hero-media-scrim" aria-hidden="true"></div>
+            <div class="hero-media-shine" aria-hidden="true"></div>
+        </div>
+        <aside class="promo-banner hero-promo fade-in-up" aria-label="Announcement">
+            <div class="promo-banner-glow" aria-hidden="true"></div>
+            <div class="promo-banner-inner">
+                <strong class="promo-item promo-item-highlight" data-i18n="promo_highlight">Free quote within 24h</strong>
+                <span class="promo-sep" aria-hidden="true">✦</span>
+                <span class="promo-item" data-i18n="promo_web">Web &amp; mobile apps</span>
+                <span class="promo-sep" aria-hidden="true">✦</span>
+                <span class="promo-item" data-i18n="promo_ecom">E-commerce &amp; SaaS</span>
+                <span class="promo-sep" aria-hidden="true">✦</span>
+                <span class="promo-item" data-i18n="promo_ai">AI automation</span>
+                <a href="#contact" class="promo-banner-cta" data-i18n="promo_cta">Get a quote →</a>
             </div>
-            <aside class="promo-banner hero-promo fade-in-up" aria-label="Announcement">
-                <div class="promo-banner-glow" aria-hidden="true"></div>
-                <div class="promo-banner-inner">
-                    <strong class="promo-item promo-item-highlight" data-i18n="promo_highlight">Free quote within 24h</strong>
-                    <span class="promo-sep" aria-hidden="true">✦</span>
-                    <span class="promo-item" data-i18n="promo_web">Web &amp; mobile apps</span>
-                    <span class="promo-sep" aria-hidden="true">✦</span>
-                    <span class="promo-item" data-i18n="promo_ecom">E-commerce &amp; SaaS</span>
-                    <span class="promo-sep" aria-hidden="true">✦</span>
-                    <span class="promo-item" data-i18n="promo_ai">AI automation</span>
-                    <a href="#contact" class="promo-banner-cta" data-i18n="promo_cta">Get a quote →</a>
-                </div>
-            </aside>
-        </section>
+        </aside>
+    </section>
 
+    <main>
         <section class="hero-intro reveal" aria-labelledby="hero-heading">
             <div class="hero-intro-card glass-card fade-in-up">
                 <div class="hero-intro-copy">
@@ -1168,7 +1168,7 @@
         }
     </script>
     <script src="translations.js?v=20260616-banner-natural" defer></script>
-    <script src="script.js?v=20260616-no-blue-band" defer></script>
+    <script src="script.js?v=20260616-hero-top" defer></script>
 </body>
 
 </html>

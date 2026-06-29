@@ -101,6 +101,15 @@ body.page-home:not(.past-banner) {
     background-image: none !important;
 }
 
+[data-theme="light"] body.page-home:not(.past-banner) {
+    background: transparent !important;
+    background-image: none !important;
+}
+
+html[data-theme="light"]:has(body.page-home:not(.past-banner)) {
+    background-color: transparent;
+}
+
 body.page-home {
     background-color: transparent;
     background-image: none;
@@ -124,20 +133,18 @@ body.page-home main {
 }
 
 body.page-home:not(.past-banner) main {
-    background: transparent;
-    margin-top: calc(-1 * env(safe-area-inset-top, 0px)) !important;
-    padding-top: env(safe-area-inset-top, 0px) !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
 }
 
 body.page-home:not(.past-banner) .hero {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
     min-height: 0 !important;
-    height: auto;
+    height: auto !important;
     background: transparent !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    line-height: 0;
 }
 
 body.page-home:not(.past-banner) .hero-media-scrim,
@@ -148,10 +155,11 @@ body.page-home:not(.past-banner) .hero-media-shine {
 body.page-home:not(.past-banner) .hero-media {
     position: relative;
     inset: auto;
+    display: block;
     margin: 0;
     padding: 0;
     width: 100%;
-    height: calc(min(38vh, 360px) + env(safe-area-inset-top, 0px));
+    height: min(38vh, 360px);
     aspect-ratio: unset;
     max-height: none;
     background: transparent;
@@ -456,8 +464,8 @@ a {
 
 @media (min-width: 1025px) {
     body.page-home:not(.past-banner) .hero {
-        min-height: auto !important;
-        justify-content: flex-start;
+        min-height: 0 !important;
+        display: block !important;
     }
 
     body.page-home:not(.past-banner) .site-header {
@@ -961,7 +969,8 @@ main section {
     display: none;
 }
 
-main section.hero {
+main section.hero,
+body.page-home > .hero {
     max-width: none;
     margin: 0;
     padding: 0;
@@ -969,9 +978,11 @@ main section.hero {
 
 .page-home .hero {
     background: transparent;
-    min-height: auto !important;
-    justify-content: flex-start;
+    display: block !important;
+    min-height: 0 !important;
+    height: auto !important;
     overflow: visible;
+    line-height: 0;
 }
 
 body.page-home:not(.past-banner) .hero {
@@ -981,9 +992,10 @@ body.page-home:not(.past-banner) .hero {
 body.page-home .hero-media {
     position: relative !important;
     inset: auto !important;
+    display: block;
     width: 100%;
     flex-shrink: 0;
-    height: calc(min(38vh, 360px) + env(safe-area-inset-top, 0px));
+    height: min(38vh, 360px);
     background: transparent;
     overflow: hidden;
     line-height: 0;
@@ -1018,8 +1030,10 @@ body.page-home.past-banner .hero {
 
 body.page-home .hero {
     background: transparent !important;
-    min-height: auto !important;
-    justify-content: flex-start;
+    display: block !important;
+    min-height: 0 !important;
+    height: auto !important;
+    justify-content: unset;
 }
 
 .hero-media {
@@ -2603,7 +2617,7 @@ html[dir="rtl"] .chapters-nav-inner {
     }
 
     body.page-home .hero-media {
-        height: calc(min(32vh, 220px) + env(safe-area-inset-top, 0px));
+        height: min(32vh, 220px);
     }
 
     body.page-home:not(.past-banner) .hero-intro {
@@ -2707,10 +2721,8 @@ html[dir="rtl"] .chapters-nav-inner {
     .page-home .hero {
         margin-top: 0;
         padding-top: 0;
-        min-height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        min-height: 0 !important;
+        display: block !important;
     }
 
     .hero-media {
