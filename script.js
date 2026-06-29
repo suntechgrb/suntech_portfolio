@@ -110,12 +110,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.querySelector('.hero');
     const bannerSection = document.querySelector('.hero-media');
     const backToTop = document.getElementById('backToTop');
+    let bannerPastState = false;
 
     const isPastBanner = () => {
         if (!bannerSection) return false;
-        const rect = bannerSection.getBoundingClientRect();
+        if (window.scrollY <= 2) {
+            bannerPastState = false;
+            return false;
+        }
         const height = bannerSection.offsetHeight;
-        return height > 48 && rect.bottom <= 1;
+        if (height <= 48) return false;
+
+        const bottom = bannerSection.getBoundingClientRect().bottom;
+        if (!bannerPastState && bottom <= 0) {
+            bannerPastState = true;
+        } else if (bannerPastState && bottom > 20) {
+            bannerPastState = false;
+        }
+        return bannerPastState;
     };
 
     const syncNavMetrics = () => {
@@ -227,14 +239,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (heroSection && 'ResizeObserver' in window) {
-        const heroResizeObserver = new ResizeObserver(() => {
-            updateNavbarState();
+    if (bannerSection && 'ResizeObserver' in window) {
+        let resizeTicking = false;
+        const bannerResizeObserver = new ResizeObserver(() => {
+            if (resizeTicking) return;
+            resizeTicking = true;
+            requestAnimationFrame(() => {
+                updateNavbarState();
+                resizeTicking = false;
+            });
         });
-        heroResizeObserver.observe(heroSection);
-        if (bannerSection) {
-            heroResizeObserver.observe(bannerSection);
-        }
+        bannerResizeObserver.observe(bannerSection);
     }
 
     const navOverlay = document.getElementById('navOverlay');
