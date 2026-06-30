@@ -167,11 +167,12 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
 
 body.page-home:not(.past-banner) .hero-home .hero-media-img {
     position: absolute;
-    inset: 0;
-    display: block;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: fill;
+    top: -4vh;
+    height: calc(100% + 4vh);
+    display: block;
+    object-fit: cover;
     object-position: top center;
     transform: none;
 }
@@ -1002,11 +1003,12 @@ body.page-home > .hero-home {
 
 .hero-home .hero-media-img {
     position: absolute;
-    inset: 0;
-    display: block;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: fill;
+    top: -4vh;
+    height: calc(100% + 4vh);
+    display: block;
+    object-fit: cover;
     object-position: top center;
     transform: none;
 }
@@ -1017,7 +1019,9 @@ body.page-home.past-banner .hero-home {
 }
 
 body.page-home.past-banner .hero-home .hero-media-img {
-    object-fit: fill;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
     object-position: top center;
 }
 
@@ -2626,13 +2630,22 @@ html[dir="rtl"] .chapters-nav-inner {
         box-sizing: border-box;
     }
 
+    body.page-home:not(.past-banner) .hero-home .hero-media-img {
+        top: calc(-4vh - env(safe-area-inset-top, 0px));
+        height: calc(100% + 4vh + env(safe-area-inset-top, 0px));
+        object-fit: cover;
+        object-position: top center;
+    }
+
     .hero-home .hero-media-img {
-        object-fit: fill;
+        object-fit: cover;
         object-position: top center;
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
-        object-fit: fill;
+        top: 0;
+        height: 100%;
+        object-fit: cover;
         object-position: top center;
         transform: none;
     }
@@ -2760,18 +2773,17 @@ html[dir="rtl"] .chapters-nav-inner {
         }
     }
 
-    .hero-home .hero-media-img {
-        position: absolute;
-        inset: 0;
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
+    body.page-home:not(.past-banner) .hero-home .hero-media-img {
+        top: calc(-4vh - env(safe-area-inset-top, 0px));
+        height: calc(100% + 4vh + env(safe-area-inset-top, 0px));
+        object-fit: cover;
         object-position: top center;
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
-        object-fit: fill;
+        top: 0;
+        height: 100%;
+        object-fit: cover;
         object-position: top center;
     }
 
