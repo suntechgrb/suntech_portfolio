@@ -159,7 +159,7 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: min(30vh, 280px);
+    height: 40vh;
     background: transparent;
     overflow: hidden;
     line-height: 0;
@@ -990,7 +990,7 @@ body.page-home > .hero-home {
     inset: auto;
     display: block;
     width: 100%;
-    height: min(30vh, 280px);
+    height: 40vh;
     background: transparent;
     overflow: hidden;
     line-height: 0;
@@ -2609,7 +2609,7 @@ html[dir="rtl"] .chapters-nav-inner {
     }
 
     .hero-home .hero-media {
-        height: min(26vh, 200px);
+        height: 40vh;
     }
 
     .hero-home .hero-media-img {
@@ -2726,7 +2726,7 @@ html[dir="rtl"] .chapters-nav-inner {
         position: relative;
         inset: auto;
         width: 100%;
-        height: min(26vh, 200px);
+        height: 40vh;
         background: transparent;
         overflow: hidden;
     }
