@@ -183,6 +183,18 @@
                 pointer-events: none;
             }
 
+            body.page-home:not(.past-banner).nav-open .site-header {
+                z-index: 1010 !important;
+                pointer-events: auto !important;
+            }
+
+            body.page-home:not(.past-banner).nav-open .site-header .nav-links,
+            body.page-home:not(.past-banner) .site-header .nav-links.active {
+                display: flex !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+            }
+
             body.page-home.at-top .site-header .hamburger,
             body.page-home:not(.past-banner) .site-header .hamburger {
                 display: flex !important;
@@ -191,6 +203,10 @@
                 top: 0.5rem !important;
                 right: 0.75rem !important;
                 pointer-events: auto !important;
+            }
+
+            body.page-home:not(.past-banner).nav-open .site-header .hamburger {
+                z-index: 1012 !important;
             }
         }
 
@@ -201,7 +217,7 @@
             display: none !important;
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260630-banner-pro">
+    <link rel="stylesheet" href="style.css?v=20260630-mobile-nav">
 </head>
 
 <body class="page-home at-top">
@@ -1272,8 +1288,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260630-banner-pro" defer></script>
-    <script src="script.js?v=20260630-banner-pro" defer></script>
+    <script src="translations.js?v=20260630-mobile-nav" defer></script>
+    <script src="script.js?v=20260630-mobile-nav" defer></script>
 </body>
 
 </html>

@@ -177,9 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isHome && !pastBanner) {
             if (isMobile) {
-                if (navOpen && heightSource && heightSource.offsetHeight > 0) {
-                    height = heightSource.offsetHeight;
-                } else if (hamburger) {
+                if (hamburger) {
                     height = Math.ceil(hamburger.getBoundingClientRect().bottom + 8);
                 }
             } else {
@@ -312,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active', open);
         document.body.classList.toggle('nav-open', open);
         if (open) {
+            syncNavMetrics();
             requestAnimationFrame(syncNavMetrics);
         }
         if (navOverlay) {
