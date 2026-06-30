@@ -114,20 +114,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isPastBanner = () => {
         if (!bannerSection) return false;
-        if (window.scrollY <= 2) {
-            bannerPastState = false;
-            return false;
-        }
+
         const height = bannerSection.offsetHeight;
         if (height <= 48) return false;
 
+        // Ignore mobile scroll-restore jitter near the top.
+        if (window.scrollY <= 12) {
+            bannerPastState = false;
+            return false;
+        }
+
         const bottom = bannerSection.getBoundingClientRect().bottom;
-        if (!bannerPastState && bottom <= 0) {
+        if (!bannerPastState && bottom <= 4) {
             bannerPastState = true;
-        } else if (bannerPastState && bottom > 20) {
+        } else if (bannerPastState && bottom > 24) {
             bannerPastState = false;
         }
         return bannerPastState;
+    };
+
+    const shouldStartAtTop = () => {
+        const hash = window.location.hash;
+        return !hash || hash === '#' || hash === '#top';
+    };
+
+    const resetHomeBannerState = () => {
+        if (!document.body.classList.contains('page-home') || !shouldStartAtTop()) return;
+
+        bannerPastState = false;
+        document.body.classList.remove('past-banner', 'chapters-visible');
+
+        window.scrollTo(0, 0);
+
+        if (navbar) {
+            navbar.classList.remove('show-logo', 'scrolled');
+        }
+
+        const siteHeader = document.querySelector('.site-header');
+        if (siteHeader) {
+            siteHeader.classList.remove('is-visible');
+        }
+
+        const chaptersNav = document.getElementById('chaptersNav');
+        if (chaptersNav) {
+            chaptersNav.classList.remove('is-visible');
+        }
+
+        updateNavbarState();
     };
 
     const syncNavMetrics = () => {
@@ -589,10 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const ensurePageStartsAtTop = () => {
-        const hash = window.location.hash;
-        if (!hash || hash === '#' || hash === '#top') {
-            window.scrollTo(0, 0);
-        }
+        resetHomeBannerState();
     };
 
     const initChaptersNav = () => {
@@ -796,10 +826,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('load', ensurePageStartsAtTop);
-    window.addEventListener('pageshow', (event) => {
-        if (event.persisted) {
-            ensurePageStartsAtTop();
-        }
+    window.addEventListener('pageshow', () => {
+        ensurePageStartsAtTop();
     });
 
     document.querySelectorAll('.filter-btn').forEach((button) => {

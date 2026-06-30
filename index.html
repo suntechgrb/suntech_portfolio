@@ -8,14 +8,21 @@
     <script>
         (function () {
             var hash = window.location.hash;
-            if (!hash || hash === '#' || hash === '#top') {
+            var atTop = !hash || hash === '#' || hash === '#top';
+
+            function resetBanner() {
+                document.body.classList.remove('past-banner', 'chapters-visible');
+                if (atTop) window.scrollTo(0, 0);
+            }
+
+            if (atTop) {
                 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
                 window.scrollTo(0, 0);
             }
-            document.addEventListener('DOMContentLoaded', function () {
-                document.body.classList.remove('past-banner');
-                window.scrollTo(0, 0);
-            });
+
+            document.addEventListener('DOMContentLoaded', resetBanner);
+            window.addEventListener('load', resetBanner);
+            window.addEventListener('pageshow', resetBanner);
         })();
     </script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -59,6 +66,12 @@
             box-shadow: none !important;
             overflow: visible;
             pointer-events: none;
+        }
+
+        body.page-home:not(.past-banner) .site-header,
+        body.page-home:not(.past-banner) .site-header .navbar {
+            background: transparent !important;
+            box-shadow: none !important;
         }
 
         body.page-home .hero-home {
@@ -107,7 +120,7 @@
             object-position: top center;
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260616-banner-mobile">
+    <link rel="stylesheet" href="style.css?v=20260630-nav-fix">
 </head>
 
 <body class="page-home">
@@ -1178,8 +1191,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260616-banner-natural" defer></script>
-    <script src="script.js?v=20260616-banner-stretch" defer></script>
+    <script src="translations.js?v=20260630-nav-fix" defer></script>
+    <script src="script.js?v=20260630-nav-fix" defer></script>
 </body>
 
 </html>
