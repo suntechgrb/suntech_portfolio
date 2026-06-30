@@ -104,15 +104,7 @@
 
         body.page-home.at-top main,
         body.page-home:not(.past-banner) main {
-            margin-top: min(66vw, 53vh) !important;
-            margin-top: min(66vw, 53svh) !important;
-        }
-
-        @media (max-width: 768px) {
-            body.page-home.at-top main,
-            body.page-home:not(.past-banner) main {
-                margin-top: 66vw !important;
-            }
+            margin-top: 56.25vw !important;
         }
 
         body.page-home.past-banner:not(.at-top) .hero-home {
@@ -131,23 +123,21 @@
             padding: 0;
             width: 100%;
             max-width: 100%;
-            height: min(66vw, 53vh);
-            height: min(66vw, 53svh);
+            aspect-ratio: 16 / 9;
+            height: auto;
             background: none;
             overflow: hidden;
             line-height: 0;
         }
 
-        @media (max-width: 768px) {
-            .hero-home .hero-media {
-                height: 66vw;
-            }
-        }
-
         @media (max-width: 768px) and (orientation: landscape) {
             .hero-home .hero-media {
-                height: min(66vw, 48vh);
-                height: min(66vw, 48svh);
+                aspect-ratio: auto;
+                height: min(56.25vw, 48svh);
+            }
+
+            .hero-home .hero-media-img {
+                object-fit: fill;
             }
         }
 
@@ -201,7 +191,7 @@
             display: none !important;
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260630-banner-fixed">
+    <link rel="stylesheet" href="style.css?v=20260630-banner-full">
 </head>
 
 <body class="page-home at-top">
@@ -1272,8 +1262,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260630-banner-fixed" defer></script>
-    <script src="script.js?v=20260630-banner-fixed" defer></script>
+    <script src="translations.js?v=20260630-banner-full" defer></script>
+    <script src="script.js?v=20260630-banner-full" defer></script>
 </body>
 
 </html>

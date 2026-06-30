@@ -132,12 +132,12 @@ body.page-home main {
 
 body.page-home:not(.past-banner) main {
     margin: 0 !important;
-    margin-top: var(--home-banner-height, min(66vw, 53svh)) !important;
+    margin-top: var(--home-banner-height, 56.25vw) !important;
     padding-top: 0 !important;
 }
 
 body.page-home.at-top main {
-    margin-top: var(--home-banner-height, min(66vw, 53svh)) !important;
+    margin-top: var(--home-banner-height, 56.25vw) !important;
 }
 
 body.page-home.past-banner:not(.at-top) main {
@@ -179,8 +179,8 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     padding: 0;
     width: 100%;
     max-width: 100%;
-    height: min(66vw, 53vh);
-    height: min(66vw, 53svh);
+    aspect-ratio: 16 / 9;
+    height: auto;
     background: none;
     overflow: hidden;
     line-height: 0;
@@ -1065,8 +1065,8 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: min(66vw, 53vh);
-    height: min(66vw, 53svh);
+    aspect-ratio: 16 / 9;
+    height: auto;
     background: none;
     overflow: hidden;
     line-height: 0;
@@ -2689,7 +2689,8 @@ html[dir="rtl"] .chapters-nav-inner {
     .hero-home .hero-media {
         width: 100%;
         max-width: 100%;
-        height: 66vw;
+        aspect-ratio: 16 / 9;
+        height: auto;
         background: none;
     }
 
@@ -2697,7 +2698,8 @@ html[dir="rtl"] .chapters-nav-inner {
     body.page-home.at-top .hero-home .hero-media {
         margin-top: 0;
         padding-top: 0;
-        height: 66vw;
+        aspect-ratio: 16 / 9;
+        height: auto;
         box-sizing: border-box;
     }
 
@@ -2723,8 +2725,12 @@ html[dir="rtl"] .chapters-nav-inner {
 
     @media (orientation: landscape) {
         .hero-home .hero-media {
-            height: min(66vw, 48vh);
-            height: min(66vw, 48svh);
+            aspect-ratio: auto;
+            height: min(56.25vw, 48svh);
+        }
+
+        .hero-home .hero-media-img {
+            object-fit: fill;
         }
     }
 
@@ -2832,15 +2838,16 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: auto;
         width: 100%;
         max-width: 100%;
-        height: 66vw;
+        aspect-ratio: 16 / 9;
+        height: auto;
         background: transparent;
         overflow: hidden;
     }
 
     @media (orientation: landscape) {
         .hero-home .hero-media {
-            height: min(66vw, 48vh);
-            height: min(66vw, 48svh);
+            aspect-ratio: auto;
+            height: min(56.25vw, 48svh);
         }
     }
 
@@ -2848,6 +2855,13 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         object-fit: cover;
         object-position: top center;
+    }
+
+    @media (orientation: landscape) {
+        body.page-home.at-top .hero-home .hero-media-img,
+        body.page-home.past-banner .hero-home .hero-media-img {
+            object-fit: fill;
+        }
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
