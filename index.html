@@ -76,8 +76,7 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            max-width: none;
-            height: auto;
+            height: min(30vh, 280px);
             background: transparent;
             overflow: hidden;
             line-height: 0;
@@ -86,14 +85,18 @@
         .hero-home .hero-media-img {
             display: block;
             width: 100%;
-            max-width: none;
-            height: auto;
-            object-fit: unset;
+            height: 100%;
+            object-fit: cover;
             object-position: top center;
-            vertical-align: top;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-home .hero-media {
+                height: min(26vh, 200px);
+            }
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260616-banner-fullwidth">
+    <link rel="stylesheet" href="style.css?v=20260616-banner-compact">
 </head>
 
 <body class="page-home">
@@ -1165,7 +1168,7 @@
         }
     </script>
     <script src="translations.js?v=20260616-banner-natural" defer></script>
-    <script src="script.js?v=20260616-banner-fullwidth" defer></script>
+    <script src="script.js?v=20260616-banner-compact" defer></script>
 </body>
 
 </html>
