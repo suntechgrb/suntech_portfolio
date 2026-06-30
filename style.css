@@ -137,7 +137,7 @@ body.page-home:not(.past-banner) main {
     padding-top: 0 !important;
 }
 
-body.page-home:not(.past-banner) .hero {
+body.page-home:not(.past-banner) .hero-home {
     display: block !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -147,12 +147,12 @@ body.page-home:not(.past-banner) .hero {
     line-height: 0;
 }
 
-body.page-home:not(.past-banner) .hero-media-scrim,
-body.page-home:not(.past-banner) .hero-media-shine {
+body.page-home:not(.past-banner) .hero-home .hero-media-scrim,
+body.page-home:not(.past-banner) .hero-home .hero-media-shine {
     display: none !important;
 }
 
-body.page-home:not(.past-banner) .hero-media {
+body.page-home:not(.past-banner) .hero-home .hero-media {
     position: relative;
     inset: auto;
     display: block;
@@ -167,7 +167,7 @@ body.page-home:not(.past-banner) .hero-media {
     line-height: 0;
 }
 
-body.page-home:not(.past-banner) .hero-media-img {
+body.page-home:not(.past-banner) .hero-home .hero-media-img {
     position: absolute;
     inset: 0;
     display: block;
@@ -179,7 +179,7 @@ body.page-home:not(.past-banner) .hero-media-img {
     transform: none;
 }
 
-body.page-home:not(.past-banner) .hero-promo {
+body.page-home:not(.past-banner) .hero-home .hero-promo {
     display: none !important;
 }
 
@@ -463,7 +463,7 @@ a {
 }
 
 @media (min-width: 1025px) {
-    body.page-home:not(.past-banner) .hero {
+    body.page-home:not(.past-banner) .hero-home {
         min-height: 0 !important;
         display: block !important;
     }
@@ -969,39 +969,35 @@ main section {
     display: none;
 }
 
-main section.hero,
-body.page-home > .hero {
+body.page-home > .hero-home {
     max-width: none;
     margin: 0;
     padding: 0;
 }
 
-.page-home .hero {
+.hero-home {
+    display: block;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    height: auto;
     background: transparent;
-    display: block !important;
-    min-height: 0 !important;
-    height: auto !important;
-    overflow: visible;
     line-height: 0;
+    overflow: hidden;
 }
 
-body.page-home:not(.past-banner) .hero {
-    background: transparent !important;
-}
-
-body.page-home .hero-media {
-    position: relative !important;
-    inset: auto !important;
+.hero-home .hero-media {
+    position: relative;
+    inset: auto;
     display: block;
     width: 100%;
-    flex-shrink: 0;
     height: min(38vh, 360px);
     background: transparent;
     overflow: hidden;
     line-height: 0;
 }
 
-body.page-home .hero-media-img {
+.hero-home .hero-media-img {
     position: absolute;
     inset: 0;
     display: block;
@@ -1012,9 +1008,14 @@ body.page-home .hero-media-img {
     transform: none;
 }
 
-body.page-home.past-banner .hero {
+body.page-home.past-banner .hero-home {
     margin-top: 0;
     padding-top: 0;
+}
+
+body.page-home.past-banner .hero-home .hero-media-img {
+    object-fit: cover;
+    object-position: top center;
 }
 
 .hero {
@@ -1026,14 +1027,6 @@ body.page-home.past-banner .hero {
     overflow: hidden;
     isolation: isolate;
     background: #0B1628;
-}
-
-body.page-home .hero {
-    background: transparent !important;
-    display: block !important;
-    min-height: 0 !important;
-    height: auto !important;
-    justify-content: unset;
 }
 
 .hero-media {
@@ -1059,7 +1052,7 @@ body.page-home .hero {
     pointer-events: none;
 }
 
-body.page-home:not(.past-banner) .hero-media-scrim {
+body.page-home:not(.past-banner) .hero-home .hero-media-scrim {
     display: none !important;
 }
 
@@ -2616,7 +2609,7 @@ html[dir="rtl"] .chapters-nav-inner {
         -webkit-backdrop-filter: none;
     }
 
-    body.page-home .hero-media {
+    .hero-home .hero-media {
         height: min(32vh, 220px);
     }
 
@@ -2634,7 +2627,7 @@ html[dir="rtl"] .chapters-nav-inner {
             0 0 0 1px var(--glass-border);
     }
 
-    body.page-home.past-banner .hero-media-img {
+    body.page-home.past-banner .hero-home .hero-media-img {
         object-fit: cover;
         object-position: top center;
         transform: none;
@@ -2718,14 +2711,14 @@ html[dir="rtl"] .chapters-nav-inner {
         border-bottom: none;
     }
 
-    .page-home .hero {
+    .hero-home {
         margin-top: 0;
         padding-top: 0;
         min-height: 0 !important;
         display: block !important;
     }
 
-    .hero-media {
+    .hero-home .hero-media {
         position: relative;
         inset: auto;
         width: 100%;
@@ -2742,7 +2735,7 @@ html[dir="rtl"] .chapters-nav-inner {
         object-position: top center;
     }
 
-    body.page-home.past-banner .hero-media-img {
+    body.page-home.past-banner .hero-home .hero-media-img {
         object-fit: cover;
         object-position: top center;
     }
@@ -5311,8 +5304,8 @@ html[dir="rtl"] .lang-dropdown {
         padding: 0;
     }
 
-    .page-home .hero {
-        min-height: auto;
+    .hero-home {
+        min-height: 0 !important;
     }
 
     .hero-promo {

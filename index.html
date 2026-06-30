@@ -61,7 +61,7 @@
             pointer-events: none;
         }
 
-        body.page-home .hero {
+        body.page-home .hero-home {
             display: block !important;
             min-height: 0 !important;
             height: auto !important;
@@ -71,7 +71,7 @@
             line-height: 0;
         }
 
-        body.page-home .hero-media {
+        .hero-home .hero-media {
             display: block;
             margin: 0;
             padding: 0;
@@ -82,7 +82,7 @@
             line-height: 0;
         }
 
-        body.page-home .hero-media-img {
+        .hero-home .hero-media-img {
             display: block;
             width: 100%;
             height: 100%;
@@ -91,12 +91,12 @@
         }
 
         @media (max-width: 1024px) {
-            body.page-home .hero-media {
+            .hero-home .hero-media {
                 height: min(32vh, 220px);
             }
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260616-hero-top">
+    <link rel="stylesheet" href="style.css?v=20260616-hero-home">
 </head>
 
 <body class="page-home">
@@ -145,7 +145,7 @@
     <div class="bg-shape bg-shape-2"></div>
     <div class="bg-shape bg-shape-3"></div>
 
-    <section class="hero" id="top">
+    <section class="hero-home" id="top">
         <div class="hero-media">
             <img
                 src="img/banner-site.png"
@@ -1168,7 +1168,7 @@
         }
     </script>
     <script src="translations.js?v=20260616-banner-natural" defer></script>
-    <script src="script.js?v=20260616-hero-top" defer></script>
+    <script src="script.js?v=20260616-hero-home" defer></script>
 </body>
 
 </html>

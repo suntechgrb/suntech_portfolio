@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    const heroSection = document.querySelector('.hero');
-    const bannerSection = document.querySelector('.hero-media');
+    const heroSection = document.querySelector('.hero-home');
+    const bannerSection = document.querySelector('.hero-home .hero-media');
     const backToTop = document.getElementById('backToTop');
     let bannerPastState = false;
 
