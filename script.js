@@ -153,8 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const syncBannerLayout = () => {
         if (!bannerSection || !document.body.classList.contains('page-home')) return;
-        const height = Math.max(bannerSection.offsetHeight, 0);
-        document.documentElement.style.setProperty('--home-banner-height', `${height}px`);
+        const bannerImage = bannerSection.querySelector('.hero-media-img');
+        const height = Math.max(
+            bannerSection.getBoundingClientRect().height,
+            bannerImage ? bannerImage.getBoundingClientRect().height : 0,
+            bannerSection.offsetHeight,
+            bannerImage ? bannerImage.offsetHeight : 0,
+            0
+        );
+        document.documentElement.style.setProperty('--home-banner-height', `${Math.ceil(height)}px`);
     };
 
     const isBannerTop = () => {
