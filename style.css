@@ -132,14 +132,14 @@ body.page-home main {
 
 body.page-home:not(.past-banner) main {
     margin: 0 !important;
-    margin-top: var(--home-banner-height, min(56.25vw, 100svh)) !important;
-    margin-top: var(--home-banner-height, min(56.25vw, 100dvh)) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 48svh)) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 48dvh)) !important;
     padding-top: 0 !important;
 }
 
 body.page-home.at-top main {
-    margin-top: var(--home-banner-height, min(56.25vw, 100svh)) !important;
-    margin-top: var(--home-banner-height, min(56.25vw, 100dvh)) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 48svh)) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 48dvh)) !important;
 }
 
 body.page-home.past-banner:not(.at-top) main {
@@ -181,8 +181,8 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     padding: 0;
     width: 100%;
     max-width: 100%;
-    height: min(56.25vw, 100svh);
-    height: min(56.25vw, 100dvh);
+    height: min(56.25vw, 48svh);
+    height: min(56.25vw, 48dvh);
     background: #010f26;
     overflow: hidden;
     line-height: 0;
@@ -1067,8 +1067,8 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: min(56.25vw, 100svh);
-    height: min(56.25vw, 100dvh);
+    height: min(56.25vw, 48svh);
+    height: min(56.25vw, 48dvh);
     background: #010f26;
     overflow: hidden;
     line-height: 0;
@@ -2699,8 +2699,8 @@ html[dir="rtl"] .chapters-nav-inner {
     .hero-home .hero-media {
         width: 100%;
         max-width: 100%;
-        height: min(56.25vw, 100svh);
-        height: min(56.25vw, 100dvh);
+        height: min(56.25vw, 48svh);
+        height: min(56.25vw, 48dvh);
         background: #010f26;
     }
 
@@ -2708,8 +2708,8 @@ html[dir="rtl"] .chapters-nav-inner {
     body.page-home.at-top .hero-home .hero-media {
         margin-top: 0;
         padding-top: 0;
-        height: min(56.25vw, 100svh);
-        height: min(56.25vw, 100dvh);
+        height: min(56.25vw, 48svh);
+        height: min(56.25vw, 48dvh);
         box-sizing: border-box;
     }
 
@@ -2844,8 +2844,8 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: auto;
         width: 100%;
         max-width: 100%;
-        height: min(56.25vw, 100svh);
-        height: min(56.25vw, 100dvh);
+        height: min(56.25vw, 48svh);
+        height: min(56.25vw, 48dvh);
         background: #010f26;
         overflow: hidden;
     }
