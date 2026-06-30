@@ -46,13 +46,13 @@
     --orb-a: rgba(249, 115, 22, 0.1);
     --orb-b: rgba(11, 22, 40, 0.35);
     --orb-c: rgba(251, 191, 36, 0.06);
-    --home-banner-fit: clamp(220px, 34vw, 420px);
-    --home-banner-bg: #010f26;
+    --home-banner-fit: clamp(280px, 36vw, 500px);
+    --home-banner-bg: #0a1628;
 }
 
 @media (max-width: 768px) {
     :root {
-        --home-banner-fit: clamp(180px, 48vw, 300px);
+        --home-banner-fit: clamp(200px, 44vw, 340px);
     }
 }
 
@@ -176,7 +176,17 @@ body.page-home.past-banner:not(.at-top) .hero-home {
 
 body.page-home:not(.past-banner) .hero-home .hero-media-scrim,
 body.page-home:not(.past-banner) .hero-home .hero-media-shine {
-    display: none !important;
+    display: block !important;
+}
+
+body.page-home:not(.past-banner) .hero-home .hero-media-shine {
+    opacity: 0.45;
+}
+
+body.page-home:not(.past-banner) .hero-home .hero-media-scrim {
+    background:
+        linear-gradient(180deg, rgba(1, 15, 38, 0.28) 0%, transparent 34%),
+        linear-gradient(0deg, var(--bg-main) 0%, transparent 52%);
 }
 
 body.page-home:not(.past-banner) .hero-home .hero-media {
@@ -191,6 +201,7 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     background: var(--home-banner-bg);
     overflow: hidden;
     line-height: 0;
+    box-shadow: 0 14px 48px rgba(1, 15, 38, 0.22);
 }
 
 body.page-home:not(.past-banner) .hero-home .hero-media-img {
@@ -199,9 +210,10 @@ body.page-home:not(.past-banner) .hero-home .hero-media-img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: fill;
-    object-position: center;
-    transform: none;
+    object-fit: cover;
+    object-position: center 38%;
+    transform: scale(1.02);
+    transform-origin: center center;
 }
 
 body.page-home.at-top .site-header,
@@ -1076,6 +1088,7 @@ body.page-home > .hero-home {
     background: var(--home-banner-bg);
     overflow: hidden;
     line-height: 0;
+    box-shadow: 0 14px 48px rgba(1, 15, 38, 0.22);
 }
 
 .hero-home .hero-media-img {
@@ -1084,9 +1097,10 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: fill;
-    object-position: center;
-    transform: none;
+    object-fit: cover;
+    object-position: center 38%;
+    transform: scale(1.02);
+    transform-origin: center center;
 }
 
 body.page-home.past-banner .hero-home {
@@ -1105,8 +1119,9 @@ body.page-home.past-banner .hero-home .hero-media-img {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
-    object-position: center;
+    object-fit: cover;
+    object-position: center 38%;
+    transform: scale(1.02);
 }
 
 .hero {
@@ -1137,19 +1152,21 @@ body.page-home.past-banner .hero-home .hero-media-img {
 .hero-media-scrim {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background:
         linear-gradient(180deg, rgba(11, 22, 40, 0.42) 0%, transparent 28%),
         linear-gradient(0deg, var(--bg-main) 0%, transparent 22%);
     pointer-events: none;
 }
 
-body.page-home:not(.past-banner) .hero-home .hero-media-scrim {
-    display: none !important;
+.hero-home .hero-media-img {
+    z-index: 0;
 }
 
 .hero-media-shine {
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.04) 50%, transparent 60%);
     background-size: 220% 100%;
     animation: promoShimmer 12s linear infinite;
@@ -1185,9 +1202,27 @@ body.page-home:not(.past-banner) .hero-home .hero-media-scrim {
 }
 
 body.page-home:not(.past-banner) .hero-intro {
-    margin-top: 0;
-    padding-top: 1.25rem;
-    background: var(--bg-main);
+    margin-top: -3rem;
+    padding: 0 5% 2rem;
+    background: transparent;
+}
+
+body.page-home:not(.past-banner) .hero-intro-card {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: calc(var(--radius-lg) + 2px);
+    box-shadow:
+        0 24px 60px rgba(1, 15, 38, 0.14),
+        0 8px 24px rgba(1, 15, 38, 0.08),
+        0 0 0 1px rgba(249, 115, 22, 0.1);
+}
+
+[data-theme="light"] body.page-home:not(.past-banner) .hero-intro-card {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow:
+        0 24px 56px rgba(11, 22, 40, 0.1),
+        0 8px 20px rgba(11, 22, 40, 0.06),
+        0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
 .hero-intro-card {
@@ -2723,15 +2758,10 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
-        object-position: center;
-        transform: none;
-    }
-
-    body.page-home.past-banner .hero-home .hero-media {
-        height: var(--home-banner-fit);
-        aspect-ratio: auto;
-        background: var(--home-banner-bg);
+        object-fit: cover;
+        object-position: center 38%;
+        transform: scale(1.02);
+        transform-origin: center center;
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
@@ -2739,21 +2769,22 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
-        object-position: center;
+        object-fit: cover;
+        object-position: center 38%;
+        transform: scale(1.02);
     }
 
     body.page-home:not(.past-banner) .hero-intro {
-        margin-top: 0.85rem;
-        padding: 0 1rem 1rem;
-        background: var(--bg-main);
+        margin-top: -1.75rem;
+        padding: 0 1rem 1.25rem;
+        background: transparent;
     }
 
     body.page-home:not(.past-banner) .hero-intro-card {
         margin: 0;
         border-radius: var(--radius-lg);
         box-shadow:
-            0 12px 32px rgba(11, 22, 40, 0.08),
+            0 16px 40px rgba(11, 22, 40, 0.1),
             0 0 0 1px var(--glass-border);
     }
 
@@ -2850,6 +2881,7 @@ html[dir="rtl"] .chapters-nav-inner {
         height: var(--home-banner-fit);
         background: var(--home-banner-bg);
         overflow: hidden;
+        box-shadow: 0 14px 48px rgba(1, 15, 38, 0.22);
     }
 
     body.page-home.at-top .hero-home .hero-media-img {
@@ -2857,8 +2889,10 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
-        object-position: center;
+        object-fit: cover;
+        object-position: center 38%;
+        transform: scale(1.02);
+        transform-origin: center center;
     }
 
     body.page-home.past-banner .hero-home .hero-media {
@@ -2872,8 +2906,9 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
-        object-position: center;
+        object-fit: cover;
+        object-position: center 38%;
+        transform: scale(1.02);
     }
 
     .hero-media-scrim {
