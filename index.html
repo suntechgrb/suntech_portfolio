@@ -97,12 +97,12 @@
         body.page-home.at-top .hero-home,
         body.page-home:not(.past-banner) .hero-home {
             display: block !important;
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
             width: 100% !important;
-            z-index: 50 !important;
+            z-index: 2 !important;
             min-height: 0 !important;
             height: auto !important;
             margin: 0 !important;
@@ -113,7 +113,7 @@
 
         body.page-home.at-top main,
         body.page-home:not(.past-banner) main {
-            margin-top: var(--home-banner-fit) !important;
+            margin-top: 0 !important;
         }
 
         body.page-home.past-banner:not(.at-top) .hero-home {
@@ -144,13 +144,13 @@
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: fill;
             object-position: center;
         }
 
         body.page-home.past-banner:not(.at-top) .hero-home .hero-media {
-            height: auto;
-            aspect-ratio: 16 / 9;
+            height: var(--home-banner-fit);
+            aspect-ratio: auto;
             background: var(--home-banner-bg);
         }
 
@@ -159,7 +159,7 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: fill;
             object-position: center;
         }
 
@@ -203,7 +203,7 @@
             display: none !important;
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260630-banner-balanced">
+    <link rel="stylesheet" href="style.css?v=20260630-banner-flow">
 </head>
 
 <body class="page-home at-top">
@@ -1274,8 +1274,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260630-banner-balanced" defer></script>
-    <script src="script.js?v=20260630-banner-balanced" defer></script>
+    <script src="translations.js?v=20260630-banner-flow" defer></script>
+    <script src="script.js?v=20260630-banner-flow" defer></script>
 </body>
 
 </html>
