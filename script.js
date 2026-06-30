@@ -231,7 +231,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const isHome = document.body.classList.contains('page-home');
 
         if (isHome && heroSection) {
-            const pastHero = isPastBanner();
+            let pastHero = scrollY <= 12 ? false : isPastBanner();
+            if (scrollY <= 12) {
+                bannerPastState = false;
+                pastHero = false;
+            }
             navbar.classList.toggle('show-logo', pastHero);
             navbar.classList.toggle('scrolled', pastHero);
             document.body.classList.toggle('past-banner', pastHero);

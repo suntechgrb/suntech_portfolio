@@ -42,11 +42,19 @@
     <link rel="canonical" href="https://suntech-grb.com/">
     <style id="hero-critical">
         html,
-        body.page-home {
+        html:has(body.page-home:not(.past-banner)),
+        body.page-home,
+        body.page-home:not(.past-banner) {
             margin: 0 !important;
             padding: 0 !important;
-            background: transparent !important;
+            background: #010f26 !important;
+            background-color: #010f26 !important;
             background-image: none !important;
+        }
+
+        body.page-home:not(.past-banner)::before,
+        body.page-home:not(.past-banner)::after {
+            display: none !important;
         }
 
         body.page-home:not(.past-banner) .navbar,
@@ -92,7 +100,7 @@
             max-width: 100%;
             height: min(66vw, 53vh);
             height: min(66vw, 53svh);
-            background: transparent;
+            background: #010f26;
             overflow: hidden;
             line-height: 0;
         }
@@ -120,7 +128,7 @@
             object-position: top center;
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260630-nav-fix">
+    <link rel="stylesheet" href="style.css?v=20260630-banner-top">
 </head>
 
 <body class="page-home">
@@ -1191,8 +1199,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260630-nav-fix" defer></script>
-    <script src="script.js?v=20260630-nav-fix" defer></script>
+    <script src="translations.js?v=20260630-banner-top" defer></script>
+    <script src="script.js?v=20260630-banner-top" defer></script>
 </body>
 
 </html>
