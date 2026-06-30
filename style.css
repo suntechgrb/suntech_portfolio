@@ -158,9 +158,8 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     padding: 0;
     width: 100%;
     max-width: 100%;
-    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
-    height: calc(min(66vw, 53vh) + env(safe-area-inset-top, 0px));
-    height: calc(min(66vw, 53svh) + env(safe-area-inset-top, 0px));
+    height: min(66vw, 53vh);
+    height: min(66vw, 53svh);
     background: none;
     overflow: hidden;
     line-height: 0;
@@ -168,14 +167,46 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
 
 body.page-home:not(.past-banner) .hero-home .hero-media-img {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: cover;
     object-position: top center;
     transform: none;
+}
+
+body.page-home.at-top .site-header,
+body.page-home.at-top.past-banner .site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    pointer-events: none;
+    overflow: visible;
+}
+
+body.page-home.at-top .site-header .navbar,
+body.page-home.at-top .site-header .nav-links,
+body.page-home.at-top.past-banner .site-header .navbar,
+body.page-home.at-top.past-banner .site-header .nav-links {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+[data-theme="light"] body.page-home.at-top .site-header,
+[data-theme="light"] body.page-home.at-top.past-banner .site-header {
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 body.page-home:not(.past-banner) .hero-home .hero-promo {
@@ -1001,9 +1032,8 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     max-width: 100%;
-    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
-    height: calc(min(66vw, 53vh) + env(safe-area-inset-top, 0px));
-    height: calc(min(66vw, 53svh) + env(safe-area-inset-top, 0px));
+    height: min(66vw, 53vh);
+    height: min(66vw, 53svh);
     background: none;
     overflow: hidden;
     line-height: 0;
@@ -1011,11 +1041,10 @@ body.page-home > .hero-home {
 
 .hero-home .hero-media-img {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: cover;
     object-position: top center;
     transform: none;
@@ -2627,20 +2656,21 @@ html[dir="rtl"] .chapters-nav-inner {
     .hero-home .hero-media {
         width: 100%;
         max-width: 100%;
-        height: calc(66vw + env(safe-area-inset-top, 0px));
+        height: 66vw;
         background: none;
     }
 
-    body.page-home:not(.past-banner) .hero-home .hero-media {
-        margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+    body.page-home:not(.past-banner) .hero-home .hero-media,
+    body.page-home.at-top .hero-home .hero-media {
+        margin-top: 0;
         padding-top: 0;
-        height: calc(66vw + env(safe-area-inset-top, 0px));
+        height: 66vw;
         box-sizing: border-box;
     }
 
-    body.page-home:not(.past-banner) .hero-home .hero-media-img {
-        top: 0;
-        height: 100%;
+    body.page-home:not(.past-banner) .hero-home .hero-media-img,
+    body.page-home.at-top .hero-home .hero-media-img {
+        inset: 0;
         object-fit: cover;
         object-position: top center;
     }
@@ -2781,9 +2811,8 @@ html[dir="rtl"] .chapters-nav-inner {
         }
     }
 
-    body.page-home:not(.past-banner) .hero-home .hero-media-img {
-        top: 0;
-        height: 100%;
+    body.page-home.at-top .hero-home .hero-media-img {
+        inset: 0;
         object-fit: cover;
         object-position: top center;
     }

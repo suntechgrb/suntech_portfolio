@@ -114,23 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isPastBanner = () => {
         if (!bannerSection) return false;
-
         const height = bannerSection.offsetHeight;
         if (height <= 48) return false;
-
-        // Ignore mobile scroll-restore jitter near the top.
-        if (window.scrollY <= 12) {
-            bannerPastState = false;
-            return false;
-        }
-
-        const bottom = bannerSection.getBoundingClientRect().bottom;
-        if (!bannerPastState && bottom <= 4) {
-            bannerPastState = true;
-        } else if (bannerPastState && bottom > 24) {
-            bannerPastState = false;
-        }
-        return bannerPastState;
+        return window.scrollY >= height - 8;
     };
 
     const shouldStartAtTop = () => {
@@ -143,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         bannerPastState = false;
         document.body.classList.remove('past-banner', 'chapters-visible');
+        document.body.classList.add('at-top');
 
         window.scrollTo(0, 0);
 
@@ -231,11 +218,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const isHome = document.body.classList.contains('page-home');
 
         if (isHome && heroSection) {
-            let pastHero = scrollY <= 12 ? false : isPastBanner();
-            if (scrollY <= 12) {
-                bannerPastState = false;
-                pastHero = false;
-            }
+            const atTop = scrollY <= 12;
+            const pastHero = !atTop && isPastBanner();
+            bannerPastState = pastHero;
+            document.body.classList.toggle('at-top', atTop);
             navbar.classList.toggle('show-logo', pastHero);
             navbar.classList.toggle('scrolled', pastHero);
             document.body.classList.toggle('past-banner', pastHero);
