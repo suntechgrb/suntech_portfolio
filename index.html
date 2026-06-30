@@ -104,7 +104,8 @@
 
         body.page-home.at-top main,
         body.page-home:not(.past-banner) main {
-            margin-top: 56.25vw !important;
+            margin-top: min(56.25vw, 100svh) !important;
+            margin-top: min(56.25vw, 100dvh) !important;
         }
 
         body.page-home.past-banner:not(.at-top) .hero-home {
@@ -123,19 +124,36 @@
             padding: 0;
             width: 100%;
             max-width: 100%;
-            height: auto;
-            background: none;
+            height: min(56.25vw, 100svh);
+            height: min(56.25vw, 100dvh);
+            background: #010f26;
             overflow: hidden;
             line-height: 0;
         }
 
         .hero-home .hero-media-img {
-            position: relative;
+            position: absolute;
+            inset: 0;
             display: block;
             width: 100%;
+            height: 100%;
+            object-fit: fill;
+            object-position: center;
+        }
+
+        body.page-home.past-banner:not(.at-top) .hero-home .hero-media {
             height: auto;
-            max-width: 100%;
-            vertical-align: top;
+            aspect-ratio: 16 / 9;
+            background: none;
+        }
+
+        body.page-home.past-banner:not(.at-top) .hero-home .hero-media-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            object-position: center;
         }
 
         body.page-home.at-top .site-header,
@@ -178,7 +196,7 @@
             display: none !important;
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260630-banner-natural">
+    <link rel="stylesheet" href="style.css?v=20260630-banner-viewport">
 </head>
 
 <body class="page-home at-top">
@@ -1249,8 +1267,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260630-banner-natural" defer></script>
-    <script src="script.js?v=20260630-banner-natural" defer></script>
+    <script src="translations.js?v=20260630-banner-viewport" defer></script>
+    <script src="script.js?v=20260630-banner-viewport" defer></script>
 </body>
 
 </html>

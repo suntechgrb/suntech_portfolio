@@ -132,12 +132,14 @@ body.page-home main {
 
 body.page-home:not(.past-banner) main {
     margin: 0 !important;
-    margin-top: var(--home-banner-height, 56.25vw) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 100svh)) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 100dvh)) !important;
     padding-top: 0 !important;
 }
 
 body.page-home.at-top main {
-    margin-top: var(--home-banner-height, 56.25vw) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 100svh)) !important;
+    margin-top: var(--home-banner-height, min(56.25vw, 100dvh)) !important;
 }
 
 body.page-home.past-banner:not(.at-top) main {
@@ -179,23 +181,22 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     padding: 0;
     width: 100%;
     max-width: 100%;
-    height: auto;
-    background: none;
+    height: min(56.25vw, 100svh);
+    height: min(56.25vw, 100dvh);
+    background: #010f26;
     overflow: hidden;
     line-height: 0;
 }
 
 body.page-home:not(.past-banner) .hero-home .hero-media-img {
-    position: relative;
-    inset: auto;
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: none;
+    height: 100%;
+    object-fit: fill;
     object-position: center;
     transform: none;
-    vertical-align: top;
 }
 
 body.page-home.at-top .site-header,
@@ -1066,23 +1067,22 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: auto;
-    background: none;
+    height: min(56.25vw, 100svh);
+    height: min(56.25vw, 100dvh);
+    background: #010f26;
     overflow: hidden;
     line-height: 0;
 }
 
 .hero-home .hero-media-img {
-    position: relative;
-    inset: auto;
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: none;
+    height: 100%;
+    object-fit: fill;
     object-position: center;
     transform: none;
-    vertical-align: top;
 }
 
 body.page-home.past-banner .hero-home {
@@ -1090,11 +1090,18 @@ body.page-home.past-banner .hero-home {
     padding-top: 0;
 }
 
-body.page-home.past-banner .hero-home .hero-media-img {
-    position: relative;
-    width: 100%;
+body.page-home.past-banner .hero-home .hero-media {
     height: auto;
-    object-fit: none;
+    aspect-ratio: 16 / 9;
+    background: none;
+}
+
+body.page-home.past-banner .hero-home .hero-media-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
     object-position: center;
 }
 
@@ -2692,28 +2699,45 @@ html[dir="rtl"] .chapters-nav-inner {
     .hero-home .hero-media {
         width: 100%;
         max-width: 100%;
-        height: auto;
-        background: none;
+        height: min(56.25vw, 100svh);
+        height: min(56.25vw, 100dvh);
+        background: #010f26;
     }
 
     body.page-home:not(.past-banner) .hero-home .hero-media,
     body.page-home.at-top .hero-home .hero-media {
         margin-top: 0;
         padding-top: 0;
-        height: auto;
+        height: min(56.25vw, 100svh);
+        height: min(56.25vw, 100dvh);
         box-sizing: border-box;
     }
 
     body.page-home:not(.past-banner) .hero-home .hero-media-img,
     body.page-home.at-top .hero-home .hero-media-img,
-    .hero-home .hero-media-img,
-    body.page-home.past-banner .hero-home .hero-media-img {
-        position: relative;
+    .hero-home .hero-media-img {
+        position: absolute;
+        inset: 0;
         width: 100%;
-        height: auto;
-        object-fit: none;
+        height: 100%;
+        object-fit: fill;
         object-position: center;
         transform: none;
+    }
+
+    body.page-home.past-banner .hero-home .hero-media {
+        height: auto;
+        aspect-ratio: 16 / 9;
+        background: none;
+    }
+
+    body.page-home.past-banner .hero-home .hero-media-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
     }
 
     body.page-home:not(.past-banner) .hero-intro {
@@ -2820,17 +2844,33 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: auto;
         width: 100%;
         max-width: 100%;
-        height: auto;
-        background: transparent;
+        height: min(56.25vw, 100svh);
+        height: min(56.25vw, 100dvh);
+        background: #010f26;
         overflow: hidden;
     }
 
-    body.page-home.at-top .hero-home .hero-media-img,
-    body.page-home.past-banner .hero-home .hero-media-img {
-        position: relative;
+    body.page-home.at-top .hero-home .hero-media-img {
+        position: absolute;
+        inset: 0;
         width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
+    }
+
+    body.page-home.past-banner .hero-home .hero-media {
         height: auto;
-        object-fit: none;
+        aspect-ratio: 16 / 9;
+        background: none;
+    }
+
+    body.page-home.past-banner .hero-home .hero-media-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
         object-position: center;
     }
 
