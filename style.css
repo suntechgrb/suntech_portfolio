@@ -159,8 +159,9 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     margin: 0;
     padding: 0;
     width: 100%;
-    max-width: none;
-    height: min(56.25vw, 45vh);
+    max-width: 100%;
+    height: min(66vw, 53vh);
+    height: min(66vw, 53svh);
     background: transparent;
     overflow: hidden;
     line-height: 0;
@@ -172,7 +173,7 @@ body.page-home:not(.past-banner) .hero-home .hero-media-img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     object-position: top center;
     transform: none;
 }
@@ -991,8 +992,9 @@ body.page-home > .hero-home {
     inset: auto;
     display: block;
     width: 100%;
-    max-width: none;
-    height: min(56.25vw, 45vh);
+    max-width: 100%;
+    height: min(66vw, 53vh);
+    height: min(66vw, 53svh);
     background: transparent;
     overflow: hidden;
     line-height: 0;
@@ -1004,7 +1006,7 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     object-position: top center;
     transform: none;
 }
@@ -1015,7 +1017,7 @@ body.page-home.past-banner .hero-home {
 }
 
 body.page-home.past-banner .hero-home .hero-media-img {
-    object-fit: cover;
+    object-fit: fill;
     object-position: top center;
 }
 
@@ -2611,19 +2613,28 @@ html[dir="rtl"] .chapters-nav-inner {
     }
 
     .hero-home .hero-media {
-        height: min(56.25vw, 45vh);
+        width: 100%;
+        max-width: 100%;
+        height: 66vw;
         background: transparent;
     }
 
     .hero-home .hero-media-img {
-        object-fit: cover;
+        object-fit: fill;
         object-position: top center;
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
-        object-fit: cover;
+        object-fit: fill;
         object-position: top center;
         transform: none;
+    }
+
+    @media (orientation: landscape) {
+        .hero-home .hero-media {
+            height: min(66vw, 48vh);
+            height: min(66vw, 48svh);
+        }
     }
 
     body.page-home:not(.past-banner) .hero-intro {
@@ -2729,10 +2740,17 @@ html[dir="rtl"] .chapters-nav-inner {
         position: relative;
         inset: auto;
         width: 100%;
-        max-width: none;
-        height: min(56.25vw, 45vh);
+        max-width: 100%;
+        height: 66vw;
         background: transparent;
         overflow: hidden;
+    }
+
+    @media (orientation: landscape) {
+        .hero-home .hero-media {
+            height: min(66vw, 48vh);
+            height: min(66vw, 48svh);
+        }
     }
 
     .hero-home .hero-media-img {
@@ -2741,12 +2759,12 @@ html[dir="rtl"] .chapters-nav-inner {
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: fill;
         object-position: top center;
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
-        object-fit: cover;
+        object-fit: fill;
         object-position: top center;
     }
 
