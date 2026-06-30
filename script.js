@@ -148,6 +148,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updateNavbarState();
+        syncBannerLayout();
+    };
+
+    const syncBannerLayout = () => {
+        if (!bannerSection || !document.body.classList.contains('page-home')) return;
+        const height = Math.max(bannerSection.offsetHeight, 0);
+        document.documentElement.style.setProperty('--home-banner-height', `${height}px`);
+    };
+
+    const isBannerTop = () => {
+        if (!bannerSection) return window.scrollY <= 12;
+        const height = bannerSection.offsetHeight;
+        if (height <= 48) return window.scrollY <= 12;
+        return window.scrollY < height - 8;
     };
 
     const syncNavMetrics = () => {
@@ -218,9 +232,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const isHome = document.body.classList.contains('page-home');
 
         if (isHome && heroSection) {
-            const atTop = scrollY <= 12;
-            const pastHero = !atTop && isPastBanner();
+            const atTop = isBannerTop();
+            const pastHero = !atTop;
             bannerPastState = pastHero;
+            syncBannerLayout();
             document.body.classList.toggle('at-top', atTop);
             navbar.classList.toggle('show-logo', pastHero);
             navbar.classList.toggle('scrolled', pastHero);
@@ -243,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     scheduleNavbarStateUpdate();
+    syncBannerLayout();
     syncNavMetrics();
     window.addEventListener('load', scheduleNavbarStateUpdate);
     window.addEventListener('scroll', () => {
@@ -250,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
     window.addEventListener('resize', () => {
         scheduleNavbarStateUpdate();
+        syncBannerLayout();
         syncNavMetrics();
     });
 
@@ -258,7 +275,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroImage.complete) {
             scheduleNavbarStateUpdate();
         } else {
-            heroImage.addEventListener('load', scheduleNavbarStateUpdate, { once: true });
+            heroImage.addEventListener('load', () => {
+                syncBannerLayout();
+                scheduleNavbarStateUpdate();
+            }, { once: true });
         }
     }
 
@@ -268,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (resizeTicking) return;
             resizeTicking = true;
             requestAnimationFrame(() => {
+                syncBannerLayout();
                 updateNavbarState();
                 resizeTicking = false;
             });
@@ -634,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter(Boolean);
 
         const updateVisibility = () => {
-            const pastBanner = isPastBanner();
+            const pastBanner = !isBannerTop();
             chaptersNav.classList.toggle('is-visible', pastBanner);
             document.body.classList.toggle('chapters-visible', pastBanner);
             syncNavMetrics();

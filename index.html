@@ -54,7 +54,9 @@
         }
 
         body.page-home:not(.past-banner)::before,
-        body.page-home:not(.past-banner)::after {
+        body.page-home:not(.past-banner)::after,
+        body.page-home:not(.past-banner) .site-bg-mesh,
+        body.page-home:not(.past-banner) .bg-shape {
             display: none !important;
         }
 
@@ -83,16 +85,43 @@
             box-shadow: none !important;
         }
 
-        body.page-home .hero-home {
+        body.page-home.at-top .hero-home,
+        body.page-home:not(.past-banner) .hero-home {
             display: block !important;
-            position: relative !important;
-            z-index: 2 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 50 !important;
             min-height: 0 !important;
             height: auto !important;
             margin: 0 !important;
             padding: 0 !important;
             background: transparent !important;
             line-height: 0;
+        }
+
+        body.page-home.at-top main,
+        body.page-home:not(.past-banner) main {
+            margin-top: min(66vw, 53vh) !important;
+            margin-top: min(66vw, 53svh) !important;
+        }
+
+        @media (max-width: 768px) {
+            body.page-home.at-top main,
+            body.page-home:not(.past-banner) main {
+                margin-top: 66vw !important;
+            }
+        }
+
+        body.page-home.past-banner:not(.at-top) .hero-home {
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        body.page-home.past-banner:not(.at-top) main {
+            margin-top: 0 !important;
         }
 
         .hero-home .hero-media {
@@ -134,25 +163,35 @@
 
         body.page-home.at-top .site-header,
         body.page-home:not(.past-banner) .site-header {
-            z-index: -1 !important;
-            height: 0 !important;
-            min-height: 0 !important;
-            max-height: 0 !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            overflow: hidden !important;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            pointer-events: none;
+            display: none !important;
         }
 
-        body.page-home.at-top .site-header .hamburger {
-            z-index: 1006 !important;
-            position: fixed !important;
-            top: 0.5rem !important;
-            right: 0.75rem !important;
-            pointer-events: auto !important;
+        @media (max-width: 1024px) {
+            body.page-home.at-top .site-header,
+            body.page-home:not(.past-banner) .site-header {
+                display: block !important;
+                z-index: 1006 !important;
+                height: 0 !important;
+                min-height: 0 !important;
+                max-height: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                overflow: visible !important;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                pointer-events: none;
+            }
+
+            body.page-home.at-top .site-header .hamburger,
+            body.page-home:not(.past-banner) .site-header .hamburger {
+                display: flex !important;
+                z-index: 1007 !important;
+                position: fixed !important;
+                top: 0.5rem !important;
+                right: 0.75rem !important;
+                pointer-events: auto !important;
+            }
         }
 
         body.page-home.at-top .site-header .navbar,
@@ -162,10 +201,39 @@
             display: none !important;
         }
     </style>
-    <link rel="stylesheet" href="style.css?v=20260630-banner-z">
+    <link rel="stylesheet" href="style.css?v=20260630-banner-fixed">
 </head>
 
 <body class="page-home at-top">
+    <section class="hero-home" id="top">
+        <div class="hero-media">
+            <img
+                src="img/banner-site.png"
+                alt="SuntechTN — Smart Solutions. Real Impact."
+                class="hero-media-img"
+                width="1920"
+                height="1080"
+                fetchpriority="high"
+                decoding="async"
+            >
+            <div class="hero-media-scrim" aria-hidden="true"></div>
+            <div class="hero-media-shine" aria-hidden="true"></div>
+        </div>
+        <aside class="promo-banner hero-promo fade-in-up" aria-label="Announcement">
+            <div class="promo-banner-glow" aria-hidden="true"></div>
+            <div class="promo-banner-inner">
+                <strong class="promo-item promo-item-highlight" data-i18n="promo_highlight">Free quote within 24h</strong>
+                <span class="promo-sep" aria-hidden="true">✦</span>
+                <span class="promo-item" data-i18n="promo_web">Web &amp; mobile apps</span>
+                <span class="promo-sep" aria-hidden="true">✦</span>
+                <span class="promo-item" data-i18n="promo_ecom">E-commerce &amp; SaaS</span>
+                <span class="promo-sep" aria-hidden="true">✦</span>
+                <span class="promo-item" data-i18n="promo_ai">AI automation</span>
+                <a href="#contact" class="promo-banner-cta" data-i18n="promo_cta">Get a quote →</a>
+            </div>
+        </aside>
+    </section>
+
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
         <symbol id="svc-web" viewBox="0 0 24 24" fill="none">
             <rect x="2.5" y="4" width="19" height="13" rx="2" stroke="currentColor" stroke-width="1"/>
@@ -210,35 +278,6 @@
     <div class="bg-shape bg-shape-1"></div>
     <div class="bg-shape bg-shape-2"></div>
     <div class="bg-shape bg-shape-3"></div>
-
-    <section class="hero-home" id="top">
-        <div class="hero-media">
-            <img
-                src="img/banner-site.png"
-                alt="SuntechTN — Smart Solutions. Real Impact."
-                class="hero-media-img"
-                width="1920"
-                height="1080"
-                fetchpriority="high"
-                decoding="async"
-            >
-            <div class="hero-media-scrim" aria-hidden="true"></div>
-            <div class="hero-media-shine" aria-hidden="true"></div>
-        </div>
-        <aside class="promo-banner hero-promo fade-in-up" aria-label="Announcement">
-            <div class="promo-banner-glow" aria-hidden="true"></div>
-            <div class="promo-banner-inner">
-                <strong class="promo-item promo-item-highlight" data-i18n="promo_highlight">Free quote within 24h</strong>
-                <span class="promo-sep" aria-hidden="true">✦</span>
-                <span class="promo-item" data-i18n="promo_web">Web &amp; mobile apps</span>
-                <span class="promo-sep" aria-hidden="true">✦</span>
-                <span class="promo-item" data-i18n="promo_ecom">E-commerce &amp; SaaS</span>
-                <span class="promo-sep" aria-hidden="true">✦</span>
-                <span class="promo-item" data-i18n="promo_ai">AI automation</span>
-                <a href="#contact" class="promo-banner-cta" data-i18n="promo_cta">Get a quote →</a>
-            </div>
-        </aside>
-    </section>
 
     <main>
         <section class="hero-intro reveal" aria-labelledby="hero-heading">
@@ -1233,8 +1272,8 @@
             ]
         }
     </script>
-    <script src="translations.js?v=20260630-banner-z" defer></script>
-    <script src="script.js?v=20260630-banner-z" defer></script>
+    <script src="translations.js?v=20260630-banner-fixed" defer></script>
+    <script src="script.js?v=20260630-banner-fixed" defer></script>
 </body>
 
 </html>

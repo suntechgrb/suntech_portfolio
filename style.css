@@ -132,19 +132,38 @@ body.page-home main {
 
 body.page-home:not(.past-banner) main {
     margin: 0 !important;
+    margin-top: var(--home-banner-height, min(66vw, 53svh)) !important;
     padding-top: 0 !important;
 }
 
+body.page-home.at-top main {
+    margin-top: var(--home-banner-height, min(66vw, 53svh)) !important;
+}
+
+body.page-home.past-banner:not(.at-top) main {
+    margin-top: 0 !important;
+}
+
+body.page-home.at-top .hero-home,
 body.page-home:not(.past-banner) .hero-home {
     display: block !important;
-    position: relative;
-    z-index: 2;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 50 !important;
     margin: 0 !important;
     padding: 0 !important;
     min-height: 0 !important;
     height: auto !important;
     background: transparent !important;
     line-height: 0;
+}
+
+body.page-home.past-banner:not(.at-top) .hero-home {
+    position: relative !important;
+    z-index: 2;
 }
 
 body.page-home:not(.past-banner) .hero-home .hero-media-scrim,
@@ -513,6 +532,11 @@ a {
         display: block !important;
     }
 
+    body.page-home.at-top .site-header,
+    body.page-home:not(.past-banner) .site-header {
+        display: none !important;
+    }
+
     body.page-home:not(.past-banner) .site-header {
         position: fixed !important;
         top: 0 !important;
@@ -523,7 +547,7 @@ a {
         min-height: 0 !important;
         padding: 0 !important;
         margin: 0 !important;
-        overflow: visible;
+        overflow: hidden !important;
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
