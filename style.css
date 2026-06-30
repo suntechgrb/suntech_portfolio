@@ -46,6 +46,14 @@
     --orb-a: rgba(249, 115, 22, 0.1);
     --orb-b: rgba(11, 22, 40, 0.35);
     --orb-c: rgba(251, 191, 36, 0.06);
+    --home-banner-fit: clamp(220px, 34vw, 420px);
+    --home-banner-bg: #010f26;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --home-banner-fit: clamp(180px, 48vw, 300px);
+    }
 }
 
 [data-theme="light"] {
@@ -132,14 +140,12 @@ body.page-home main {
 
 body.page-home:not(.past-banner) main {
     margin: 0 !important;
-    margin-top: var(--home-banner-height, min(56.25vw, 48svh)) !important;
-    margin-top: var(--home-banner-height, min(56.25vw, 48dvh)) !important;
+    margin-top: var(--home-banner-height, var(--home-banner-fit)) !important;
     padding-top: 0 !important;
 }
 
 body.page-home.at-top main {
-    margin-top: var(--home-banner-height, min(56.25vw, 48svh)) !important;
-    margin-top: var(--home-banner-height, min(56.25vw, 48dvh)) !important;
+    margin-top: var(--home-banner-height, var(--home-banner-fit)) !important;
 }
 
 body.page-home.past-banner:not(.at-top) main {
@@ -181,9 +187,8 @@ body.page-home:not(.past-banner) .hero-home .hero-media {
     padding: 0;
     width: 100%;
     max-width: 100%;
-    height: min(56.25vw, 48svh);
-    height: min(56.25vw, 48dvh);
-    background: #010f26;
+    height: var(--home-banner-fit);
+    background: var(--home-banner-bg);
     overflow: hidden;
     line-height: 0;
 }
@@ -194,7 +199,7 @@ body.page-home:not(.past-banner) .hero-home .hero-media-img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
     object-position: center;
     transform: none;
 }
@@ -1067,9 +1072,8 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: min(56.25vw, 48svh);
-    height: min(56.25vw, 48dvh);
-    background: #010f26;
+    height: var(--home-banner-fit);
+    background: var(--home-banner-bg);
     overflow: hidden;
     line-height: 0;
 }
@@ -1080,7 +1084,7 @@ body.page-home > .hero-home {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
     object-position: center;
     transform: none;
 }
@@ -1093,7 +1097,7 @@ body.page-home.past-banner .hero-home {
 body.page-home.past-banner .hero-home .hero-media {
     height: auto;
     aspect-ratio: 16 / 9;
-    background: none;
+    background: var(--home-banner-bg);
 }
 
 body.page-home.past-banner .hero-home .hero-media-img {
@@ -1101,7 +1105,7 @@ body.page-home.past-banner .hero-home .hero-media-img {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
     object-position: center;
 }
 
@@ -2699,17 +2703,15 @@ html[dir="rtl"] .chapters-nav-inner {
     .hero-home .hero-media {
         width: 100%;
         max-width: 100%;
-        height: min(56.25vw, 48svh);
-        height: min(56.25vw, 48dvh);
-        background: #010f26;
+        height: var(--home-banner-fit);
+        background: var(--home-banner-bg);
     }
 
     body.page-home:not(.past-banner) .hero-home .hero-media,
     body.page-home.at-top .hero-home .hero-media {
         margin-top: 0;
         padding-top: 0;
-        height: min(56.25vw, 48svh);
-        height: min(56.25vw, 48dvh);
+        height: var(--home-banner-fit);
         box-sizing: border-box;
     }
 
@@ -2720,7 +2722,7 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
+        object-fit: contain;
         object-position: center;
         transform: none;
     }
@@ -2728,7 +2730,7 @@ html[dir="rtl"] .chapters-nav-inner {
     body.page-home.past-banner .hero-home .hero-media {
         height: auto;
         aspect-ratio: 16 / 9;
-        background: none;
+        background: var(--home-banner-bg);
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
@@ -2736,7 +2738,7 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
+        object-fit: contain;
         object-position: center;
     }
 
@@ -2844,9 +2846,8 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: auto;
         width: 100%;
         max-width: 100%;
-        height: min(56.25vw, 48svh);
-        height: min(56.25vw, 48dvh);
-        background: #010f26;
+        height: var(--home-banner-fit);
+        background: var(--home-banner-bg);
         overflow: hidden;
     }
 
@@ -2855,14 +2856,14 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
+        object-fit: contain;
         object-position: center;
     }
 
     body.page-home.past-banner .hero-home .hero-media {
         height: auto;
         aspect-ratio: 16 / 9;
-        background: none;
+        background: var(--home-banner-bg);
     }
 
     body.page-home.past-banner .hero-home .hero-media-img {
@@ -2870,7 +2871,7 @@ html[dir="rtl"] .chapters-nav-inner {
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: fill;
+        object-fit: contain;
         object-position: center;
     }
 
