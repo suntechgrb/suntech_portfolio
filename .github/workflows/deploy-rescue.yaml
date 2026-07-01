@@ -6,6 +6,10 @@ name: "Deploy rescue (IONOS)"
 on:
   workflow_dispatch:
 
+concurrency:
+  group: ionos-deploy-rescue
+  cancel-in-progress: false
+
 env:
   DEPLOYMENT_FOLDER: ./
   IONOS_SERVICE_HOST: api-eu.ionos.space
@@ -26,8 +30,8 @@ jobs:
       - name: Upload deployment (with retries)
         uses: Wandalen/wretry.action@v3.2.0
         with:
-          attempt_limit: 6
-          attempt_delay: 20000
+          attempt_limit: 4
+          attempt_delay: 90000
           action: ionos-deploy-now/artifact-action@v1
           with: |
             {
@@ -49,8 +53,8 @@ jobs:
       - name: Dispatch deployments (with retries)
         uses: Wandalen/wretry.action@v3.2.0
         with:
-          attempt_limit: 6
-          attempt_delay: 20000
+          attempt_limit: 4
+          attempt_delay: 90000
           action: ionos-deploy-now/project-action@v1
           with: |
             {
