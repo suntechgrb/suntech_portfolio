@@ -1,0 +1,53 @@
+# Bypass IONOS artifact API when it returns 429/timeouts.
+# Run manually: Actions → "Deploy direct SSH (IONOS)" → Run workflow
+
+name: "Deploy direct SSH (IONOS)"
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ionos-ssh-deploy
+  cancel-in-progress: false
+
+env:
+  IONOS_REMOTE_HOST: access-5020142815.app-ionos.space
+  IONOS_SSH_USER: ${{ secrets.IONOS_DEPLOYMENT_E57DA96E_2B56_4A9B_A0E8_CAB7B1606124_SSH_USERNAME }}
+
+jobs:
+  deploy:
+    name: rsync to production
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Stamp asset version for cache busting
+        run: bash scripts/stamp-build-version.sh "$(git rev-parse --short HEAD)"
+
+      - name: Prepare deployment folder
+        run: |
+          mkdir -p deployment
+          rsync -a --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.idea' \
+            --exclude='.DS_Store' \
+            --exclude='scripts' \
+            --exclude='deployment' \
+            ./ deployment/
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.IONOS_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avE --delete \
+            --rsh="ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
+            --exclude=logs \
+            --exclude=.deploy-now \
+            deployment/ \
+            "${IONOS_SSH_USER}@${IONOS_REMOTE_HOST}:"
