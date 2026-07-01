@@ -1,0 +1,62 @@
+# Fallback deploy when IONOS Deploy Now API times out on retrieve-info.
+# Run manually: Actions → "Deploy rescue (IONOS)" → Run workflow
+
+name: "Deploy rescue (IONOS)"
+
+on:
+  workflow_dispatch:
+
+env:
+  DEPLOYMENT_FOLDER: ./
+  IONOS_SERVICE_HOST: api-eu.ionos.space
+  IONOS_PROJECT_ID: bc101c73-cc92-4e71-a85b-d423144c0c10
+  IONOS_BRANCH_ID: d41244c2-519f-4004-9398-12e9a2cf122e
+
+jobs:
+  build:
+    name: build and upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Stamp asset version for cache busting
+        run: bash scripts/stamp-build-version.sh "$(git rev-parse --short HEAD)"
+
+      - name: Upload deployment (with retries)
+        uses: Wandalen/wretry.action@v3.2.0
+        with:
+          attempt_limit: 6
+          attempt_delay: 20000
+          action: ionos-deploy-now/artifact-action@v1
+          with: |
+            {
+              "api-key": "${{ secrets.IONOS_API_KEY }}",
+              "service-host": "${{ env.IONOS_SERVICE_HOST }}",
+              "project-id": "${{ env.IONOS_PROJECT_ID }}",
+              "branch-id": "${{ env.IONOS_BRANCH_ID }}",
+              "version": "${{ github.sha }}",
+              "folder": "${{ env.DEPLOYMENT_FOLDER }}",
+              "config-file": ".deploy-now/suntech_portfolio/config.yaml",
+              "action": "upload"
+            }
+
+  deploy:
+    name: trigger deployment
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch deployments (with retries)
+        uses: Wandalen/wretry.action@v3.2.0
+        with:
+          attempt_limit: 6
+          attempt_delay: 20000
+          action: ionos-deploy-now/project-action@v1
+          with: |
+            {
+              "api-key": "${{ secrets.IONOS_API_KEY }}",
+              "service-host": "${{ env.IONOS_SERVICE_HOST }}",
+              "project-id": "${{ env.IONOS_PROJECT_ID }}",
+              "branch-id": "${{ env.IONOS_BRANCH_ID }}",
+              "action": "dispatch-deployments"
+            }
