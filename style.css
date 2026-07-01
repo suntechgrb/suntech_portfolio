@@ -4017,24 +4017,17 @@ html[dir="rtl"] .section-head-text {
 .partners-content {
     max-width: 920px;
     margin: 0 auto;
-    padding: 2.75rem 5% 3rem;
+    padding: 2rem 5% 2.5rem;
     text-align: center;
 }
 
 .partners-eyebrow {
-    margin: 0 0 0.35rem;
+    margin: 0 0 1.1rem;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--brand-orange);
-}
-
-.partners-title {
-    margin: 0 0 1.5rem;
-    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-    font-weight: 700;
-    color: var(--text-primary);
 }
 
 .partners-logos {
@@ -4052,8 +4045,8 @@ html[dir="rtl"] .section-head-text {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 88px;
-    padding: 1rem 1.75rem;
+    min-height: 68px;
+    padding: 0.7rem 1.25rem;
     border-radius: var(--radius-lg);
     border: 1px solid var(--glass-border);
     background: var(--bg-elevated);
@@ -4069,9 +4062,9 @@ html[dir="rtl"] .section-head-text {
 .partner-logo {
     display: block;
     width: auto;
-    max-width: min(240px, 62vw);
+    max-width: min(168px, 48vw);
     height: auto;
-    max-height: 48px;
+    max-height: 34px;
     object-fit: contain;
 }
 
