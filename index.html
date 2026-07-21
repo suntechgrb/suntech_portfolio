@@ -208,6 +208,19 @@
             body.page-home:not(.past-banner).nav-open .site-header .hamburger {
                 z-index: 1012 !important;
             }
+
+            body.page-home.past-banner .site-header {
+                display: flex !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                pointer-events: auto !important;
+            }
+
+            body.page-home.past-banner .site-header .hamburger {
+                display: flex !important;
+                pointer-events: auto !important;
+            }
         }
 
         body.page-home.at-top .site-header .navbar,
