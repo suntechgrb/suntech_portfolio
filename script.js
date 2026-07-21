@@ -142,11 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
             siteHeader.classList.remove('is-visible');
         }
 
-        const chaptersNav = document.getElementById('chaptersNav');
-        if (chaptersNav) {
-            chaptersNav.classList.remove('is-visible');
-        }
-
         updateNavbarState();
         syncBannerLayout();
     };
@@ -186,11 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         document.documentElement.style.setProperty('--nav-height', `${Math.max(height, 0)}px`);
-        const chaptersNav = document.getElementById('chaptersNav');
-        if (chaptersNav) {
-            const height = chaptersNav.classList.contains('is-visible') ? chaptersNav.offsetHeight : 0;
-            document.documentElement.style.setProperty('--chapters-height', `${height}px`);
-        }
+        document.documentElement.style.setProperty('--chapters-height', '0px');
     };
 
     const applyImagePerfHints = () => {
@@ -529,15 +520,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const revealSelectors = '.pain-card, .service-card-link, .case-card, .process-step, .testimonial-card, .review-form-wrap, .hero-proof-stat';
+    const revealSelectors = '.service-card-link, .product-card-compact, .case-card, .about-card, .hero-proof-stat';
 
-    const projectTypeSelect = document.getElementById('projectType');
     const formSubmitNext = document.getElementById('formSubmitNext');
-    const reviewSubmitNext = document.getElementById('reviewSubmitNext');
+    const newsletterSubmitNext = document.getElementById('newsletterSubmitNext');
     const leadForm = document.getElementById('leadForm');
     const formSuccess = document.getElementById('formSuccess');
-    const reviewForm = document.getElementById('reviewForm');
-    const reviewSuccess = document.getElementById('reviewSuccess');
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterSuccess = document.getElementById('newsletterSuccess');
 
     if (formSubmitNext) {
         const returnUrl = new URL(window.location.href.split('#')[0]);
@@ -546,9 +536,21 @@ document.addEventListener('DOMContentLoaded', () => {
         formSubmitNext.value = returnUrl.toString();
     }
 
+    if (newsletterSubmitNext) {
+        const newsletterReturnUrl = new URL(window.location.href.split('#')[0]);
+        newsletterReturnUrl.searchParams.set('newsletter_sent', '1');
+        newsletterReturnUrl.hash = 'newsletter';
+        newsletterSubmitNext.value = newsletterReturnUrl.toString();
+    }
+
     const showFormSuccess = () => {
         if (leadForm) leadForm.hidden = true;
         if (formSuccess) formSuccess.hidden = false;
+    };
+
+    const showNewsletterSuccess = () => {
+        if (newsletterForm) newsletterForm.hidden = true;
+        if (newsletterSuccess) newsletterSuccess.hidden = false;
     };
 
     const showFormError = (message) => {
@@ -585,17 +587,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (reviewSubmitNext) {
-        const reviewReturnUrl = new URL(window.location.href.split('#')[0]);
-        reviewReturnUrl.searchParams.set('review_sent', '1');
-        reviewReturnUrl.hash = 'give-review';
-        reviewSubmitNext.value = reviewReturnUrl.toString();
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (event) => {
+            const email = newsletterForm.querySelector('input[name="email"]');
+            const emailOk = email && email.value && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+            if (!emailOk) {
+                event.preventDefault();
+                if (email && typeof email.focus === 'function') email.focus();
+            }
+        });
     }
-
-    const showReviewSuccess = () => {
-        if (reviewForm) reviewForm.hidden = true;
-        if (reviewSuccess) reviewSuccess.hidden = false;
-    };
 
     const scrollToSection = (target) => {
         if (!target) return;
@@ -603,20 +604,23 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
-        const el = target.classList.contains('section-shell') || target.id === 'contact'
+
+        const el = (
+            target.classList.contains('section-shell')
+            || target.id === 'contact'
+            || target.id === 'newsletter'
+            || target.classList.contains('footer-newsletter')
+            || target.matches('section[id], footer')
+        )
             ? target
-            : target.closest('.section-shell, #contact, section[id]');
+            : (target.closest('.section-shell, #contact, #newsletter, .footer-newsletter, section[id], footer') || target);
+
         if (!el) return;
 
         const navbarEl = document.getElementById('navbar');
         const siteHeader = document.querySelector('.site-header');
         const headerEl = siteHeader || navbarEl;
-        const chaptersEl = document.getElementById('chaptersNav');
-        let offset = headerEl ? headerEl.offsetHeight : 64;
-        if (chaptersEl && chaptersEl.classList.contains('is-visible')) {
-            offset += chaptersEl.offsetHeight;
-        }
-        offset += 12;
+        const offset = (headerEl ? headerEl.offsetHeight : 64) + 12;
 
         const top = el.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
@@ -634,115 +638,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ensurePageStartsAtTop = () => {
         resetHomeBannerState();
     };
-
-    const initChaptersNav = () => {
-        const chaptersNav = document.getElementById('chaptersNav');
-        const chaptersProgress = document.getElementById('chaptersProgress');
-        if (!chaptersNav) return;
-
-        const chapterLinks = Array.from(chaptersNav.querySelectorAll('.chapter-link'));
-        const sections = [
-            'needs',
-            'services',
-            'products',
-            'projects',
-            'process',
-            'testimonials',
-            'contact'
-        ]
-            .map((id) => document.getElementById(id))
-            .filter(Boolean);
-
-        const updateVisibility = () => {
-            const pastBanner = !isBannerTop();
-            chaptersNav.classList.toggle('is-visible', pastBanner);
-            document.body.classList.toggle('chapters-visible', pastBanner);
-            syncNavMetrics();
-        };
-
-        const setActiveChapter = (id) => {
-            chapterLinks.forEach((link) => {
-                const isActive = link.dataset.chapter === id;
-                link.classList.toggle('is-active', isActive);
-                if (isActive) {
-                    link.setAttribute('aria-current', 'location');
-                } else {
-                    link.removeAttribute('aria-current');
-                }
-            });
-        };
-
-        const updateProgress = () => {
-            if (!chaptersProgress || sections.length < 2) return;
-            const first = sections[0];
-            const last = sections[sections.length - 1];
-            const start = first.offsetTop;
-            const end = last.offsetTop + last.offsetHeight;
-            const range = end - start;
-            if (range <= 0) return;
-            const pct = Math.min(100, Math.max(0, ((window.scrollY - start + 120) / range) * 100));
-            chaptersProgress.style.width = `${pct}%`;
-        };
-
-        const updateActiveChapter = () => {
-            if (!chaptersNav.classList.contains('is-visible')) return;
-
-            const navbarEl = document.getElementById('navbar');
-            const siteHeader = document.querySelector('.site-header');
-            const headerEl = siteHeader || navbarEl;
-            let offset = headerEl ? headerEl.offsetHeight : 64;
-            offset += chaptersNav.offsetHeight + 24;
-
-            let currentId = sections[0]?.id;
-            sections.forEach((section) => {
-                if (section.getBoundingClientRect().top <= offset) {
-                    currentId = section.id;
-                }
-            });
-
-            setActiveChapter(currentId);
-            updateProgress();
-
-            const activeLink = chapterLinks.find((link) => link.dataset.chapter === currentId);
-            const inner = chaptersNav.querySelector('.chapters-nav-inner');
-            if (activeLink && inner) {
-                const linkLeft = activeLink.offsetLeft;
-                const linkWidth = activeLink.offsetWidth;
-                const innerWidth = inner.clientWidth;
-                const scrollTarget = linkLeft - innerWidth / 2 + linkWidth / 2;
-                inner.scrollTo({ left: scrollTarget, behavior: 'smooth' });
-            }
-        };
-
-        let scrollTicking = false;
-        const onScroll = () => {
-            if (scrollTicking) return;
-            scrollTicking = true;
-            requestAnimationFrame(() => {
-                updateVisibility();
-                updateActiveChapter();
-                scrollTicking = false;
-            });
-        };
-
-        chapterLinks.forEach((link) => {
-            link.addEventListener('click', () => {
-                if (navLinks) {
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-
-        updateVisibility();
-        updateActiveChapter();
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', () => {
-            syncNavMetrics();
-            updateActiveChapter();
-        });
-    };
-
-    initChaptersNav();
 
     const openAccordionForTarget = scrollToSection;
 
@@ -772,23 +667,13 @@ document.addEventListener('DOMContentLoaded', () => {
         showFormSuccess();
     }
 
-    if (new URLSearchParams(window.location.search).get('review_sent') === '1') {
-        showReviewSuccess();
-        const giveReview = document.getElementById('give-review');
-        if (giveReview) {
-            scrollToSection(giveReview);
-            giveReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (new URLSearchParams(window.location.search).get('newsletter_sent') === '1') {
+        showNewsletterSuccess();
+        const newsletterBlock = document.getElementById('newsletter') || document.querySelector('.footer-newsletter');
+        if (newsletterBlock) {
+            scrollToSection(newsletterBlock);
         }
     }
-
-    document.querySelectorAll('.pain-card[data-project-type]').forEach((card) => {
-        card.addEventListener('click', () => {
-            const type = card.getAttribute('data-project-type');
-            if (projectTypeSelect && type) {
-                projectTypeSelect.value = type;
-            }
-        });
-    });
 
     document.querySelectorAll('.reveal').forEach((section) => {
         section.querySelectorAll(revealSelectors).forEach((item, index) => {
@@ -956,11 +841,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const initMobileExpandGrids = () => {
         const mobileMq = window.matchMedia('(max-width: 768px)');
         const gridConfigs = [
-            { selector: '.pain-grid', visible: 2 },
             { selector: '.services-grid-bento', visible: 2 },
-            { selector: '.products-grid', visible: 1 },
-            { selector: '.process-steps', visible: 2 },
-            { selector: '.testimonials-grid', visible: 1 }
+            { selector: '.products-grid', visible: 1 }
         ];
 
         const getDict = () => {
